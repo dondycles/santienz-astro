@@ -1,0 +1,103 @@
+---
+import Main from "@/components/Main.astro";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { actions } from "astro:actions";
+
+const result = Astro.getActionResult(actions.submitEmail);
+---
+
+<MainLayout title="Contact Us | Santienz Philippines Inc." desc="hi">
+  <Main>
+    <section class="space-y-4 text-center">
+      <h1 class="font-bold text-4xl sm:text-6xl text-primary text-center">
+        Get In Touch With Us
+      </h1>
+      <p class="text-muted-foreground">
+        Ask for a sample quotation, site visit, and more.
+      </p>
+      {(<p>{JSON.stringify(result?.data, null, 2)}</p>)}
+      <form method="post" id="form" class="space-y-4 max-w-4xl mx-auto">
+        <input
+          type="hidden"
+          name="access_key"
+          value="fd036058-8ea6-4de7-b949-ad2901fc6650"
+        />
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="hidden"
+          style="display: none;"
+        />
+        <input type="hidden" name="from_name" value="Inquiry" />
+        <Input type="text" name="name" placeholder="Name" required />
+        <Input type="email" name="email" placeholder="Email" />
+        <Input type="text" name="subject" placeholder="Subject" required />
+        <Textarea
+          name="message"
+          placeholder="Message"
+          required
+          className="min-h-32"
+        />
+        <Button type="submit" className="float-end">Submit Form</Button>
+        <div id="result"></div>
+        <div class="h-captcha" data-captcha="true"></div>
+      </form>
+    </section>
+  </Main>
+</MainLayout>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script is:inline>
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+
+  form.addEventListener("submit", function (e) {
+    const formData = new FormData(form);
+    e.preventDefault();
+    const hCaptcha = form.querySelector(
+      "textarea[name=h-captcha-response]",
+    ).value;
+
+    if (!hCaptcha) {
+      e.preventDefault();
+      alert("Please fill out captcha field");
+      return;
+    }
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Please wait...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = json.message;
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 3000);
+      });
+  });
+</script>

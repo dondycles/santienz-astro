@@ -1,16 +1,8 @@
 import { Button } from "./ui/button";
-
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { BiLogoFacebook, BiLogoGmail } from "react-icons/bi";
 import { FaViber } from "react-icons/fa";
 import { Menu } from "lucide-react";
-import Logo from "./Logo.astro";
 export default function MobileNavigation() {
   return (
     <Sheet>

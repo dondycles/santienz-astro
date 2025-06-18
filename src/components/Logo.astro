@@ -1,0 +1,12 @@
+---
+interface Props {
+  style?: string;
+}
+
+import { Image } from "astro:assets";
+import santienzPng from "../../public/santienz.png";
+
+const { style } = Astro.props;
+---
+
+<Image src={santienzPng} alt="Santienz Logo" class={style} />

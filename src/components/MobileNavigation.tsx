@@ -25,7 +25,9 @@ export default function MobileNavigation() {
           </Button>
         </div>
         <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t p-4">
-          <Button>Contact Us</Button>
+          <Button asChild>
+            <a href="/contact-us">Get Quote</a>
+          </Button>
           <div className="space-x-2">
             <BiLogoGmail className="inline size-8" />
             <span className="inline text-base">santienz@gmail.com</span>

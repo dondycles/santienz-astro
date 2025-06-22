@@ -5,14 +5,12 @@ import MobileNavigation from "./MobileNavigation";
 ---
 
 <header
-  class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+  class="sticky top-0 z-50 w-full border-b backdrop-blur bg-primary supports-[backdrop-filter]:bg-background/60"
 >
   <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 p-4">
     <div class="flex items-center space-x-2">
       <Logo style="w-14" />
-      <span class="font-semibold text-base text-primary">
-        Santienz Philippines Inc.
-      </span>
+      <span class="font-semibold text-base">Santienz Philippines Inc. </span>
     </div>
     <DesktopNavigation client:load />
     <MobileNavigation client:load />

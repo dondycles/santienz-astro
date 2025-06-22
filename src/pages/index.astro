@@ -4,7 +4,8 @@ import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Medal, Star, UserCircle, Users } from "lucide-react";
-
+import { Boxes } from "@/components/ui/background-boxes";
+import { EffectButton } from "@/components/ui/effect-button";
 const features = [
   { count: 100, title: "Projects Completed" },
   { count: 60, title: "Satisfied Clients" },
@@ -40,35 +41,50 @@ const projects = [
 ];
 ---
 
-<MainLayout title="Santienz Philippines Inc." desc="hi">
-  <section class="mx-auto max-w-4xl space-y-8 p-4">
-    <div class="space-y-4 text-center">
-      <h1 class="font-bold text-4xl sm:text-6xl text-primary">
+<MainLayout title="Home" desc="hi">
+  <section
+    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center px-4 py-32"
+  >
+    <div>
+      <div
+        class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
+      >
+      </div>
+      <Boxes client:load />
+    </div>
+    <div class="space-y-4 text-center max-w-4xl">
+      <h1 class="font-bold text-4xl sm:text-6xl text-tertiary relative z-20">
         Lorem Ipsum Dolor
       </h1>
-      <p class="text-muted-foreground">
+      <p class="text-primary-foreground relative z-20">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
         assumenda voluptates at!
       </p>
     </div>
-    <div class="flex flex-1 justify-center gap-4">
-      <Button variant="outline">Our Services</Button>
-      <Button>Get Quote</Button>
+    <div
+      class="flex sm:flex-row flex-col-reverse max-w-xl w-full justify-center gap-4 px-4 py-8 relative z-20"
+    >
+      <Button variant="borderedTertiary" className="relative z-20 flex-1"
+        >Our Services
+      </Button>
+      <Button variant="tertiary" className="relative z-20  flex-1">
+        <a href="contact-us">Get Quote</a>
+      </Button>
     </div>
   </section>
   <section class="mx-auto grid max-w-4xl grid-cols-2 gap-4 p-4 lg:grid-cols-4">
     {
       features.map((feature) => (
-        <div class="flex flex-col items-center gap-4 rounded-lg bg-primary/10 px-4 py-8">
-          <Badge className="rounded-full px-4 text-2xl">
+        <div class="flex flex-col justify-end rounded-lg bg-primary/5 px-4 pt-8 pb-4 gap-2">
+          <div class="text-4xl font-bold text-primary">
             <CountingNumber client:load number={feature.count} />+
-          </Badge>
-          <span class="text-center text-muted-foreground">{feature.title}</span>
+          </div>
+          <div class="text-muted-foreground">{feature.title}</div>
         </div>
       ))
     }
   </section>
-  <section class="space-y-16 bg-primary/10 xmd:py-16 pt-16">
+  <section class="space-y-16 xmd:py-16 pt-16 bg-primary/5">
     <div class="mx-auto max-w-4xl space-y-4 px-4">
       <h2 class="text-center font-bold text-4xl text-primary">
         Featured Projects
@@ -80,14 +96,14 @@ const projects = [
     <div class="mx-auto grid max-w-4xl xmd:gap-8 xmd:px-4">
       {
         projects.map((project) => (
-          <div class="overflow-hidden xmd:rounded-md bg-background">
+          <div class="overflow-hidden xmd:rounded-2xl bg-primary">
             <img
               src={project.img}
               class="aspect-[2/1] w-full bg-primary object-cover"
               alt={project.title}
             />
-            <div class="space-y-2 p-4">
-              <p class="font-semibold text-2xl text-primary">{project.title}</p>
+            <div class="space-y-2 p-4 text-primary-foreground">
+              <p class="font-semibold text-2xl">{project.title}</p>
               <p class="text-muted-foreground">{project.description}</p>
             </div>
           </div>
@@ -131,7 +147,7 @@ const projects = [
       alt="basta"
     />
   </section>
-  <section class="space-y-8 border-t border-t-primary px-4 pt-16 pb-4">
+  <section class="space-y-8 px-4 pb-4">
     <div class="mx-auto max-w-4xl space-y-4">
       <h2 class="font-bold text-4xl text-primary">What Our Clients Say</h2>
       <p class="text-muted-foreground">Hear from our satisfied customers</p>

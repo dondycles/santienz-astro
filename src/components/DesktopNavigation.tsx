@@ -98,7 +98,7 @@ export default function DesktopNavigation() {
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-      <Button asChild>
+      <Button asChild variant="tertiary">
         <a href="/contact-us">Get Quote</a>
       </Button>
     </div>

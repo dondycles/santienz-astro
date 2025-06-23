@@ -47,7 +47,7 @@ const projects = [
 >
   <section
     id="main-hero"
-    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-32 pb-16"
+    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-32 pb-10"
   >
     <div
       class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
@@ -72,23 +72,25 @@ const projects = [
         assumenda voluptates at!
       </p>
       <CTAGetQuote
-        style="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-8 px-12 mx-auto md:text-xl md:font-semibold mt-8"
+        style="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-6 px-12 mx-auto md:text-xl md:font-semibold mt-4"
       />
     </div>
-  </section>
-  <section
-    class="max-w-4xl mx-auto grid grid-cols-2 gap-8 lg:grid-cols-4 mt-12 *:px4"
-  >
-    {
-      features.map((feature) => (
-        <div class="flex flex-col rounded-lg gap-2 z-20 items-center">
-          <div class=" text-4xl sm:text-5xl md:text-6xl font-bold text-primary">
-            <CountingNumber client:load number={feature.count} />+
+    <div
+      class="max-w-4xl px-4 mx-auto grid grid-cols-2 gap-8 lg:grid-cols-4 mt-12"
+    >
+      {
+        features.map((feature) => (
+          <div class="flex flex-col rounded-lg gap-2 z-20 items-center">
+            <div class=" text-4xl sm:text-5xl md:text-6xl font-bold text-tertiary">
+              <CountingNumber client:load number={feature.count} />+
+            </div>
+            <div class="text-primary-foreground text-center">
+              {feature.title}
+            </div>
           </div>
-          <div class="text-muted-foreground text-center">{feature.title}</div>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </section>
   <section class="space-y-8">
     <div class="mx-auto max-w-4xl space-y-4 px-4">

@@ -4,8 +4,8 @@ import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import { Medal, Star, UserCircle, Users } from "lucide-react";
 import { Boxes } from "@/components/ui/background-boxes";
 import CTAGetQuote from "@/components/CTAGetQuote";
-import { Image } from "astro:assets";
-import grid3d from "@/images/grid_3d.png";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { Badge } from "@/components/ui/badge";
 const features = [
   { count: 100, title: "Projects Completed" },
   { count: 60, title: "Satisfied Clients" },
@@ -47,17 +47,12 @@ const projects = [
 >
   <section
     id="main-hero"
-    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 pb-10"
+    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 pb-8"
   >
     <div
       class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
     >
     </div>
-    <!-- <Image
-      src={grid3d}
-      alt="Grid 3D Background"
-      class="absolute inset-0 w-full h-full object-cover"
-    /> -->
     <Boxes client:load />
     <div
       class="absolute inset-0 w-full h-full backdrop-blur-[1px] pointer-events-none"
@@ -70,7 +65,7 @@ const projects = [
         No.1 Polyurethane Mortar Flooring in the Philippines since 1998
       </h1>
       <p
-        class="text-primary-foreground relative z-20 drop-shadow-lg text-center"
+        class="text-primary-foreground relative z-20 drop-shadow-lg text-center leading-tight"
       >
         Santienz Philippines Inc. is preferred by over 60 clients in
         manufacturing, food, and pharma sectors.
@@ -84,7 +79,7 @@ const projects = [
     >
       {
         features.map((feature) => (
-          <div class="flex flex-col rounded-lg gap-2 z-20 bg-background/5 backdrop-blur-xs p-4">
+          <div class="flex flex-col rounded-xl gap-2 z-20 bg-background/5 backdrop-blur-xs p-4">
             <div class="text-3xl md:text-6xl font-bold text-tertiary">
               <CountingNumber client:load number={feature.count} />+
             </div>
@@ -103,18 +98,26 @@ const projects = [
         Take a look at some of our recent completed projects
       </p>
     </div>
-    <div class="mx-auto grid max-w-4xl xmd:gap-8 xmd:px-4">
+    <div class="mx-auto grid max-w-4xl xmd:gap-4 xmd:px-4">
       {
         projects.map((project) => (
-          <div class="overflow-hidden xmd:rounded-xl bg-primary/10">
+          <div class="overflow-hidden xmd:rounded-xl w-full relative">
             <img
               src={project.img}
-              class="aspect-[2/1] w-full bg-primary object-cover"
+              class="aspect-[2/1] min-h-[33dvh] w-full bg-primary object-cover"
               alt={project.title}
             />
-            <div class="space-y-2 p-4">
-              <p class="font-semibold text-2xl text-primary">{project.title}</p>
-              <p class="text-muted-foreground">{project.description}</p>
+            <div class="absolute bottom-2 left-2 right-2 ">
+              <div class="rounded-lg backdrop-blur-[2px] p-2 shadow-xl bg-background/75 w-fit">
+                <span class="font-bold text-primary block">
+                  {project.title}
+                </span>
+                <span class="block text-muted-foreground text-xs">
+                  {new Date().toLocaleDateString()}
+                </span>
+                <Badge>Polyurethane</Badge>
+                <Badge>Nafufill</Badge>
+              </div>
             </div>
           </div>
         ))

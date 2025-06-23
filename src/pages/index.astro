@@ -46,7 +46,8 @@ const projects = [
   desc="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
 >
   <section
-    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-[900px]"
+    id="main-hero"
+    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit py-32"
   >
     <div
       class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
@@ -71,7 +72,7 @@ const projects = [
         assumenda voluptates at!
       </p>
       <CTAGetQuote
-        style="drop-shadow-[0_4px_8px_var(--tertiary)] py-8 px-12 mx-auto text-xl font-semibold mt-8"
+        style="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-8 px-12 mx-auto md:text-xl md:font-semibold mt-8"
       />
 
       <div class="grid grid-cols-2 gap-8 lg:grid-cols-4 mt-12">
@@ -81,7 +82,9 @@ const projects = [
               <div class=" text-4xl sm:text-5xl md:text-6xl font-bold text-tertiary">
                 <CountingNumber client:load number={feature.count} />+
               </div>
-              <div class="text-primary-foreground">{feature.title}</div>
+              <div class="text-primary-foreground text-center">
+                {feature.title}
+              </div>
             </div>
           ))
         }

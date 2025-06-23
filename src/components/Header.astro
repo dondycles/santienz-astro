@@ -22,7 +22,9 @@ import MobileNavigation from "./MobileNavigation";
 
 <script>
   window.addEventListener("scroll", () => {
-    const heroHeight = 900;
+    const heroHeight =
+      document.getElementById("main-hero")?.getBoundingClientRect().height ??
+      900;
     if (window.scrollY > heroHeight * 0.1) {
       document.getElementById("header")?.classList.add("active-header");
     } else {

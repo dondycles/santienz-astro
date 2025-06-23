@@ -1,106 +1,60 @@
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import CTAGetQuote from "./CTAGetQuote";
 import { Button } from "./ui/button";
+import { ChevronDown } from "lucide-react";
 export default function DesktopNavigation() {
   return (
-    <div className="xmd:flex hidden flex-1 items-center gap-4">
-      <NavigationMenu className="mx-auto">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
+    <div className="xmd:flex hidden flex-1 items-center justify-end gap-4">
+      <nav className="flex flex-row">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="link"
+              className="header-links text-primary-foreground"
             >
-              <a href="/">Home</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href="/">
-                      <div className="font-medium text-primary text-sm leading-none">
-                        Floorings
-                      </div>
-                      <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Quas dolor nobis eligendi.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href="/">
-                      <div className="font-medium text-primary text-sm leading-none">
-                        Floorings
-                      </div>
-                      <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Quas dolor nobis eligendi.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>{" "}
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href="/">
-                      <div className="font-medium text-primary text-sm leading-none">
-                        Floorings
-                      </div>
-                      <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Quas dolor nobis eligendi.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-                <li>
-                  <NavigationMenuLink asChild>
-                    <a href="/">
-                      <div className="font-medium text-primary text-sm leading-none">
-                        Floorings
-                      </div>
-                      <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Quas dolor nobis eligendi.
-                      </p>
-                    </a>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <a href="/">About Us</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink
-              asChild
-              className={navigationMenuTriggerStyle()}
-            >
-              <a href="/">Careers</a>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <Button asChild variant="tertiary">
-        <a href="/contact-us">Get Quote</a>
-      </Button>
+              <span>Services</span>
+              <ChevronDown />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="max-w-xs">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <DropdownMenuItem asChild key={i}>
+                <a href="/">
+                  <div>
+                    <span className="font-semibold text-lg block text-tertiary">
+                      Floorings
+                    </span>
+                    <span className="line-clamp-2 text-sm text-muted-foreground">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Quas dolor nobis eligendi.
+                    </span>
+                  </div>
+                </a>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <Button
+          variant="link"
+          asChild
+          className="header-links text-primary-foreground"
+        >
+          <a href="/">About Us</a>
+        </Button>
+        <Button
+          variant="link"
+          asChild
+          className="header-links text-primary-foreground"
+        >
+          <a href="/">Careers</a>
+        </Button>
+      </nav>
+      <CTAGetQuote />
     </div>
   );
 }

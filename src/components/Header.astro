@@ -4,15 +4,42 @@ import DesktopNavigation from "./DesktopNavigation";
 import MobileNavigation from "./MobileNavigation";
 ---
 
-<header
-  class="sticky top-0 z-50 w-full border-b backdrop-blur bg-primary supports-[backdrop-filter]:bg-background/60"
->
+<header id="header" class="fixed top-0 z-50 w-full bg-transparent duration-300">
   <div class="mx-auto flex max-w-4xl items-center justify-between gap-4 p-4">
-    <div class="flex items-center space-x-2">
-      <Logo style="w-14" />
-      <span class="font-semibold text-base">Santienz Philippines Inc. </span>
-    </div>
+    <a href="/">
+      <div class="flex items-center space-x-2">
+        <Logo style="w-14" />
+        <span
+          class="header-links font-semibold text-base text-primary-foreground"
+          >Santienz Philippines Inc.
+        </span>
+      </div>
+    </a>
     <DesktopNavigation client:load />
     <MobileNavigation client:load />
   </div>
 </header>
+
+<script>
+  window.addEventListener("scroll", () => {
+    const hundredDvh = window.innerHeight;
+    if (window.scrollY > hundredDvh) {
+      document.getElementById("header")?.classList.add("active-header");
+      Array.from(document.getElementsByClassName("header-links")).forEach(
+        (el) => {
+          el.classList.add("active-header-links");
+        },
+      );
+    } else {
+      document.getElementById("header")?.classList.remove("active-header");
+      document
+        .getElementById("header-links")
+        ?.classList.remove("active-header-links");
+      Array.from(document.getElementsByClassName("header-links")).forEach(
+        (el) => {
+          el.classList.remove("active-header-links");
+        },
+      );
+    }
+  });
+</script>

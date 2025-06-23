@@ -133,3 +133,10 @@
   font-weight: 400;
   font-style: normal;
 }
+
+.active-header {
+  @apply backdrop-blur-lg text-foreground;
+}
+.active-header-links {
+  @apply text-foreground;
+}

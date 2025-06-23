@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { Scroll } from "lucide-react";
+import React from "react";
 
 export default function CTAGetQuote({ style }: { style?: string }) {
   return (

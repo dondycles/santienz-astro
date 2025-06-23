@@ -1,42 +1,63 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
-import { Medal, Star, UserCircle, Users } from "lucide-react";
+import {
+  ChevronRight,
+  FolderDot,
+  Medal,
+  Scroll,
+  Star,
+  UserCircle,
+  Users,
+  type LucideProps,
+} from "lucide-react";
 import { Boxes } from "@/components/ui/background-boxes";
 import CTAGetQuote from "@/components/CTAGetQuote";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { Badge } from "@/components/ui/badge";
-const features = [
-  { count: 100, title: "Projects Completed" },
-  { count: 60, title: "Satisfied Clients" },
-  { count: 20, title: "Years of Experience" },
-  { count: 50, title: "Team Members" },
+import { Button } from "@/components/ui/button";
+import LinkButton from "@/components/LinkButton";
+import type React from "react";
+const features: {
+  count: number;
+  title: string;
+}[] = [
+  {
+    count: 100,
+    title: "Projects Completed 🏆",
+  },
+  { count: 60, title: "Satisfied Clients 😊" },
+  { count: 20, title: "Years of Experience ⏳" },
+  { count: 50, title: "Team Members 👥" },
 ];
 
 const projects = [
   {
-    title: "Lorem Ipsum",
+    title: "Jollibee",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2019/03/Reasons-Why-You-Should-Implement-Polyurethane-Flooring-e1552630914227.jpg",
+    services: ["Polyurethane", "Nafufill"],
   },
   {
-    title: "Lorem Ipsum",
+    title: "Universal Robina",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2021/03/Why-Is-Polyurethane-Great-for-Flooring-1.jpg",
+    services: ["Nafufill"],
   },
   {
-    title: "Lorem Ipsum",
+    title: "SM Supermarket",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2021/03/How-to-Apply-Diff-Polyurethane-Finishes.jpg",
+    services: ["PU"],
   },
   {
     title: "Lorem Ipsum",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2019/03/What-is-Polyurethane.jpg",
+    services: ["PU", "Nafufill"],
   },
 ];
 ---
@@ -58,7 +79,7 @@ const projects = [
       class="absolute inset-0 w-full h-full backdrop-blur-[1px] pointer-events-none"
     >
     </div>
-    <div class="max-w-4xl px-4 flex flex-col gap-4">
+    <div class="max-w-6xl px-4 flex flex-col gap-4">
       <h1
         class="font-bold text-4xl sm:text-5xl md:text-6xl text-tertiary relative z-20 leading-tight drop-shadow-lg text-center"
       >
@@ -75,7 +96,7 @@ const projects = [
       />
     </div>
     <div
-      class="max-w-4xl px-4 mx-auto grid gap-1 grid-cols-2 md:grid-cols-4 mt-8"
+      class="max-w-6xl px-4 mx-auto grid gap-1 grid-cols-2 md:grid-cols-4 mt-8"
     >
       {
         features.map((feature) => (
@@ -89,8 +110,8 @@ const projects = [
       }
     </div>
   </section>
-  <section class="space-y-8">
-    <div class="mx-auto max-w-4xl space-y-4 px-4">
+  <section class="flex flex-col gap-8">
+    <div class="mx-auto max-w-6xl space-y-4 px-4">
       <h2 class="text-center font-bold text-4xl text-primary">
         Featured Projects
       </h2>
@@ -98,75 +119,96 @@ const projects = [
         Take a look at some of our recent completed projects
       </p>
     </div>
-    <div class="mx-auto grid max-w-4xl xmd:gap-4 xmd:px-4">
+    <div
+      class="grid gap-1 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl xmd:px-4"
+    >
       {
-        projects.map((project) => (
-          <div class="overflow-hidden xmd:rounded-xl w-full relative">
+        projects.map((project, i) => (
+          <div
+            class={`overflow-hidden w-full relative
+                ${(i === 1 || i === 2) && "row-span-2"}
+                ${i === 0 && "xmd:rounded-tl-xl"}
+                ${i === 1 && "xmd:rounded-tr-xl"}
+                ${i === 2 && "xmd:rounded-bl-xl"}
+                ${i === 3 && "xmd:rounded-br-xl"}
+              `}
+          >
             <img
               src={project.img}
-              class="aspect-[2/1] min-h-[33dvh] w-full bg-primary object-cover"
+              class="aspect-[2/1] h-full bg-primary object-cover"
               alt={project.title}
             />
-            <div class="absolute bottom-2 left-2 right-2 ">
-              <div class="rounded-lg backdrop-blur-[2px] p-2 shadow-xl bg-background/75 w-fit">
-                <span class="font-bold text-primary block">
-                  {project.title}
-                </span>
-                <span class="block text-muted-foreground text-xs">
-                  {new Date().toLocaleDateString()}
-                </span>
-                <Badge>Polyurethane</Badge>
-                <Badge>Nafufill</Badge>
+            <div class="absolute bottom-0 left-0 w-full drop-shadow space-y-1 bg-gradient-to-t p-2 from-foreground/50 to-transparent">
+              <h3 class="text-4xl font-bold text-primary-foreground">
+                {project.title}
+              </h3>
+              <div class="flex gap-1">
+                {project.services.map((service) => (
+                  <Badge
+                    className="text-lg font-bold bg-transparent border-tertiary text-tertiary"
+                    key={service}
+                  >
+                    {service}
+                  </Badge>
+                ))}
               </div>
             </div>
           </div>
         ))
       }
     </div>
+    <LinkButton href="/projects" title="View More Projects" />
   </section>
-  <section class="space-y-8">
-    <div class="space-y-4 max-w-4xl px-4 mx-auto">
-      <h2 class="font-bold text-4xl text-primary">About Santienz</h2>
-      <p class="text-muted-foreground">
+  <section class="flex flex-col gap-8">
+    <div class="space-y-4 max-w-6xl px-4 mx-auto">
+      <h2 class="font-bold text-4xl text-primary text-center">
+        About Santienz
+      </h2>
+      <p class="text-muted-foreground text-center">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam
         perspiciatis omnis officia quibusdam odit veniam! Earum tempora quae
         aperiam enim nobis eius. Architecto iste deserunt eum non officiis a
         repellat.
       </p>
     </div>
-    <div class="flex flex-wrap justify-evenly gap-4 max-w-4xl px-4 mx-auto">
+    <div class="flex flex-wrap justify-evenly gap-4 max-w-6xl px-4 mx-auto">
       <div class="flex items-center gap-4">
         <Medal className="inline size-9 text-primary" />
         <div class="inline">
-          <p>Fully Certified</p>
+          <h3>Fully Certified</h3>
           <p class="text-base text-muted-foreground">Fully Certified</p>
         </div>
       </div>
       <div class="flex items-center gap-4">
         <Users className="inline size-9 text-primary" />
         <div class="inline">
-          <p>Expert Team</p>
+          <h3>Expert Team</h3>
           <p class="text-base text-muted-foreground">Skilled professionals</p>
         </div>
       </div>
     </div>
-    <div class="max-w-4xl px-4 mx-auto">
+    <div class="max-w-6xl xmd:px-4 mx-auto">
       <img
         src="https://fellow.app/wp-content/uploads/2022/11/Team-Member-Strengths2.jpg"
-        class="aspect-[2/1] w-full object-cover rounded-xl"
+        class="aspect-[2/1] w-full object-cover xmd:rounded-xl"
         alt="basta"
       />
     </div>
+    <LinkButton href="/about-us" title="Read More About Us" />
   </section>
-  <section class="space-y-8">
-    <div class="mx-auto px-4 max-w-4xl space-y-4">
-      <h2 class="font-bold text-4xl text-primary">What Our Clients Say</h2>
-      <p class="text-muted-foreground">Hear from our satisfied customers</p>
+  <section class="flex flex-col gap-8">
+    <div class="mx-auto px-4 max-w-6xl space-y-4">
+      <h2 class="font-bold text-4xl text-primary text-center">
+        What Our Clients Say
+      </h2>
+      <p class="text-muted-foreground text-center">
+        Hear from our satisfied customers
+      </p>
     </div>
-    <div class="mx-auto px-4 max-w-4xl space-y-4">
+    <div class="mx-auto px-4 max-w-6xl w-full space-y-4">
       {
         Array.from({ length: 4 }).map(() => (
-          <div class="mx-auto max-w-4xl space-y-4 rounded-xl bg-primary/10 p-4">
+          <div class="max-w-6xl w-full space-y-4 rounded-xl bg-primary/10 p-4">
             <div class="space-x-2 text-primary">
               <UserCircle className="float-start inline size-9" />
               <div class="inline-block">
@@ -192,5 +234,6 @@ const projects = [
         ))
       }
     </div>
+    <LinkButton href="/testimonials" title="View More Testimonials" />
   </section>
 </MainLayout>

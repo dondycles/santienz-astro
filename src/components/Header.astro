@@ -22,13 +22,13 @@ import MobileNavigation from "./MobileNavigation";
 
 <script>
   window.addEventListener("scroll", () => {
-    const hundredDvh = window.innerHeight;
-    if (window.scrollY > hundredDvh * 0.1) {
+    const heroHeight = 900;
+    if (window.scrollY > heroHeight * 0.1) {
       document.getElementById("header")?.classList.add("active-header");
     } else {
       document.getElementById("header")?.classList.remove("active-header");
     }
-    if (window.scrollY > hundredDvh * 0.75) {
+    if (window.scrollY > heroHeight * 0.75) {
       document
         .getElementById("header-burger-icon")
         ?.classList.add("active-header-burger-icon");

@@ -76,12 +76,12 @@ const projects = [
       />
     </div>
     <div
-      class="max-w-4xl px-4 mx-auto grid grid-cols-2 gap-8 lg:grid-cols-4 mt-12"
+      class="max-w-4xl px-4 mx-auto grid gap-8 grid-cols-2 md:grid-cols-4 mt-12"
     >
       {
         features.map((feature) => (
           <div class="flex flex-col rounded-lg gap-2 z-20 items-center">
-            <div class=" text-4xl sm:text-5xl md:text-6xl font-bold text-tertiary">
+            <div class=" text-2xl sm:text-4xl md:text-6xl font-bold text-tertiary">
               <CountingNumber client:load number={feature.count} />+
             </div>
             <div class="text-primary-foreground text-center">

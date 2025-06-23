@@ -23,18 +23,24 @@ import MobileNavigation from "./MobileNavigation";
 <script>
   window.addEventListener("scroll", () => {
     const hundredDvh = window.innerHeight;
-    if (window.scrollY > hundredDvh) {
+    if (window.scrollY > hundredDvh * 0.1) {
       document.getElementById("header")?.classList.add("active-header");
+    } else {
+      document.getElementById("header")?.classList.remove("active-header");
+    }
+    if (window.scrollY > hundredDvh * 0.75) {
+      document
+        .getElementById("header-burger-icon")
+        ?.classList.add("active-header-burger-icon");
       Array.from(document.getElementsByClassName("header-links")).forEach(
         (el) => {
           el.classList.add("active-header-links");
         },
       );
     } else {
-      document.getElementById("header")?.classList.remove("active-header");
       document
-        .getElementById("header-links")
-        ?.classList.remove("active-header-links");
+        .getElementById("header-burger-icon")
+        ?.classList.remove("active-header-burger-icon");
       Array.from(document.getElementsByClassName("header-links")).forEach(
         (el) => {
           el.classList.remove("active-header-links");

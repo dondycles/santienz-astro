@@ -140,3 +140,7 @@
 .active-header-links {
   @apply text-foreground;
 }
+
+.active-header-burger-icon {
+  @apply stroke-foreground;
+}

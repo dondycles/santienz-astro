@@ -7,7 +7,7 @@ export default function MobileNavigation() {
   return (
     <Sheet>
       <SheetTrigger className="xmd:hidden">
-        <Menu />
+        <Menu id="header-burger-icon" className="stroke-primary-foreground" />
       </SheetTrigger>
       <SheetContent className="gap-0">
         <div className="flex flex-col gap-4 border-t p-4 mt-12">

@@ -82,7 +82,8 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-1",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnHover &&
+            "active:[animation-play-state:paused] sm:hover:[animation-play-state:paused]",
         )}
       >
         {items.map((item, idx) => (

@@ -1,16 +1,15 @@
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
-import { Scroll } from "lucide-react";
-import React from "react";
+import { EnhancedButton } from "./EnhancedButton";
 
 export default function CTAGetQuote({ style }: { style?: string }) {
   return (
-    <Button
+    <EnhancedButton
       variant="tertiary"
-      className={cn("relative z-20 hover:scale-105 active:scale-95", style)}
+      effect="shineHover"
+      className={cn("relative z-20 ", style)}
       asChild
     >
       <a href="contact-us">Get Quote</a>
-    </Button>
+    </EnhancedButton>
   );
 }

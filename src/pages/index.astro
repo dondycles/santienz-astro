@@ -1,22 +1,12 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
-import {
-  ChevronRight,
-  FolderDot,
-  Medal,
-  Scroll,
-  Star,
-  UserCircle,
-  Users,
-  type LucideProps,
-} from "lucide-react";
+import { Medal, Star, UserCircle, Users } from "lucide-react";
 import { Boxes } from "@/components/ui/background-boxes";
 import CTAGetQuote from "@/components/CTAGetQuote";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import LinkButton from "@/components/LinkButton";
-import type React from "react";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 const features: {
   count: number;
   title: string;
@@ -205,7 +195,45 @@ const projects = [
         Hear from our satisfied customers
       </p>
     </div>
-    <div class="mx-auto px-4 max-w-6xl w-full space-y-4">
+    <InfiniteMovingCards
+      client:load
+      className="mx-auto max-w-6xl"
+      items={[
+        {
+          name: "April Pearl Fedalgo",
+          quote:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+          title: "Ma'am Inasal",
+        },
+        {
+          name: "Elijah Redondo",
+          quote:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+          title: "Angel's Burger",
+        },
+        {
+          name: "John Rod Dondoyano",
+          quote:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+          title: "Company",
+        },
+        {
+          name: "Client Name",
+          quote:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+          title: "Client's Company",
+        },
+        {
+          name: "Client Name",
+          quote:
+            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+          title: "Client's Company",
+        },
+      ]}
+      direction="right"
+      speed="slow"
+    />
+    <!-- <div class="mx-auto px-4 max-w-6xl w-full space-y-4">
       {
         Array.from({ length: 4 }).map(() => (
           <div class="max-w-6xl w-full space-y-4 rounded-xl bg-primary/10 p-4">
@@ -233,7 +261,7 @@ const projects = [
           </div>
         ))
       }
-    </div>
+    </div> -->
     <LinkButton href="/testimonials" title="View More Testimonials" />
   </section>
 </MainLayout>

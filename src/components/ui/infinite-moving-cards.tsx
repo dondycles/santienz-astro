@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
-import { CountingNumber } from "../animate-ui/text/counting-number";
 
 export const InfiniteMovingCards = ({
   items,
@@ -12,8 +11,9 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
+    quote: string;
+    name: string;
     title: string;
-    count: number;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -61,11 +61,11 @@ export const InfiniteMovingCards = ({
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
+        containerRef.current.style.setProperty("--animation-duration", "20s");
       } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        containerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "100s");
+        containerRef.current.style.setProperty("--animation-duration", "80s");
       }
     }
   };
@@ -73,24 +73,40 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_2.5%,white_97.5%,transparent)]",
         className,
       )}
     >
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+          "flex w-max min-w-full shrink-0 flex-nowrap gap-1",
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
         {items.map((item, idx) => (
-          <li className="flex flex-col rounded-xl gap-2 z-20 bg-background/5 backdrop-blur-xs p-4">
-            <div className="text-3xl md:text-6xl font-bold text-tertiary">
-              <CountingNumber number={item.count} />+
+          <li
+            className="relative w-[350px] max-w-full shrink-0 rounded-2xl bg-primary/10 px-8 py-6 md:w-[450px] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
+            key={item.name}
+          >
+            <div
+              aria-hidden="true"
+              className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+            ></div>
+            <span className="relative z-20 leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
+              {item.quote}
+            </span>
+            <div className="relative z-20 mt-6 flex flex-row items-center">
+              <span className="flex flex-col gap-1">
+                <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                  {item.name}
+                </span>
+                <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                  of {item.title}
+                </span>
+              </span>
             </div>
-            <div className="text-primary-foreground">{item.title}</div>
           </li>
         ))}
       </ul>

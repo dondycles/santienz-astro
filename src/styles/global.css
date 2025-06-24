@@ -143,11 +143,11 @@
   @apply backdrop-blur-lg text-foreground;
 }
 .active-header-links {
-  @apply text-foreground;
+  @apply text-primary;
 }
 
 .active-header-burger-icon {
-  @apply stroke-foreground;
+  @apply stroke-primary;
 }
 @keyframes scroll {
   to {

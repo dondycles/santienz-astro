@@ -1,7 +1,16 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
-import { Medal, Play, Users } from "lucide-react";
+import {
+  BicepsFlexed,
+  CheckCircle,
+  Medal,
+  Megaphone,
+  Play,
+  Speaker,
+  Speech,
+  Users,
+} from "lucide-react";
 import CTAGetQuote from "@/components/CTAGetQuote";
 import { Badge } from "@/components/ui/badge";
 import LinkButton from "@/components/LinkButton";
@@ -29,28 +38,28 @@ const projects = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2019/03/Reasons-Why-You-Should-Implement-Polyurethane-Flooring-e1552630914227.jpg",
-    services: ["Polyurethane", "Nafufill"],
+    products: ["Polyurethane", "Nafufill"],
   },
   {
     title: "Universal Robina",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2021/03/Why-Is-Polyurethane-Great-for-Flooring-1.jpg",
-    services: ["Nafufill"],
+    products: ["Nafufill"],
   },
   {
     title: "SM Supermarket",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2021/03/How-to-Apply-Diff-Polyurethane-Finishes.jpg",
-    services: ["PU"],
+    products: ["PU"],
   },
   {
     title: "Lorem Ipsum",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem fugiat earum similique.",
     img: "https://flooringsolutions.ph/wp-content/uploads/2019/03/What-is-Polyurethane.jpg",
-    services: ["PU", "Nafufill"],
+    products: ["PU", "Nafufill"],
   },
 ];
 ---
@@ -95,15 +104,17 @@ const projects = [
         manufacturing, food, and pharma sectors.
       </p>
       <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-4">
-        <a href="about-us" class="flex-1">
+        <a href="about-us" class="flex-1 xmd:block hidden">
           <EnhancedButton
             client:load
-            className="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-6 px-12 md:text-xl md:font-semibold z-20 w-full"
+            className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full"
             effect="shineHover"
             variant="tertiary">Learn More</EnhancedButton
           >
         </a>
-
+        <CTAGetQuote
+          style="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex xmd:hidden"
+        />
         <a
           href="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
           target="_blank"
@@ -111,7 +122,7 @@ const projects = [
         >
           <EnhancedButton
             client:load
-            className="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-6 px-12 md:text-xl md:font-semibold z-20 bg-transparent border-tertiary text-primary-foreground hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
+            className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
             effect="shineHover"
             variant="outline">Play Video <Play /></EnhancedButton
           >
@@ -119,7 +130,7 @@ const projects = [
       </div>
     </div>
     <div
-      class="max-w-6xl px-4 mx-auto hidden md:grid gap-1 grid-cols-2 md:grid-cols-4 mt-16"
+      class="max-w-6xl px-4 mx-auto hidden md:grid gap-1 grid-cols-2 md:grid-cols-4 mt-8"
     >
       {
         features.map((feature) => (
@@ -135,11 +146,17 @@ const projects = [
   </section>
   <section>
     <div
-      class="max-w-6xl px-4 mx-auto grid md:hidden gap-1 grid-cols-2 md:grid-cols-4"
+      class="max-w-6xl px-4 mx-auto grid md:hidden gap-1 grid-cols-2 md:grid-cols-4 -mt-12"
     >
       {
-        features.map((feature) => (
-          <div class="flex flex-col rounded-xl gap-2 z-20 bg-primary/10 p-4">
+        features.map((feature, i) => (
+          <div
+            class={`flex flex-col gap-2 z-20 bg-primary/10 p-4
+              ${i === 0 && "rounded-tl-xl"}
+              ${i === 1 && "rounded-tr-xl"}
+              ${i === 2 && "rounded-bl-xl"}
+              ${i === 3 && "rounded-br-xl"}`}
+          >
             <div class="text-3xl md:text-6xl font-bold text-primary">
               {feature.count}+
             </div>
@@ -149,7 +166,6 @@ const projects = [
       }
     </div>
   </section>
-
   <section class="flex flex-col gap-8">
     <div class="mx-auto max-w-6xl space-y-4 px-4">
       <h2 class="text-center font-bold text-4xl text-primary">
@@ -183,12 +199,12 @@ const projects = [
                 {project.title}
               </h3>
               <div class="flex gap-1">
-                {project.services.map((service) => (
+                {project.products.map((product) => (
                   <Badge
                     className="text-lg font-bold bg-transparent border-tertiary text-tertiary"
-                    key={service}
+                    key={product}
                   >
-                    {service}
+                    {product}
                   </Badge>
                 ))}
               </div>
@@ -211,28 +227,30 @@ const projects = [
         repellat.
       </p>
     </div>
-    <div class="flex flex-wrap justify-evenly gap-4 max-w-6xl px-4 mx-auto">
-      <div class="flex items-center gap-4">
-        <Medal className="inline size-9 text-primary" />
-        <div class="inline">
-          <h3>Fully Certified</h3>
-          <p class="text-base text-muted-foreground">Fully Certified</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-4">
-        <Users className="inline size-9 text-primary" />
-        <div class="inline">
-          <h3>Expert Team</h3>
-          <p class="text-base text-muted-foreground">Skilled professionals</p>
-        </div>
-      </div>
-    </div>
     <div class="max-w-6xl xmd:px-4 mx-auto">
       <img
         src="https://fellow.app/wp-content/uploads/2022/11/Team-Member-Strengths2.jpg"
         class="aspect-[2/1] w-full object-cover xmd:rounded-xl"
         alt="basta"
       />
+    </div>
+    <div class="flex flex-wrap justify-evenly gap-4 max-w-6xl px-4 mx-auto">
+      <div>
+        <Medal className="inline size-6 text-primary" />
+        <h3 class="text-base text-muted-foreground inline">Certified</h3>
+      </div>
+      <div>
+        <Users className="inline size-6 text-primary" />
+        <h3 class="text-base text-muted-foreground inline">Expert Team</h3>
+      </div>
+      <div>
+        <CheckCircle className="inline size-6 text-primary" />
+        <h3 class="text-base text-muted-foreground inline">Proven</h3>
+      </div>
+      <div>
+        <BicepsFlexed className="inline size-6 text-primary" />
+        <h3 class="text-base text-muted-foreground inline">Reliable</h3>
+      </div>
     </div>
     <LinkButton href="/about-us" title="Read More About Us" />
   </section>
@@ -242,7 +260,8 @@ const projects = [
         What Our Clients Say
       </h2>
       <p class="text-muted-foreground text-center">
-        Hear from our satisfied customers
+        <span>Hear from our satisfied customers</span>
+        <Speech className="inline ml-2" />
       </p>
     </div>
     <InfiniteMovingCards
@@ -318,17 +337,13 @@ const projects = [
 
 <script>
   window.addEventListener("scroll", () => {
-    const heroHeight = 800;
-    if (window.scrollY > heroHeight * 0.1) {
+    const heroHeight =
+      (document.getElementById("main-hero")?.clientHeight as number) + 140;
+
+    if (window.scrollY > heroHeight * 0.75) {
       document
         .getElementById("landing-page-header")
         ?.classList.add("active-header");
-    } else {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.remove("active-header");
-    }
-    if (window.scrollY > heroHeight * 0.75) {
       document
         .getElementById("header-burger-icon")
         ?.classList.add("active-header-burger-icon");
@@ -338,6 +353,9 @@ const projects = [
         },
       );
     } else {
+      document
+        .getElementById("landing-page-header")
+        ?.classList.remove("active-header");
       document
         .getElementById("header-burger-icon")
         ?.classList.remove("active-header-burger-icon");

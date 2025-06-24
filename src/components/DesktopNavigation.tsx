@@ -12,7 +12,7 @@ export default function DesktopNavigation({
           <a href="/brochure">Brochure</a>
         </Button>
         <Button variant="link" className="header-links text-inherit">
-          <a href="/services">Services</a>
+          <a href="/products">Products</a>
         </Button>
         <Button variant="link" asChild className="header-links text-inherit">
           <a href="/about-us">About Us</a>

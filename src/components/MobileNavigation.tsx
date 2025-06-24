@@ -11,39 +11,39 @@ export default function MobileNavigation() {
       <SheetTrigger className="xmd:hidden">
         <Menu id="header-burger-icon" className="cursor-pointer" />
       </SheetTrigger>
-      <SheetContent className="gap-0 bg-background/25 backdrop-brightness-90 backdrop-blur-md border-0 w-2/3">
+      <SheetContent className="gap-0 border-0 w-2/3">
         <div className="flex flex-col gap-4 p-4 mt-12 text-lg">
-          <p className="text-background/50 text-sm">Navigation</p>
+          <p className="text-muted-foreground text-sm">Navigation</p>
           <Button
             asChild
             variant="link"
-            className="text-primary-foreground w-fit text-lg p-0"
+            className="text-foreground w-fit text-lg p-0"
           >
             <a href="/">Home</a>
           </Button>
           <Button
             asChild
             variant="link"
-            className="text-primary-foreground w-fit text-lg p-0"
+            className="text-foreground w-fit text-lg p-0"
           >
             <a href="/">Services</a>
           </Button>
           <Button
             asChild
             variant="link"
-            className="text-primary-foreground w-fit text-lg p-0"
+            className="text-foreground w-fit text-lg p-0"
           >
             <a href="/">About Us</a>
           </Button>
           <Button
             asChild
             variant="link"
-            className="text-primary-foreground w-fit text-lg p-0"
+            className="text-foreground w-fit text-lg p-0"
           >
             <a href="/">Careers</a>
           </Button>
         </div>
-        <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted-foreground border-t-1 p-4 text-background text-sm">
+        <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted border-t-1 p-4 text-sm text-muted-foreground">
           <CTAGetQuote />
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=santienz@gmail.com"

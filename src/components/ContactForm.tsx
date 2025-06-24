@@ -25,7 +25,10 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { toast } from "sonner";
-
+import {
+  GoogleReCaptcha,
+  GoogleReCaptchaProvider,
+} from "react-google-recaptcha-v3";
 export const formSchema = z.object({
   email: z.string().email().nonempty(),
   name: z.string().nonempty().max(100),
@@ -57,6 +60,9 @@ export default function ContactForm({ className }: { className?: string }) {
   }
   return (
     <Form {...form}>
+      <GoogleReCaptchaProvider reCaptchaKey="6LenpGsrAAAAADw_VMdYHxLLoktzgzIZFWVYJuBC">
+        <GoogleReCaptcha onVerify={(a) => console.log(a)} />
+      </GoogleReCaptchaProvider>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn("space-y-2", className)}
@@ -108,8 +114,8 @@ export default function ContactForm({ className }: { className?: string }) {
               </FormControl>
               <SelectContent>
                 <SelectItem value="Site Visit">Site Visit</SelectItem>
-                <SelectItem value="Request For Quotaion">
-                  Request For Quotaion
+                <SelectItem value="Request For Quotation">
+                  Request For Quotation
                 </SelectItem>
                 <SelectItem value="none">Other, please specify</SelectItem>
               </SelectContent>
@@ -128,7 +134,6 @@ export default function ContactForm({ className }: { className?: string }) {
             )}
           />
         </div>
-
         <FormField
           control={form.control}
           name="body"

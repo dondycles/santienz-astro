@@ -37,19 +37,19 @@ export const server = {
         src="https://santienz-astro.vercel.app/santienz.png"
         style="height: 32px;"
       />
-      <h1 style="color: white; margin-left:16px; ">
+      <h2 style="color: white; margin-left:16px; ">
         Santienz Philippines Inc.
-      </h1>
+      </h2>
     </div>
     <div style="padding: 0 16px;">
-      <h2 style="color:#182e85; font-size: 24px; margin: 24px 0;">
+      <h3 style="color:#182e85; font-size: 24px; margin: 24px 0;">
         Hi, there is a new inquiry from website.
-      </h2>
+      </h3>
       <div
         style="background-color: #182e8520; border-radius: 16px; padding: 16px;"
       >
-        <h3>From: ${input.name} ${input.email}</h3>
-        <h3>Subjext: ${input.subject}</h3>
+        <h4>From: ${input.name} ${input.email}</h4>
+        <h4>Subject: ${input.subject}</h4>
         <br />
         <p style="white-space: pre-wrap;">${input.body}</p>
       </div>

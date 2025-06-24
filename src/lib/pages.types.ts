@@ -5,6 +5,6 @@ export type Pages = {
   hideAboutUs?: boolean;
   hideCareers?: boolean;
   hideHome?: boolean;
-  hidePortfolio?: boolean;
+  hideProjects?: boolean;
   hideTestimonials?: boolean;
 };

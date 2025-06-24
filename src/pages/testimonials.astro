@@ -1,0 +1,159 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { EnhancedButton } from "@/components/EnhancedButton";
+import { Star, User2 } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import StarsRatingInput from "@/components/StarsRatingInput";
+---
+
+<MainLayout
+  title="Testimonials Satienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  desc="Hear from our satisfied clients about their experiences with Santienz Philippines Inc. and the quality of our polyurethane mortar flooring solutions."
+>
+  <Header className="text-primary backdrop-blur-lg">
+    <DesktopNavigation hideTestimonials client:load />
+    <MobileNavigation hideTestimonials client:load />
+  </Header>
+  <section
+    class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 gap-8"
+  >
+    <div
+      class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl px-4"
+    >
+      <h1
+        class="font-bold text-4xl sm:text-5xl md:text-6xl text-center text-primary leading-tight"
+      >
+        Testimonials
+      </h1>
+      <p class="text-muted-foreground text-center">
+        Hear from our satisfied clients about their experiences with Santienz
+        Philippines Inc. and the quality of our polyurethane mortar flooring
+        solutions.
+      </p>
+    </div>
+  </section>
+  <section>
+    <div class="mx-auto px-4 max-w-6xl space-y-1">
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <div class="text-primary flex gap-2 items-center">
+            <User2 className="size-6" />
+            <h2 class="font-semibold text-2xl">Client Name</h2>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            {new Date().toLocaleDateString()}
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {
+              Array.from({ length: 5 }).map((_, i) => (
+                <Star className="text-tertiary fill-tertiary/50" />
+              ))
+            }
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample review of the client. Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Deserunt asperiores eligendi quis assumenda quaerat
+          dolorem dignissimos voluptate, mollitia ea! Laboriosam a laudantium
+          minus veniam!
+        </p>
+      </div>
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <div class="text-primary flex gap-2 items-center">
+            <User2 className="size-6" />
+            <h2 class="font-semibold text-2xl">Client Name</h2>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            {new Date().toLocaleDateString()}
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {
+              Array.from({ length: 5 }).map((_, i) => (
+                <Star className="text-tertiary fill-tertiary/50" />
+              ))
+            }
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample review of the client. Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Deserunt asperiores eligendi quis assumenda quaerat
+          dolorem dignissimos voluptate, mollitia ea! Laboriosam a laudantium
+          minus veniam!
+        </p>
+      </div>
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <div class="text-primary flex gap-2 items-center">
+            <User2 className="size-6" />
+            <h2 class="font-semibold text-2xl">Client Name</h2>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            {new Date().toLocaleDateString()}
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {
+              Array.from({ length: 5 }).map((_, i) => (
+                <Star className="text-tertiary fill-tertiary/50" />
+              ))
+            }
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample review of the client. Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Deserunt asperiores eligendi quis assumenda quaerat
+          dolorem dignissimos voluptate, mollitia ea! Laboriosam a laudantium
+          minus veniam!
+        </p>
+      </div>
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <div class="text-primary flex gap-2 items-center">
+            <User2 className="size-6" />
+            <h2 class="font-semibold text-2xl">Client Name</h2>
+          </div>
+          <p class="text-muted-foreground text-sm">
+            {new Date().toLocaleDateString()}
+          </p>
+          <div class="flex flex-wrap gap-1">
+            {
+              Array.from({ length: 5 }).map((_, i) => (
+                <Star className="text-tertiary fill-tertiary/50" />
+              ))
+            }
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample review of the client. Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Deserunt asperiores eligendi quis assumenda quaerat
+          dolorem dignissimos voluptate, mollitia ea! Laboriosam a laudantium
+          minus veniam!
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="space-y-8">
+    <div class="max-w-6xl px-4 py-16 space-y-4 mx-auto text-center">
+      <h2 class="font-bold text-4xl text-primary">
+        Are You A Satisfied Client?
+      </h2>
+      <p class="text-muted-foreground">
+        Share your experience with us! If you have completed a project with
+        Santienz Philippines Inc., you may submit your testimonial for possible
+        inclusion on this page (subject to approval).
+      </p>
+      <div class="flex flex-col gap-4">
+        <StarsRatingInput client:load />
+        <Input placeholder="Company/Client Name" />
+        <Textarea placeholder="Message" />
+        <EnhancedButton effect="shineHover" className="mx-auto">
+          Submit Review
+        </EnhancedButton>
+      </div>
+    </div>
+  </section>
+</MainLayout>

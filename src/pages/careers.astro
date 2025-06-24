@@ -1,0 +1,135 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import grid3dBackground from "@/images/grid_3d.png";
+import { EnhancedButton } from "@/components/EnhancedButton";
+import { Badge } from "@/components/ui/badge";
+---
+
+<MainLayout
+  title="Careers from Satienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  desc="Join our team at Santienz Philippines Inc. and help us deliver top-quality polyurethane mortar flooring solutions. Explore exciting career opportunities and grow with the No.1 provider in the Philippines since 1998."
+>
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideCareers client:load />
+    <MobileNavigation hideCareers client:load />
+  </Header>
+  <section
+    id="main-hero"
+    class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 space-y-8 relative pb-16"
+  >
+    <div
+      class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
+    >
+    </div>
+    <Image
+      src={grid3dBackground}
+      alt="Grid 3D Background"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+
+    <div
+      class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl px-4 z-20"
+    >
+      <h1
+        class="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-tertiary drop-shadow-lg leading-tight"
+      >
+        Careers
+      </h1>
+      <p class="text-primary-foreground text-center drop-shadow-lg">
+        Join our team at Santienz Philippines Inc. and help us deliver
+        top-quality polyurethane mortar flooring solutions. Explore exciting
+        career opportunities and grow with the No.1 provider in the Philippines
+        since 1998.
+      </p>
+    </div>
+  </section>
+  <section>
+    <div class="mx-auto px-4 max-w-6xl space-y-1">
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <h2 class="font-bold text-4xl text-primary">Job Name</h2>
+          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
+          <div class="flex flex-wrap gap-1">
+            <Badge>Remote</Badge>
+            <Badge>Technical Department</Badge>
+            <Badge>Head Office</Badge>
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Facilis necessitatibus animi architecto.
+        </p>
+        <EnhancedButton
+          className="ml-auto mr-0"
+          effect="shineHover"
+          variant="tertiary">Apply Now</EnhancedButton
+        >
+      </div>
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <h2 class="font-bold text-4xl text-primary">Another Job Name</h2>
+          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
+          <div class="flex flex-wrap gap-1">
+            <Badge>On-Site</Badge>
+            <Badge>Sales Department</Badge>
+            <Badge>Davao Office</Badge>
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Facilis necessitatibus animi architecto.
+        </p>
+        <EnhancedButton
+          className="ml-auto mr-0"
+          effect="shineHover"
+          variant="tertiary">Apply Now</EnhancedButton
+        >
+      </div>
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <h2 class="font-bold text-4xl text-primary">Third Job Name</h2>
+          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
+          <div class="flex flex-wrap gap-1">
+            <Badge>On-Site</Badge>
+            <Badge>IT Department</Badge>
+            <Badge>Head Office</Badge>
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Facilis necessitatibus animi architecto.
+        </p>
+        <EnhancedButton
+          className="ml-auto mr-0"
+          effect="shineHover"
+          variant="tertiary">Apply Now</EnhancedButton
+        >
+      </div>
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+        <div class="space-y-2">
+          <h2 class="font-bold text-4xl text-primary">Last Job Name</h2>
+          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
+          <div class="flex flex-wrap gap-1">
+            <Badge>Remote</Badge>
+            <Badge>Marketing Department</Badge>
+            <Badge>Cebu Office</Badge>
+          </div>
+        </div>
+        <p class="text-muted-foreground">
+          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Facilis necessitatibus animi architecto.
+        </p>
+        <EnhancedButton
+          className="ml-auto mr-0"
+          effect="shineHover"
+          variant="tertiary">Apply Now</EnhancedButton
+        >
+      </div>
+    </div>
+  </section>
+</MainLayout>
+<script is:inline src="/src/scripts/header-color-adjuster.ts"></script>

@@ -7,44 +7,62 @@ export default function DesktopNavigation({
   hideAboutUs = false,
   hideCareers = false,
   hideProducts = false,
+  hideProjects = false,
+  hideTestimonials = false,
 }: Pages) {
   return (
     <div className="xmd:flex hidden flex-1 items-center justify-end gap-4">
-      <nav className="flex flex-row">
+      <nav className="flex flex-row gap-6">
         <Button
-          hidden={hideBrochure}
-          asChild
+          hidden={hideAboutUs}
           variant="link"
-          className="header-links text-inherit"
+          asChild
+          className="header-links text-inherit p-0"
         >
-          <a href="/brochure">Brochure</a>
+          <a href="/about-us">About Us</a>
+        </Button>
+        <Button
+          hidden={hideProjects}
+          variant="link"
+          asChild
+          className="header-links text-inherit p-0"
+        >
+          <a href="/projects">Projects</a>
         </Button>
         <Button
           hidden={hideProducts}
           asChild
           variant="link"
-          className="header-links text-inherit"
+          className="header-links text-inherit p-0"
         >
           <a href="/products">Products</a>
         </Button>
         <Button
-          hidden={hideAboutUs}
-          variant="link"
+          hidden={hideBrochure}
           asChild
-          className="header-links text-inherit"
+          variant="link"
+          className="header-links text-inherit p-0"
         >
-          <a href="/about-us">About Us</a>
+          <a href="/brochure">Brochure</a>
+        </Button>
+        <Button
+          hidden={hideTestimonials}
+          asChild
+          variant="link"
+          className="header-links text-inherit p-0"
+        >
+          <a href="/testimonials">Testimonials</a>
         </Button>
         <Button
           hidden={hideCareers}
           variant="link"
           asChild
-          className="header-links  text-inherit"
+          className="header-links  text-inherit p-0"
         >
           <a href="/careers">Careers</a>
         </Button>
       </nav>
-      <CTAGetQuote style={`${hideCTA && "hidden"}`} />
+      <CTAGetQuote text="Contact Us" style={`${hideCTA && "hidden"}`} />
     </div>
   );
 }

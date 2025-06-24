@@ -1,7 +1,13 @@
 import { cn } from "@/lib/utils";
 import { EnhancedButton } from "./EnhancedButton";
 
-export default function CTAGetQuote({ style }: { style?: string }) {
+export default function CTAGetQuote({
+  style,
+  text,
+}: {
+  style?: string;
+  text: string;
+}) {
   return (
     <EnhancedButton
       variant="tertiary"
@@ -9,7 +15,7 @@ export default function CTAGetQuote({ style }: { style?: string }) {
       className={cn("relative z-20 ", style)}
       asChild
     >
-      <a href="contact-us">Get Quote</a>
+      <a href="contact-us">{text}</a>
     </EnhancedButton>
   );
 }

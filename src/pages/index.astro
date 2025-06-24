@@ -109,6 +109,7 @@ const projects = [
           >
         </a>
         <CTAGetQuote
+          text="Request Quote"
           style="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex xmd:hidden"
         />
         <a
@@ -176,7 +177,8 @@ const projects = [
     >
       {
         projects.map((project, i) => (
-          <div
+          <a
+            href={`/projects/#${project.title}`}
             class={`overflow-hidden w-full relative
                 ${(i === 1 || i === 2) && "row-span-2"}
                 ${i === 0 && "xmd:rounded-tl-xl"}
@@ -205,11 +207,11 @@ const projects = [
                 ))}
               </div>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>
-    <LinkButton href="/portfolio" title="View Portfolio" />
+    <LinkButton href="/projects" title="View Projects" />
   </section>
   <section class="flex flex-col gap-8">
     <div class="space-y-4 max-w-6xl px-4 mx-auto">

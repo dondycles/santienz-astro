@@ -11,7 +11,7 @@ export default function MobileNavigation({
   hideCareers = false,
   hideProducts = false,
   hideHome = false,
-  hidePortfolio = false,
+  hideProjects = false,
   hideTestimonials = false,
 }: Pages) {
   return (
@@ -47,12 +47,12 @@ export default function MobileNavigation({
             <a href="/products">Products</a>
           </Button>
           <Button
-            hidden={hidePortfolio}
+            hidden={hideProjects}
             asChild
             variant="link"
             className="text-muted-foreground w-fit text-lg p-0"
           >
-            <a href="/portfolio">Portfolio</a>
+            <a href="/projects">Projects</a>
           </Button>
           <Button
             hidden={hideAboutUs}
@@ -80,7 +80,7 @@ export default function MobileNavigation({
           </Button>
         </div>
         <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted border-t-1 p-4 text-sm text-muted-foreground">
-          <CTAGetQuote style={`${hideCTA && "hidden"}`} />
+          <CTAGetQuote text="Contact Us" style={`${hideCTA && "hidden"}`} />
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=santienz@gmail.com"
             target="_blank"

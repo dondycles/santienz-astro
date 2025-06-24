@@ -47,9 +47,11 @@ export default function ContactForm({ className }: { className?: string }) {
       subject: "",
     },
   });
+  const [token, setToken] = useState("");
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const res = await actions.submitEmail(values);
+    if (!token) return toast.error("Fill Recaptcha");
     if (!res.error) {
       form.reset();
       setHideSubjectInput(true);
@@ -59,107 +61,107 @@ export default function ContactForm({ className }: { className?: string }) {
     toast.error(res.error.message);
   }
   return (
-    <Form {...form}>
-      <GoogleReCaptchaProvider reCaptchaKey="6LenpGsrAAAAADw_VMdYHxLLoktzgzIZFWVYJuBC">
-        <GoogleReCaptcha onVerify={(a) => console.log(a)} />
-      </GoogleReCaptchaProvider>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("space-y-2", className)}
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-primary">Name</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="Input your name" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-primary">Email</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="Input your valid email" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div>
-          <div className="space-y-2">
-            <FormLabel className="text-primary">Subject</FormLabel>
-            <Select
-              onValueChange={(value) => {
-                if (value === "none") {
-                  form.setValue("subject", "");
-                  setHideSubjectInput(false);
-                  return;
-                }
-                form.setValue("subject", value);
-                setHideSubjectInput(true);
-              }}
-            >
-              <FormControl>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select subject" />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                <SelectItem value="Site Visit">Site Visit</SelectItem>
-                <SelectItem value="Request For Quotation">
-                  Request For Quotation
-                </SelectItem>
-                <SelectItem value="none">Other, please specify</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+    <GoogleReCaptchaProvider reCaptchaKey="6LenpGsrAAAAADw_VMdYHxLLoktzgzIZFWVYJuBC">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className={cn("space-y-2", className)}
+        >
           <FormField
             control={form.control}
-            name="subject"
+            name="name"
             render={({ field }) => (
-              <FormItem hidden={hideSubjectInput}>
+              <FormItem>
+                <FormLabel className="text-primary">Name</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="Please specify" />
+                  <Input {...field} placeholder="Input your name" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-        </div>
-        <FormField
-          control={form.control}
-          name="body"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel className="text-primary">Message</FormLabel>
-              <FormControl>
-                <Textarea
-                  className="min-h-32"
-                  {...field}
-                  placeholder="Requests/concerns"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button disabled={form.formState.isSubmitting} type="submit">
-          Submit{" "}
-          {form.formState.isSubmitting ? (
-            <Loader2 className="animate-spin" />
-          ) : (
-            <Send />
-          )}
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-primary">Email</FormLabel>
+                <FormControl>
+                  <Input {...field} placeholder="Input your valid email" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div>
+            <div className="space-y-2">
+              <FormLabel className="text-primary">Subject</FormLabel>
+              <Select
+                onValueChange={(value) => {
+                  if (value === "none") {
+                    form.setValue("subject", "");
+                    setHideSubjectInput(false);
+                    return;
+                  }
+                  form.setValue("subject", value);
+                  setHideSubjectInput(true);
+                }}
+              >
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select subject" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Site Visit">Site Visit</SelectItem>
+                  <SelectItem value="Request For Quotation">
+                    Request For Quotation
+                  </SelectItem>
+                  <SelectItem value="none">Other, please specify</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <FormField
+              control={form.control}
+              name="subject"
+              render={({ field }) => (
+                <FormItem hidden={hideSubjectInput}>
+                  <FormControl>
+                    <Input {...field} placeholder="Please specify" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <FormField
+            control={form.control}
+            name="body"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-primary">Message</FormLabel>
+                <FormControl>
+                  <Textarea
+                    className="min-h-32"
+                    {...field}
+                    placeholder="Requests/concerns"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button disabled={form.formState.isSubmitting} type="submit">
+            Submit{" "}
+            {form.formState.isSubmitting ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              <Send />
+            )}
+          </Button>
+          <GoogleReCaptcha onVerify={setToken} />
+        </form>
+      </Form>
+    </GoogleReCaptchaProvider>
   );
 }

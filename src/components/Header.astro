@@ -2,50 +2,28 @@
 import Logo from "./Logo.astro";
 import DesktopNavigation from "./DesktopNavigation";
 import MobileNavigation from "./MobileNavigation";
+import { cn } from "@/lib/utils";
+interface Props {
+  showCTA: boolean;
+  className?: string;
+}
+const { showCTA, className } = Astro.props;
 ---
 
-<header id="header" class="fixed top-0 z-50 w-full bg-transparent duration-300">
+<header
+  id="landing-page-header"
+  class={cn("fixed top-0 z-50 w-full bg-transparent duration-300", className)}
+>
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 p-4">
     <a href="/">
       <div class="flex items-center space-x-2">
         <Logo style="w-14" />
-        <span
-          class="header-links font-semibold text-base text-primary-foreground"
+        <span class="header-links font-semibold text-base"
           >Santienz Philippines Inc.
         </span>
       </div>
     </a>
-    <DesktopNavigation client:load />
+    <DesktopNavigation showCTA={showCTA} client:load />
     <MobileNavigation client:load />
   </div>
 </header>
-
-<script>
-  window.addEventListener("scroll", () => {
-    const heroHeight = 800;
-    if (window.scrollY > heroHeight * 0.1) {
-      document.getElementById("header")?.classList.add("active-header");
-    } else {
-      document.getElementById("header")?.classList.remove("active-header");
-    }
-    if (window.scrollY > heroHeight * 0.75) {
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.add("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.add("active-header-links");
-        },
-      );
-    } else {
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.remove("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.remove("active-header-links");
-        },
-      );
-    }
-  });
-</script>

@@ -8,6 +8,7 @@ import Header from "@/components/Header.astro";
 import "../styles/global.css";
 import Footer from "@/components/Footer.astro";
 import Main from "@/components/Main.astro";
+import { Toaster } from "@/components/ui/sonner";
 
 const { desc, title } = Astro.props;
 ---
@@ -39,10 +40,10 @@ const { desc, title } = Astro.props;
   <body
     class="poppins text-lg min-h-dvh flex flex-col w-full antialiased text-foreground bg-background"
   >
-    <Header />
     <Main>
       <slot />
     </Main>
     <Footer />
+    <Toaster client:load richColors={true} />
   </body>
 </html>

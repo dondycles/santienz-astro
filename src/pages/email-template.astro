@@ -1,26 +1,13 @@
-import { ActionError, defineAction } from "astro:actions";
-import { Resend } from "resend";
-import { z } from "astro:schema";
+---
+const input = {
+  name: "Name",
+  email: "Sample@gmail.com",
+  body: "Sample Body",
+  subject: "Sample Subject",
+};
+---
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-export const formSchema = z.object({
-  email: z.string().email().nonempty(),
-  name: z.string().nonempty().max(100),
-  subject: z.string().nonempty().max(100),
-  body: z.string().nonempty(),
-});
-export const server = {
-  submitEmail: defineAction({
-    accept: "json",
-    input: formSchema,
-    handler: async (input) => {
-      return await resend.emails.send({
-        from: "website-inquiry@johnroddondoyano.com",
-        to: "dondycles@gmail.com",
-        subject: input.subject,
-        replyTo: input.email,
-        text: input.body,
-        html: `<html>
+<html>
   <head>
     <style>
       * {
@@ -59,8 +46,4 @@ export const server = {
       <p>Reply to: ${input.email}</p>
     </div>
   </body>
-</html>`,
-      });
-    },
-  }),
-};
+</html>

@@ -1,56 +1,60 @@
 ---
+import { EnhancedButton } from "@/components/EnhancedButton";
+import Header from "@/components/Header.astro";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MainLayout from "@/layouts/MainLayout.astro";
+import { BiLogoGmail } from "react-icons/bi";
+import { FaFacebook, FaFacebookF, FaViber } from "react-icons/fa";
+import { actions } from "astro:actions";
+import ContactForm from "@/components/ContactForm";
 ---
 
 <MainLayout
   title="Contact Us | Santienz Philippines Inc."
   desc="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
 >
-  <section class="space-y-4 text-center px-4">
-    <h1 class="font-bold text-4xl sm:text-6xl text-primary text-center">
-      Get In Touch With Us
-    </h1>
-    <p class="text-muted-foreground">
-      Ask for a sample quotation, site visit, and more.
-    </p>
-    <form method="post" id="form" class="space-y-4 max-w-6xl mx-auto">
-      <input
-        type="hidden"
-        name="access_key"
-        value="2a0f720e-40d0-4d83-9cb3-3310db368d3d"
-      />
-      <input
-        type="checkbox"
-        name="botcheck"
-        class="hidden"
-        style="display: none;"
-      />
-      <input type="hidden" name="from_name" value="Inquiry" />
-      <Input type="text" name="name" placeholder="Name" required />
-      <Input type="email" name="email" placeholder="Email" />
-      <Input type="text" name="subject" placeholder="Subject" required />
-      <Textarea
-        name="message"
-        placeholder="Message"
-        required
-        className="min-h-32"
-      />
-      <Button type="submit" className="float-end">Submit Form</Button>
-      <div id="result"></div>
-      <div class="h-captcha" data-captcha="true"></div>
-    </form>
+  <Header showCTA={false} className="text-primary" />
+  <section
+    class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 px-4 mt-32 max-w-6xl mx-auto gap-y-4 gap-x-32"
+  >
+    <div
+      class="flex flex-col items-center lg:items-start gap-4 flex-1 col-start-1"
+    >
+      <h1 class="font-bold text-4xl md:text-6xl lg:text-4xl text-primary">
+        Let’s Work Together
+      </h1>
+      <p class="text-muted-foreground text-center lg:text-left">
+        Need a quote, site assessment, or more details? We’re here to help.
+      </p>
+    </div>
+    <div
+      class="text-primary flex justify-center lg:justify-start gap-4 text-2xl col-start-1 mb-0 mt-auto border-t pt-4"
+    >
+      <a href="https://facebook.com/@santienz.hr" target="_blank">
+        <FaFacebookF />
+      </a>
+      <FaViber />
+      <a
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=santienz@gmail.com"
+        target="_blank"
+      >
+        <BiLogoGmail />
+      </a>
+    </div>
+    <ContactForm
+      client:load
+      className="flex flex-col gap-2 flex-1 mt-4 lg:mt-0 row-start-2 lg:row-start-1 col-start-1 lg:col-start-2 row-span-2"
+    />
   </section>
 </MainLayout>
 
-<script is:inline src="https://web3forms.com/client/script.js" async defer
+<!-- <script is:inline src="https://web3forms.com/client/script.js" async defer
 ></script>
 <script is:inline>
   const form = document.getElementById("form");
   const result = document.getElementById("result");
-
   form.addEventListener("submit", function (e) {
     const formData = new FormData(form);
     e.preventDefault();
@@ -97,4 +101,4 @@ import MainLayout from "@/layouts/MainLayout.astro";
         }, 3000);
       });
   });
-</script>
+</script> -->

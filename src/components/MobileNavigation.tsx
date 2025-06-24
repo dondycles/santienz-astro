@@ -1,8 +1,13 @@
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { BiLogoFacebook, BiLogoGmail } from "react-icons/bi";
+import {
+  BiLogoFacebook,
+  BiLogoGmail,
+  BiMobile,
+  BiPhoneCall,
+} from "react-icons/bi";
 import { FaViber } from "react-icons/fa";
-import { Menu } from "lucide-react";
+import { Menu, PhoneCall } from "lucide-react";
 import CTAGetQuote from "./CTAGetQuote";
 import { cn } from "@/lib/utils";
 export default function MobileNavigation() {
@@ -20,6 +25,13 @@ export default function MobileNavigation() {
             className="text-foreground w-fit text-lg p-0"
           >
             <a href="/">Home</a>
+          </Button>
+          <Button
+            asChild
+            variant="link"
+            className="text-foreground w-fit text-lg p-0"
+          >
+            <a href="/brochure">Brochure</a>
           </Button>
           <Button
             asChild
@@ -51,12 +63,16 @@ export default function MobileNavigation() {
           >
             <div className="space-x-2">
               <BiLogoGmail className="inline size-8 text-tertiary" />
-              <span className="inline">santienz@gmail.com</span>
+              <span className="inline">santienzreceivables@gmail.com</span>
             </div>
           </a>
           <div className="space-x-2">
-            <FaViber className="inline size-8  text-tertiary" />
-            <span className="inline">+63 928 123 4567</span>
+            <BiMobile className="inline size-8  text-tertiary" />
+            <span className="inline">(0925) 778-5474</span>
+          </div>
+          <div className="space-x-2">
+            <BiPhoneCall className="inline size-8  text-tertiary" />
+            <span className="inline">+63 (2) 7728-3381</span>
           </div>
           <a href="https://facebook.com/@santienz.hr" target="_blank">
             <div className="space-x-2">

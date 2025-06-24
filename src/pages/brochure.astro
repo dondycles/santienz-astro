@@ -1,0 +1,47 @@
+---
+import Header from "@/components/Header.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import brochurePage1 from "@/images/brochure/1.jpg";
+import brochurePage2 from "@/images/brochure/2.jpg";
+import { EnhancedButton } from "@/components/EnhancedButton";
+---
+
+<MainLayout
+  title="Brochure | Santienz Philippines Inc."
+  desc="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+>
+  <Header showCTA className="text-primary backdrop-blur-lg" />
+  <section
+    class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 space-y-8"
+  >
+    <div class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl">
+      <h1
+        class="font-bold text-4xl text-center md:text-4xl lg:text-6xl text-primary"
+      >
+        Brochure
+      </h1>
+      <p class="text-muted-foreground text-center">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia
+        delectus deserunt doloremque.
+      </p>
+    </div>
+    <div class="max-w-6xl grid sm:grid-cols-2 gap-1 px-4">
+      <Image
+        src={brochurePage1}
+        alt="Santienz Brochure Page 1"
+        class="rounded-l-xl"
+      />
+      <Image
+        src={brochurePage2}
+        alt="Santienz Brochure Page 2"
+        class="rounded-r-xl"
+      />
+    </div>
+    <a href="santienz-brochure.pdf" target="_blank">
+      <EnhancedButton effect="shineHover" variant="tertiary"
+        >Download</EnhancedButton
+      >
+    </a>
+  </section>
+</MainLayout>

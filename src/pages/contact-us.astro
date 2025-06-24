@@ -4,13 +4,18 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaFacebookF, FaViber } from "react-icons/fa";
 import ContactForm from "@/components/ContactForm";
+import DesktopNavigation from "@/components/DesktopNavigation";
+import MobileNavigation from "@/components/MobileNavigation";
 ---
 
 <MainLayout
   title="Contact Santienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
   desc="Contact Santienz Philippines Inc. for expert polyurethane mortar flooring solutions and a free quote. "
 >
-  <Header showCTA={false} className="text-primary backdrop-blur-lg" />
+  <Header className="text-primary backdrop-blur-lg">
+    <DesktopNavigation hideCTA client:load />
+    <MobileNavigation hideCTA client:load />
+  </Header>
   <section
     class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 px-4 pt-24 sm:pt-32 max-w-6xl mx-auto gap-y-4 gap-x-32"
   >

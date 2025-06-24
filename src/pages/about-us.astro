@@ -1,0 +1,373 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import aboutUsBg from "@/images/about-us-bg.jpg";
+import { Image } from "astro:assets";
+import { EnhancedButton } from "@/components/EnhancedButton";
+import { Hammer, Heart, Medal, ShieldCheck, User } from "lucide-react";
+import History from "@/components/History";
+import CTACard from "@/components/CTACard.astro";
+import { Badge } from "@/components/ui/badge";
+---
+
+<MainLayout
+  title="About Santienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  desc="Learn more about Santienz Philippines Inc., the leading provider of durable polyurethane mortar flooring solutions in the Philippines since 1998. Discover our history, mission, and commitment to quality."
+>
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideAboutUs client:load />
+    <MobileNavigation hideAboutUs client:load />
+  </Header>
+  <section
+    id="main-hero"
+    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 pb-16"
+  >
+    <div
+      class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
+    >
+    </div>
+    <Image
+      src={aboutUsBg}
+      alt="About Us Background"
+      class="absolute inset-0 w-full h-full object-cover blur-xs"
+    />
+    <div class="max-w-6xl px-4 flex flex-col gap-4">
+      <h1
+        class="font-bold text-4xl sm:text-5xl md:text-6xl text-tertiary relative z-20 leading-tight drop-shadow-lg text-center"
+      >
+        About Us
+      </h1>
+      <p
+        class="text-primary-foreground relative z-20 drop-shadow-lg text-center leading-tight"
+      >
+        Learn more about Santienz Philippines Inc., the leading provider of
+        durable polyurethane mortar flooring solutions in the Philippines since
+        1998. Discover our history, mission, and commitment to quality.
+      </p>
+      <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-4">
+        <a href="/portfolio" class="flex-1 xmd:block hidden">
+          <EnhancedButton
+            client:load
+            className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full"
+            effect="shineHover"
+            variant="tertiary">See Our Portfolio</EnhancedButton
+          >
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="space-y-8">
+    <div class="mx-auto max-w-6xl space-y-4 px-4">
+      <h2 class="text-center font-bold text-4xl text-primary">History</h2>
+      <p class="text-center text-muted-foreground">
+        Santienz Philippines Inc. was established in 1998 with the goal of
+        providing high-quality polyurethane mortar flooring solutions to the
+        Philippine market. Over the years, we have grown from a small team of
+        dedicated professionals into the country's leading provider of durable,
+        hygienic, and reliable flooring systems for industrial and commercial
+        applications. Our commitment to innovation, customer satisfaction, and
+        uncompromising quality has enabled us to build long-lasting
+        relationships with clients across various industries, setting the
+        standard for excellence in flooring solutions.
+      </p>
+    </div>
+    <div class="mx-auto max-w-6xl w-fit px-4">
+      <History client:load />
+    </div>
+  </section>
+  <section class="space-y-8">
+    <div class="mx-auto max-w-6xl space-y-4 px-4">
+      <h2 class="text-center font-bold text-4xl text-primary">
+        Our Purpose & Direction
+      </h2>
+      <p class="text-center text-muted-foreground">
+        Guided by our mission and vision, we strive to create lasting value for
+        our clients and communities.
+      </p>
+    </div>
+    <div class="flex flex-col xmd:flex-row gap-1 max-w-6xl mx-auto px-4">
+      <div class="bg-primary/10 rounded-xl px-8 py-6 space-y-4 flex-1">
+        <h3 class="text-xl font-semibold text-primary">Mission</h3>
+        <p class="text-muted-foreground">
+          To deliver exceptional construction services that transform
+          communities and exceed client expectations. We are committed to
+          building sustainable, innovative structures while maintaining the
+          highest standards of safety, quality, and environmental
+          responsibility.
+        </p>
+      </div>
+      <div class="bg-primary/10 rounded-xl px-8 py-6 space-y-4 flex-1">
+        <h3 class="text-xl font-semibold text-primary">Vision</h3>
+        <p class="text-muted-foreground">
+          To be the leading construction company recognized for innovation,
+          sustainability, and excellence. We envision a future where our
+          projects contribute to smarter, more resilient cities and inspire the
+          next generation of builders and architects.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="space-y-8">
+    <div class="mx-auto max-w-6xl space-y-4 px-4">
+      <h2 class="text-center font-bold text-4xl text-primary">
+        Our Core Values
+      </h2>
+      <p class="text-center text-muted-foreground">
+        These fundamental principles guide every decision we make and every
+        project we undertake.
+      </p>
+    </div>
+    <div
+      class="grid grid-cols-1 xmd:grid-cols-2 flex-row gap-1 max-w-6xl mx-auto px-4"
+    >
+      <div
+        class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4"
+      >
+        <div class="bg-primary rounded-full p-4">
+          <ShieldCheck className="text-primary-foreground size-12 " />
+        </div>
+
+        <h3 class="text-xl font-semibold text-primary text-center">
+          Safety First
+        </h3>
+        <p class="text-muted-foreground">
+          Every team member returns home safely every day. We maintain
+          zero-compromise safety standards across all projects.
+        </p>
+      </div>
+      <div
+        class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4"
+      >
+        <div class="bg-primary rounded-full p-4">
+          <Medal className="text-primary-foreground size-12 " />
+        </div>
+        <h3 class="text-xl font-semibold text-primary text-center">
+          Excellence
+        </h3>
+        <p class="text-muted-foreground">
+          We pursue perfection in every detail, delivering superior
+          craftsmanship that exceeds industry standards.
+        </p>
+      </div>
+      <div
+        class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4"
+      >
+        <div class="bg-primary rounded-full p-4">
+          <Heart className="text-primary-foreground size-12 " />
+        </div>
+        <h3 class="text-xl font-semibold text-primary text-center">
+          Integrity
+        </h3>
+        <p class="text-muted-foreground">
+          Honest communication, transparent processes, and ethical business
+          practices form the foundation of our relationships.
+        </p>
+      </div>
+      <div
+        class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4"
+      >
+        <div class="bg-primary rounded-full p-4">
+          <Hammer className="text-primary-foreground size-12 " />
+        </div>
+        <h3 class="text-xl font-semibold text-primary text-center">
+          Innovation
+        </h3>
+        <p class="text-muted-foreground">
+          We embrace new technologies and methods to build smarter, more
+          sustainable structures for the future.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="space-y-8">
+    <div class="mx-auto max-w-6xl space-y-4 px-4">
+      <h2 class="text-center font-bold text-4xl text-primary">Meet The Team</h2>
+      <p class="text-center text-muted-foreground">
+        Our experienced leadership team brings together decades of construction
+        expertise, innovative thinking, and unwavering commitment to excellence.
+      </p>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 space-y-4">
+      <h3 class="text-primary font-semibold text-xl text-center">Directors</h3>
+      <div
+        class="grid grid-cols-2 xmd:grid-cols-3 not-xmd:grid-rows-2 gap-1 h-fit"
+      >
+        <div
+          class="flex flex-wrap gap-1 not-xmd:col-span-2 shrink not-xmd:row-span-2"
+        >
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">CEO</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1 shrink not-sm:col-span-2">
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">CEO</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1 shrink not-sm:col-span-2">
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">CEO</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 space-y-4">
+      <h3 class="text-primary font-semibold text-xl text-center">
+        Department Heads
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 h-fit">
+        <div class="flex flex-wrap gap-1 shrink">
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">IT</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1 shrink">
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">Sales</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1 shrink">
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">Marketing</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1 shrink">
+          <div
+            class="bg-primary/10 rounded-xl px-8 py-6 flex flex-col items-center gap-4 xmd:aspect-square"
+          >
+            <div class="bg-primary rounded-full p-4">
+              <User className="text-primary-foreground size-24 " />
+            </div>
+            <div class="text-center space-y-2">
+              <p class="text-xl font-semibold text-primary text-center">
+                Sample Name
+              </p>
+              <p class="rounded-full font-semibold text-tertiary">Hardware</p>
+            </div>
+            <p class="text-muted-foreground text-center">
+              With over 25 years of industry experience, our CEO leads Santienz
+              Philippines Inc. with a passion for innovation and a commitment to
+              delivering the highest quality flooring solutions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 space-y-4">
+      <h3 class="text-primary font-semibold text-xl text-center">
+        Our Team by the Numbers
+      </h3>
+      <div class="grid gap-1 grid-cols-2 md:grid-cols-4">
+        <div class="flex flex-col gap-2 z-20 bg-primary/10 p-4 rounded-xl">
+          <div class="text-3xl md:text-6xl font-bold text-primary">50+</div>
+          <div class="text-muted-foreground">Staffs</div>
+        </div>
+        <div class="flex flex-col gap-2 z-20 bg-primary/10 p-4 rounded-xl">
+          <div class="text-3xl md:text-6xl font-bold text-primary">20+</div>
+          <div class="text-muted-foreground">Years of Experience</div>
+        </div>
+        <div class="flex flex-col gap-2 z-20 bg-primary/10 p-4 rounded-xl">
+          <div class="text-3xl md:text-6xl font-bold text-primary">100+</div>
+          <div class="text-muted-foreground">Projects Completed</div>
+        </div>
+        <div class="flex flex-col gap-2 z-20 bg-primary/10 p-4 rounded-xl">
+          <div class="text-3xl md:text-6xl font-bold text-primary">60+</div>
+          <div class="text-muted-foreground">Statisfied Clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="/src/scripts/header-color-adjuster.ts"></script>
+</MainLayout>

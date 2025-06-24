@@ -1,17 +1,22 @@
 ---
-import Grid3DImage from "@/components/Grid3DImage.astro";
+import DesktopNavigation from "@/components/DesktopNavigation";
 import Header from "@/components/Header.astro";
 import LinkButton from "@/components/LinkButton";
-import { Button } from "@/components/ui/button";
+import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Check, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+import grid3dBackground from "@/images/grid_3d.png";
+import { Image } from "astro:assets";
 ---
 
 <MainLayout
   title="Products offered by Santienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
   desc="Discover our range of high-quality industrial flooring and waterproofing solutions designed for durability and performance."
 >
-  <Header showCTA className="text-primary-foreground" />
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideProducts client:load />
+    <MobileNavigation hideProducts client:load />
+  </Header>
   <section
     id="main-hero"
     class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 space-y-8 relative pb-16"
@@ -20,7 +25,12 @@ import { Check, CheckCircle } from "lucide-react";
       class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
     >
     </div>
-    <Grid3DImage />
+    <Image
+      src={grid3dBackground}
+      alt="Grid 3D Background"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+
     <div
       class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl px-4 z-20"
     >
@@ -171,36 +181,5 @@ import { Check, CheckCircle } from "lucide-react";
       />
     </div>
   </section>
-  <script>
-    window.addEventListener("scroll", () => {
-      const heroHeight =
-        (document.getElementById("main-hero")?.clientHeight as number) + 100;
-
-      if (window.scrollY > heroHeight * 0.75) {
-        document
-          .getElementById("landing-page-header")
-          ?.classList.add("active-header");
-        document
-          .getElementById("header-burger-icon")
-          ?.classList.add("active-header-burger-icon");
-        Array.from(document.getElementsByClassName("header-links")).forEach(
-          (el) => {
-            el.classList.add("active-header-links");
-          },
-        );
-      } else {
-        document
-          .getElementById("landing-page-header")
-          ?.classList.remove("active-header");
-        document
-          .getElementById("header-burger-icon")
-          ?.classList.remove("active-header-burger-icon");
-        Array.from(document.getElementsByClassName("header-links")).forEach(
-          (el) => {
-            el.classList.remove("active-header-links");
-          },
-        );
-      }
-    });
-  </script>
 </MainLayout>
+<script is:inline src="/src/scripts/header-color-adjuster.ts"></script>

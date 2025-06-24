@@ -3,6 +3,7 @@ interface Props {
   desc: string;
   title: string;
 }
+import CTACard from "@/components/CTACard.astro";
 import "../styles/global.css";
 import Footer from "@/components/Footer.astro";
 import Main from "@/components/Main.astro";
@@ -35,12 +36,12 @@ const { desc, title } = Astro.props;
     <meta property="og:description" content={desc} />
     <meta property="og:url" content="https://www.santienz-astro.vercel.app" />
   </head>
-
   <body
     class="poppins text-base min-h-dvh flex flex-col w-full antialiased text-foreground bg-background"
   >
     <Main>
       <slot />
+      <CTACard />
     </Main>
     <Footer />
     <Toaster client:load richColors={true} />

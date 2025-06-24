@@ -5,13 +5,18 @@ import { Image } from "astro:assets";
 import brochurePage1 from "@/images/brochure/1.jpg";
 import brochurePage2 from "@/images/brochure/2.jpg";
 import { EnhancedButton } from "@/components/EnhancedButton";
+import DesktopNavigation from "@/components/DesktopNavigation";
+import MobileNavigation from "@/components/MobileNavigation";
 ---
 
 <MainLayout
   title="Brochure Santienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
   desc="Learn more about Santienz's polyurethane mortar flooring solutions. Download our brochure for details."
 >
-  <Header showCTA className="text-primary backdrop-blur-lg" />
+  <Header className="text-primary backdrop-blur-lg">
+    <DesktopNavigation hideBrochure client:load />
+    <MobileNavigation hideBrochure client:load />
+  </Header>
   <section
     class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 gap-8"
   >

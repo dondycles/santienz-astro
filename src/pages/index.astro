@@ -1,7 +1,7 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { CountingNumber } from "@/components/animate-ui/text/counting-number";
-import { Medal, Users } from "lucide-react";
+import { Medal, Play, Users } from "lucide-react";
 import CTAGetQuote from "@/components/CTAGetQuote";
 import { Badge } from "@/components/ui/badge";
 import LinkButton from "@/components/LinkButton";
@@ -9,6 +9,7 @@ import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Header from "@/components/Header.astro";
 import { Image } from "astro:assets";
 import grid3DBackground from "../images/grid_3d.png";
+import { EnhancedButton } from "@/components/EnhancedButton";
 const features: {
   count: number;
   title: string;
@@ -61,7 +62,7 @@ const projects = [
   <Header showCTA className="text-primary-foreground" />
   <section
     id="main-hero"
-    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 pb-32"
+    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 pb-16"
   >
     <div
       class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
@@ -93,12 +94,32 @@ const projects = [
         Santienz Philippines Inc. is preferred by over 60 clients in
         manufacturing, food, and pharma sectors.
       </p>
-      <CTAGetQuote
-        style="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-6 px-12 mx-auto md:text-xl md:font-semibold"
-      />
+      <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-4">
+        <a href="about-us" class="flex-1">
+          <EnhancedButton
+            client:load
+            className="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-6 px-12 md:text-xl md:font-semibold z-20 w-full"
+            effect="shineHover"
+            variant="tertiary">Learn More</EnhancedButton
+          >
+        </a>
+
+        <a
+          href="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
+          target="_blank"
+          class="flex-1"
+        >
+          <EnhancedButton
+            client:load
+            className="drop-shadow-[0_4px_8px_var(--tertiary)] md:py-6 px-12 md:text-xl md:font-semibold z-20 bg-transparent border-tertiary text-primary-foreground hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
+            effect="shineHover"
+            variant="outline">Play Video <Play /></EnhancedButton
+          >
+        </a>
+      </div>
     </div>
     <div
-      class="max-w-6xl px-4 mx-auto grid gap-1 grid-cols-2 md:grid-cols-4 mt-8"
+      class="max-w-6xl px-4 mx-auto hidden md:grid gap-1 grid-cols-2 md:grid-cols-4 mt-16"
     >
       {
         features.map((feature) => (
@@ -107,6 +128,22 @@ const projects = [
               {feature.count}+
             </div>
             <div class="text-primary-foreground">{feature.title}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+  <section>
+    <div
+      class="max-w-6xl px-4 mx-auto grid md:hidden gap-1 grid-cols-2 md:grid-cols-4"
+    >
+      {
+        features.map((feature) => (
+          <div class="flex flex-col rounded-xl gap-2 z-20 bg-primary/10 p-4">
+            <div class="text-3xl md:text-6xl font-bold text-primary">
+              {feature.count}+
+            </div>
+            <div class="text-foreground">{feature.title}</div>
           </div>
         ))
       }

@@ -1,13 +1,10 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { CountingNumber } from "@/components/animate-ui/text/counting-number";
 import {
   BicepsFlexed,
   CheckCircle,
   Medal,
-  Megaphone,
   Play,
-  Speaker,
   Speech,
   Users,
 } from "lucide-react";
@@ -16,8 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import LinkButton from "@/components/LinkButton";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Header from "@/components/Header.astro";
-import { Image } from "astro:assets";
-import grid3DBackground from "../images/grid_3d.png";
 import { EnhancedButton } from "@/components/EnhancedButton";
 const features: {
   count: number;
@@ -78,11 +73,6 @@ const projects = [
     >
     </div>
     <!-- <Boxes client:load /> -->
-    <Image
-      src={grid3DBackground}
-      alt="Grid 3D Background"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
     <div class="z-19 absolute top-0 left-0 h-full w-full">
       <video
         src="AVP_2023.mp4"
@@ -213,7 +203,7 @@ const projects = [
         ))
       }
     </div>
-    <LinkButton href="/projects" title="View More Projects" />
+    <LinkButton href="/portfolio" title="View Portfolio" />
   </section>
   <section class="flex flex-col gap-8">
     <div class="space-y-4 max-w-6xl px-4 mx-auto">

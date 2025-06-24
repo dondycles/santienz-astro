@@ -43,14 +43,28 @@ export default function MobileNavigation() {
             variant="link"
             className="text-muted-foreground w-fit text-lg p-0"
           >
-            <a href="/">About Us</a>
+            <a href="/portfolio">Portfolio</a>
           </Button>
           <Button
             asChild
             variant="link"
             className="text-muted-foreground w-fit text-lg p-0"
           >
-            <a href="/">Careers</a>
+            <a href="/about-us">About Us</a>
+          </Button>
+          <Button
+            asChild
+            variant="link"
+            className="text-muted-foreground w-fit text-lg p-0"
+          >
+            <a href="/careers">Careers</a>
+          </Button>
+          <Button
+            asChild
+            variant="link"
+            className="text-muted-foreground w-fit text-lg p-0"
+          >
+            <a href="/testimonials">Testimonials</a>
           </Button>
         </div>
         <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted border-t-1 p-4 text-sm text-muted-foreground">

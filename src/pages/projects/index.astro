@@ -31,7 +31,7 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
     </SectionMainHeroOverlay>
   </SectionMainHero>
   <div
-    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-4 w-full -mt-20"
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 max-w-6xl mx-auto px-4 w-full -mt-20"
   >
     {
       PROJECT_INFO.sort((a, b) => a.title.localeCompare(b.title)).map(
@@ -45,7 +45,7 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
               alt={project.title}
               class="w-full object-cover shrink-0"
             />
-            <h2 class="text-primary font-semibold px-4 line-clamp-2">
+            <h2 class="text-primary font-semibold px-4 truncate">
               {project.title}
             </h2>
             <a href={`/projects/${project.slug}`} class="w-full mb-0 mt-auto ">

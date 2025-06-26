@@ -1,6 +1,6 @@
 ---
 import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/Header.astro";
+import Header from "@/components/syntax/Header.astro";
 import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
 import aboutUsBg from "@/images/about-us-bg.jpg";
@@ -10,6 +10,10 @@ import { Hammer, Heart, Medal, ShieldCheck, User } from "lucide-react";
 import History from "@/components/History";
 import CTACard from "@/components/CTACard.astro";
 import { Badge } from "@/components/ui/badge";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 ---
 
 <MainLayout
@@ -20,33 +24,12 @@ import { Badge } from "@/components/ui/badge";
     <DesktopNavigation hideAboutUs client:load />
     <MobileNavigation hideAboutUs client:load />
   </Header>
-  <section
-    id="main-hero"
-    class="relative w-full overflow-hidden bg-primary flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 pb-16"
-  >
-    <div
-      class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
+  <SectionMainHero>
+    <H1AndP
+      h="About Us"
+      p="Learn more about Santienz Philippines Inc., the leading provider of durable polyurethane mortar flooring solutions in the Philippines since 1998. Discover our history, mission, and commitment to quality."
     >
-    </div>
-    <Image
-      src={aboutUsBg}
-      alt="About Us Background"
-      class="absolute inset-0 w-full h-full object-cover blur-xs"
-    />
-    <div class="max-w-6xl px-4 flex flex-col gap-4">
-      <h1
-        class="font-bold text-4xl sm:text-5xl md:text-6xl text-tertiary relative z-20 leading-tight drop-shadow-lg text-center"
-      >
-        About Us
-      </h1>
-      <p
-        class="text-primary-foreground relative z-20 drop-shadow-lg text-center leading-tight"
-      >
-        Learn more about Santienz Philippines Inc., the leading provider of
-        durable polyurethane mortar flooring solutions in the Philippines since
-        1998. Discover our history, mission, and commitment to quality.
-      </p>
-      <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-4">
+      <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-12 max-w-48">
         <a href="/projects" class="flex-1 xmd:block hidden">
           <EnhancedButton
             client:load
@@ -56,37 +39,33 @@ import { Badge } from "@/components/ui/badge";
           >
         </a>
       </div>
-    </div>
-  </section>
+    </H1AndP>
+    <SectionMainHeroOverlay>
+      <Image
+        src={aboutUsBg}
+        alt="About Us Background"
+        class="absolute inset-0 w-full h-full object-cover blur-xs"
+      />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
+
+  <!-- History -->
   <section class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">History</h2>
-      <p class="text-center text-muted-foreground">
-        Santienz Philippines Inc. was established in 1998 with the goal of
-        providing high-quality polyurethane mortar flooring solutions to the
-        Philippine market. Over the years, we have grown from a small team of
-        dedicated professionals into the country's leading provider of durable,
-        hygienic, and reliable flooring systems for industrial and commercial
-        applications. Our commitment to innovation, customer satisfaction, and
-        uncompromising quality has enabled us to build long-lasting
-        relationships with clients across various industries, setting the
-        standard for excellence in flooring solutions.
-      </p>
-    </div>
+    <H2AndP
+      h="History"
+      p="Santienz Philippines Inc. was established in 1998 with the goal of providing high-quality polyurethane mortar flooring solutions to the Philippine market. Over the years, we have grown from a small team of dedicated professionals into the country's leading provider of durable, hygienic, and reliable flooring systems for industrial and commercial applications. Our commitment to innovation, customer satisfaction, and uncompromising quality has enabled us to build long-lasting relationships with clients across various industries, setting the standard for excellence in flooring solutions."
+    />
     <div class="mx-auto max-w-6xl w-fit px-4">
       <History client:load />
     </div>
   </section>
+
+  <!-- Mission Vision -->
   <section class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">
-        Our Purpose & Direction
-      </h2>
-      <p class="text-center text-muted-foreground">
-        Guided by our mission and vision, we strive to create lasting value for
-        our clients and communities.
-      </p>
-    </div>
+    <H2AndP
+      h="Our Purpose & Direction"
+      p="Guided by our mission and vision, we strive to create lasting value for our clients and communities."
+    />
     <div class="flex flex-col xmd:flex-row gap-1 max-w-6xl mx-auto px-4">
       <div class="bg-primary/10 rounded-xl p-4 space-y-4 flex-1">
         <h3 class="text-xl font-semibold text-primary">Mission</h3>
@@ -109,16 +88,13 @@ import { Badge } from "@/components/ui/badge";
       </div>
     </div>
   </section>
+
+  <!-- Core Values -->
   <section class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">
-        Our Core Values
-      </h2>
-      <p class="text-center text-muted-foreground">
-        These fundamental principles guide every decision we make and every
-        project we undertake.
-      </p>
-    </div>
+    <H2AndP
+      h="Our Core Values"
+      p="These fundamental principles guide every decision we make and every project we undertake."
+    />
     <div
       class="grid grid-cols-1 xmd:grid-cols-2 flex-row gap-1 max-w-6xl mx-auto px-4"
     >
@@ -181,14 +157,14 @@ import { Badge } from "@/components/ui/badge";
       </div>
     </div>
   </section>
+
+  <!-- Meet The Team -->
   <section class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">Meet The Team</h2>
-      <p class="text-center text-muted-foreground">
-        Our experienced leadership team brings together decades of construction
-        expertise, innovative thinking, and unwavering commitment to excellence.
-      </p>
-    </div>
+    <H2AndP
+      h="Meet The Team"
+      p="Our experienced leadership team brings together decades of construction expertise, innovative thinking, and unwavering commitment to excellence."
+    />
+
     <div class="max-w-6xl mx-auto px-4 space-y-4">
       <h3 class="text-primary font-semibold text-xl text-center">Directors</h3>
       <div
@@ -370,34 +346,3 @@ import { Badge } from "@/components/ui/badge";
     </div>
   </section>
 </MainLayout>
-<script is:inline>
-  window.addEventListener("scroll", () => {
-    const heroHeight = document.getElementById("main-hero")?.clientHeight + 124;
-
-    if (window.scrollY > heroHeight * 0.75) {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.add("active-header");
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.add("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.add("active-header-links");
-        },
-      );
-    } else {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.remove("active-header");
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.remove("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.remove("active-header-links");
-        },
-      );
-    }
-  });
-</script>

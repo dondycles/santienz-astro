@@ -1,0 +1,19 @@
+---
+import { cn } from "@/lib/utils";
+import H2 from "./H2.astro";
+
+interface Props {
+  h: string;
+  p: string;
+  className?: string;
+}
+const { h, p, className } = Astro.props;
+---
+
+<div class={cn("mx-auto max-w-6xl space-y-4 px-4 text-center", className)}>
+  <H2 h={h} />
+  <p class="text-muted-foreground">
+    {p}
+  </p>
+  <slot />
+</div>

@@ -1,5 +1,5 @@
 ---
-import Header from "@/components/Header.astro";
+import Header from "@/components/syntax/Header.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 import brochurePage1 from "@/images/brochure/1.jpg";
@@ -7,32 +7,31 @@ import brochurePage2 from "@/images/brochure/2.jpg";
 import { EnhancedButton } from "@/components/EnhancedButton";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import Grid3DBg from "@/components/Grid3DBg.astro";
 ---
 
 <MainLayout
   title="Brochure Santienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
   desc="Learn more about Santienz's polyurethane mortar flooring solutions. Download our brochure for details."
 >
-  <Header className="text-primary backdrop-blur-lg">
+  <Header className="text-primary-foreground">
     <DesktopNavigation hideBrochure client:load />
     <MobileNavigation hideBrochure client:load />
   </Header>
-  <section
-    class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 gap-8"
-  >
-    <div
-      class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl px-4"
-    >
-      <h1
-        class="font-bold text-4xl sm:text-5xl md:text-6xl text-center text-primary leading-tight"
-      >
-        Brochure
-      </h1>
-      <p class="text-muted-foreground text-center">
-        Learn more about Santienz's polyurethane mortar flooring solutions.
-        Download our brochure for details.
-      </p>
-    </div>
+  <SectionMainHero>
+    <H1AndP
+      h="Brochure"
+      p="Learn more about Santienz's polyurethane mortar flooring solutions. Download our brochure for details."
+    />
+    <SectionMainHeroOverlay>
+      <Grid3DBg />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
+
+  <section class="flex flex-col items-center justify-center gap-8 -mt-20">
     <div class="max-w-6xl grid sm:grid-cols-2 gap-1 px-4">
       <Image
         src={brochurePage1}

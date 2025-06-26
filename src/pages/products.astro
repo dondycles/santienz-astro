@@ -1,12 +1,15 @@
 ---
 import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/Header.astro";
+import Header from "@/components/syntax/Header.astro";
 import LinkButton from "@/components/LinkButton";
 import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { CheckCircle } from "lucide-react";
-import grid3dBackground from "@/images/grid_3d.png";
-import { Image } from "astro:assets";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 ---
 
 <MainLayout
@@ -17,45 +20,21 @@ import { Image } from "astro:assets";
     <DesktopNavigation hideProducts client:load />
     <MobileNavigation hideProducts client:load />
   </Header>
-  <section
-    id="main-hero"
-    class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 space-y-8 relative pb-16"
-  >
-    <div
-      class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
-    >
-    </div>
-    <Image
-      src={grid3dBackground}
-      alt="Grid 3D Background"
-      class="absolute inset-0 w-full h-full object-cover"
+  <SectionMainHero>
+    <H1AndP
+      h="Products offered by Santienz Philippines Inc."
+      p=" Discover our range of high-quality industrial flooring and waterproofing solutions designed for durability and performance."
     />
+    <SectionMainHeroOverlay>
+      <Grid3DBg />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
 
-    <div
-      class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl px-4 z-20"
-    >
-      <h1
-        class="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-tertiary drop-shadow-lg leading-tight"
-      >
-        Products offered by Santienz Philippines Inc.
-      </h1>
-      <p class="text-primary-foreground text-center drop-shadow-lg">
-        Discover our range of high-quality industrial flooring and waterproofing
-        solutions designed for durability and performance.
-      </p>
-    </div>
-  </section>
   <section id="polyurethane-flooring" class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">
-        Polyurethane Flooring
-      </h2>
-      <p class="text-center text-muted-foreground">
-        Our polyurethane mortar flooring systems are designed for heavy-duty
-        industrial environments, offering exceptional resistance to chemicals,
-        abrasion, and thermal shock. Ideal for food processing, pharmaceutical,
-        and manufacturing facilities.
-      </p>
+    <H2AndP
+      h="Polyurethane Flooring"
+      p="Our polyurethane mortar flooring systems are designed for heavy-duty industrial environments, offering exceptional resistance to chemicals, abrasion, and thermal shock. Ideal for food processing, pharmaceutical, and manufacturing facilities."
+    >
       <div class="flex justify-center gap-4 flex-wrap">
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
@@ -70,7 +49,7 @@ import { Image } from "astro:assets";
           <span class="text-muted-foreground">Easy Maintenance</span>
         </div>
       </div>
-    </div>
+    </H2AndP>
     <div
       class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto xmd:px-4 gap-1"
     >
@@ -85,16 +64,10 @@ import { Image } from "astro:assets";
     </div>
   </section>
   <section id="water-proofing" class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">
-        Water Proofing
-      </h2>
-      <p class="text-center text-muted-foreground">
-        We provide advanced waterproofing solutions to protect structures from
-        water ingress and damage. Our systems are suitable for roofs, basements,
-        and wet areas, ensuring long-lasting protection and peace of mind for
-        both commercial and residential projects.
-      </p>
+    <H2AndP
+      h="Water Proofing"
+      p="We provide advanced waterproofing solutions to protect structures from water ingress and damage. Our systems are suitable for roofs, basements, and wet areas, ensuring long-lasting protection and peace of mind for both commercial and residential projects."
+    >
       <div class="flex justify-center gap-4 flex-wrap">
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
@@ -111,7 +84,8 @@ import { Image } from "astro:assets";
           >
         </div>
       </div>
-    </div>
+    </H2AndP>
+
     <div
       class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto xmd:px-4 gap-1"
     >
@@ -126,31 +100,27 @@ import { Image } from "astro:assets";
     </div>
   </section>
   <section id="nafufill-km-250" class="space-y-8">
-    <div class="mx-auto max-w-6xl space-y-4 px-4">
-      <h2 class="text-center font-bold text-4xl text-primary">
-        Nafufill KM 250
-      </h2>
-      <p class="text-center text-muted-foreground">
-        Nafufill KM 250 is a high-performance repair mortar for concrete
-        structures. It offers excellent adhesion, high compressive strength, and
-        resistance to environmental factors, making it ideal for structural
-        repairs and surface restoration in demanding conditions.
-      </p>
+    <H2AndP
+      h="Nafufill KM 250"
+      p="Nafufill KM 250 is a high-performance repair mortar for concrete structures. It offers excellent adhesion, high compressive strength, and resistance to environmental factors, making it ideal for structural repairs and surface restoration in demanding conditions."
+    >
       <div class="flex justify-center gap-4 flex-wrap">
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">High Compressive Strength</span>
+          <span class="text-muted-foreground">Water Resistant</span>
         </div>
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Excellent Adhesion</span>
+          <span class="text-muted-foreground">Long-lasting Protection</span>
         </div>
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Resistant</span>
+          <span class="text-muted-foreground"
+            >Suitable for Roofs & Basements</span
+          >
         </div>
       </div>
-    </div>
+    </H2AndP>
     <div
       class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto xmd:px-4 gap-1"
     >
@@ -164,48 +134,15 @@ import { Image } from "astro:assets";
       </div>
     </div>
   </section>
-  <section>
-    <div class="mx-auto max-w-6xl flex flex-col gap-4 px-4">
-      <h3 class="text-center font-bold text-4xl text-primary">
-        View Our Projects
-      </h3>
-      <p class="text-center text-muted-foreground">
-        Explore our projects of completed projects to see how our polyurethane
-        flooring, waterproofing, and repair solutions have delivered outstanding
-        results for clients across various industries.
-      </p>
-      <LinkButton title="View Projects" href="/projects" className="mx-auto" />
-    </div>
+
+  <!-- View Our Projects -->
+  <section class="mx-auto max-w-6xl flex flex-col gap-4 px-4 text-center">
+    <h3 class="font-bold text-4xl text-primary">View Our Projects</h3>
+    <p class="text-muted-foreground">
+      Explore our projects of completed projects to see how our polyurethane
+      flooring, waterproofing, and repair solutions have delivered outstanding
+      results for clients across various industries.
+    </p>
+    <LinkButton title="View Projects" href="/projects" className="mx-auto" />
   </section>
 </MainLayout>
-<script is:inline>
-  window.addEventListener("scroll", () => {
-    const heroHeight = document.getElementById("main-hero")?.clientHeight + 124;
-
-    if (window.scrollY > heroHeight * 0.75) {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.add("active-header");
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.add("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.add("active-header-links");
-        },
-      );
-    } else {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.remove("active-header");
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.remove("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.remove("active-header-links");
-        },
-      );
-    }
-  });
-</script>

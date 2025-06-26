@@ -1,12 +1,16 @@
 ---
 import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/Header.astro";
+import Header from "@/components/syntax/Header.astro";
 import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { Image } from "astro:assets";
 import grid3dBackground from "@/images/grid_3d.png";
 import { EnhancedButton } from "@/components/EnhancedButton";
 import { Badge } from "@/components/ui/badge";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 ---
 
 <MainLayout
@@ -17,38 +21,18 @@ import { Badge } from "@/components/ui/badge";
     <DesktopNavigation hideCareers client:load />
     <MobileNavigation hideCareers client:load />
   </Header>
-  <section
-    id="main-hero"
-    class="flex flex-col items-center justify-center h-fit pt-24 sm:pt-32 space-y-8 relative pb-16"
-  >
-    <div
-      class="absolute inset-0 w-full h-full bg-blue-950 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none"
-    >
-    </div>
-    <Image
-      src={grid3dBackground}
-      alt="Grid 3D Background"
-      class="absolute inset-0 w-full h-full object-cover"
+  <SectionMainHero>
+    <H1AndP
+      h="Careers"
+      p="Join our team at Santienz Philippines Inc. and help us deliver top-quality polyurethane mortar flooring solutions. Explore exciting career opportunities and grow with the No.1 provider in the Philippines since 1998."
     />
+    <SectionMainHeroOverlay>
+      <Grid3DBg />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
 
-    <div
-      class="flex flex-col items-center gap-4 flex-1 col-start-1 max-w-6xl px-4 z-20"
-    >
-      <h1
-        class="font-bold text-center text-4xl sm:text-5xl md:text-6xl text-tertiary drop-shadow-lg leading-tight"
-      >
-        Careers
-      </h1>
-      <p class="text-primary-foreground text-center drop-shadow-lg">
-        Join our team at Santienz Philippines Inc. and help us deliver
-        top-quality polyurethane mortar flooring solutions. Explore exciting
-        career opportunities and grow with the No.1 provider in the Philippines
-        since 1998.
-      </p>
-    </div>
-  </section>
   <section>
-    <div class="mx-auto px-4 max-w-6xl space-y-1">
+    <div class="mx-auto px-4 max-w-6xl space-y-1 -mt-20">
       <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
         <div class="space-y-2">
           <h2 class="font-bold text-4xl text-primary">Job Name</h2>

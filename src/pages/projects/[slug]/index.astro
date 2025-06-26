@@ -1,0 +1,71 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/syntax/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { PROJECT_INFO } from "@/lib/projects-info";
+import { Image } from "astro:assets";
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: "antartica-cold-storage" } },
+    { params: { slug: "corpbay-realty-corp" } },
+    { params: { slug: "deckta-pacific-equities-inc" } },
+    { params: { slug: "delimondo" } },
+    {
+      params: {
+        slug: "first-inland-kingdom-cold-storage",
+      },
+    },
+    {
+      params: {
+        slug: "five-s-vehicle-inspection-center",
+      },
+    },
+    { params: { slug: "frabelle-group-of-companies" } },
+    { params: { slug: "jentec-storage-inc" } },
+    { params: { slug: "mets-logistics-inc" } },
+    { params: { slug: "nordic-atlantic-logistic-inc" } },
+    {
+      params: { slug: "pinnacle-cold-storage-solution" },
+    },
+    {
+      params: { slug: "plx-dry-and-cold-logistics-hub" },
+    },
+    { params: { slug: "pure-logistics-express-inc" } },
+    { params: { slug: "quaensa-foods-inc" } },
+    { params: { slug: "royal-cargo-inc" } },
+    { params: { slug: "royale-cold-storage" } },
+    { params: { slug: "san-miguel-foods-inc" } },
+    { params: { slug: "starkson-realty-inc" } },
+    { params: { slug: "viking-cold-storage" } },
+    { params: { slug: "zuru-argo-industrial-corp" } },
+  ];
+}
+const { slug } = Astro.params;
+const data = PROJECT_INFO.find((project) => project.slug === slug);
+---
+
+<MainLayout
+  title={`${data?.title} | Santienz Phils Inc.`}
+  desc=`${data?.title} is one of the valued clients served by Santienz Phils Inc. Explore our work on their project and how we helped bring their vision to life.`
+>
+  <Header className="text-primary backdrop-blur-lg">
+    <DesktopNavigation client:load />
+    <MobileNavigation client:load />
+  </Header>
+  <section class="pt-24 sm:pt-32">
+    <div class="space-y-4 max-w-6xl mx-auto px-4">
+      <h1
+        class="font-bold text-2xl sm:text-3xl md:text-4xl text-primary leading-tight"
+      >
+        {data?.title}
+      </h1>
+      <p class="text-muted-foreground">
+        {data?.title} is one of the valued clients served by Santienz Phils Inc.
+        Explore our work on their project and how we helped bring their vision to
+        life.
+      </p>
+    </div>
+  </section>
+</MainLayout>

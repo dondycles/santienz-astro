@@ -1,0 +1,59 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/syntax/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
+import { PROJECT_INFO } from "@/lib/projects-info";
+import { Button } from "@/components/ui/button";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+---
+
+<MainLayout
+  title="Projects of Satienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  desc="Explore the projects of Santienz Philippines Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+>
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideProjects client:load />
+    <MobileNavigation hideProjects client:load />
+  </Header>
+  <SectionMainHero>
+    <H1AndP
+      h="Projects"
+      p="Explore the projects of Santienz Philippines Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+    />
+    <SectionMainHeroOverlay>
+      <Grid3DBg />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
+  <div
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto px-4 w-full -mt-20"
+  >
+    {
+      PROJECT_INFO.sort((a, b) => a.title.localeCompare(b.title)).map(
+        (project) => (
+          <section
+            class="aspect-square bg-primary/10 rounded-xl flex gap-4 flex-col h-full overflow-hidden"
+            id={project.title}
+          >
+            <Image
+              src={project.imgs[0]}
+              alt={project.title}
+              class="w-full object-cover shrink-0"
+            />
+            <h2 class="text-primary font-semibold px-4 line-clamp-2">
+              {project.title}
+            </h2>
+            <a href={`/projects/${project.slug}`} class="w-full mb-0 mt-auto ">
+              <Button className="w-full rounded-none">View</Button>
+            </a>
+          </section>
+        ),
+      )
+    }
+  </div>
+</MainLayout>

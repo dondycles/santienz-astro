@@ -9,6 +9,7 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import grid3dBackground from "@/images/grid_3d.png";
+import { Calendar, Info, MapPin, Star, Tag } from "lucide-react";
 
 export function getStaticPaths() {
   return [
@@ -73,12 +74,46 @@ const data = PROJECT_INFO.find((project) => project.slug === slug);
       />
     </SectionMainHeroOverlay>
   </SectionMainHero>
+  <section
+    class="mx-auto max-w-6xl px-4 text-muted-foreground -mt-16 mb-8 space-y-2"
+  >
+    <p>
+      <span>
+        <Star className="inline mr-1 size-5" />
+      </span>
+      Client: {data?.title}
+    </p>
+    <p>
+      <span>
+        <MapPin className="inline mr-1 size-5" />
+      </span>
+      Location: Sample Location
+    </p>
+    <p>
+      <span>
+        <Calendar className="inline mr-1  size-5" />
+      </span>
+      Completed on: {new Date().toLocaleDateString()}
+    </p>
+    <p>
+      <span>
+        <Tag className="inline mr-1  size-5" />
+      </span>
 
-  <section class="max-w-6xl mx-auto xmd:px-4 grid gap-1 -mt-23 xmd:-mt-20">
+      Products used: Polyurethane
+    </p>
+    <p>
+      <span>
+        <Info className="inline mr-1  size-5" />
+      </span>
+      Other info: 8000sqm
+    </p>
+  </section>
+  <section class="max-w-6xl mx-auto xmd:px-4 grid gap-1">
     {
       data?.imgs.map((img, i) => (
         <Image
-          class="xmd:rounded-xl"
+          class="xmd:rounded-xl not-xmd:last:-mb-23"
           src={img}
           alt={`image-${i}-of-${data.slug}`}
         />

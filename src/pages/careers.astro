@@ -93,7 +93,7 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
           variant="tertiary">Apply Now</EnhancedButton
         >
       </div>
-      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
+      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4 -mb-20">
         <div class="space-y-2">
           <h2 class="font-bold text-4xl text-primary">Last Job Name</h2>
           <p class="text-muted-foreground">Santienz Philippines Inc.</p>
@@ -116,34 +116,3 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
     </div>
   </section>
 </MainLayout>
-<script is:inline>
-  window.addEventListener("scroll", () => {
-    const heroHeight = document.getElementById("main-hero")?.clientHeight + 124;
-
-    if (window.scrollY > heroHeight * 0.75) {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.add("active-header");
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.add("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.add("active-header-links");
-        },
-      );
-    } else {
-      document
-        .getElementById("landing-page-header")
-        ?.classList.remove("active-header");
-      document
-        .getElementById("header-burger-icon")
-        ?.classList.remove("active-header-burger-icon");
-      Array.from(document.getElementsByClassName("header-links")).forEach(
-        (el) => {
-          el.classList.remove("active-header-links");
-        },
-      );
-    }
-  });
-</script>

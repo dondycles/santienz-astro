@@ -1,8 +1,12 @@
 import { PROJECT_INFO } from "@/lib/projects-info";
+import { Frown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function ProjectsMapper() {
   const [query, setQuery] = useState("");
+  const filteredProjects = PROJECT_INFO.filter((project) =>
+    project.title.toLowerCase().includes(query.toLowerCase()),
+  ).sort((a, b) => a.title.localeCompare(b.title));
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -10,11 +14,8 @@ export default function ProjectsMapper() {
     if (queryData) setQuery(queryData);
   }, [query, setQuery]);
 
-  return PROJECT_INFO.filter((project) =>
-    project.title.toLowerCase().includes(query.toLowerCase()),
-  )
-    .sort((a, b) => a.title.localeCompare(b.title))
-    .map((project) => (
+  return filteredProjects.length ? (
+    filteredProjects.map((project) => (
       <a
         href={`/projects/${project.slug}`}
         className="w-full mb-0 mt-auto "
@@ -34,5 +35,13 @@ export default function ProjectsMapper() {
           </h2>
         </section>
       </a>
-    ));
+    ))
+  ) : (
+    <p className="text-muted-foreground text-center col-span-full mb-2 px-4">
+      No results for {query}{" "}
+      <span>
+        <Frown className="inline ml-1" />
+      </span>
+    </p>
+  );
 }

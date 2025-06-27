@@ -49,26 +49,28 @@ export function getStaticPaths() {
 }
 const { slug } = Astro.params;
 const data = PROJECT_INFO.find((project) => project.slug === slug);
+if (!data) return Astro.redirect("/projects");
 ---
 
 <MainLayout
-  title={`${data?.title} | Santienz Phils Inc.`}
-  desc=`${data?.title} is one of the valued clients served by Santienz Phils Inc. Explore our work on their project and how we helped bring their vision to life.`
+  title={`${data.title} | Santienz Phils Inc.`}
+  desc=`${data.title} is one of the valued clients served by Santienz Phils Inc. Explore our work on their project and how we helped bring their vision to life.`
 >
   <Header className="text-primary-foreground">
     <DesktopNavigation hideProjects client:load />
     <MobileNavigation hideProjects client:load />
   </Header>
+
   <SectionMainHero>
     <H1AndP
-      h={data?.title as string}
-      p=`${data?.title as string} is one of the valued clients served by Santienz Phils Inc.
+      h={data.title as string}
+      p=`${data.title as string} is one of the valued clients served by Santienz Phils Inc.
         Explore our work on their project and how we helped bring their vision to
         life.`
     />
     <SectionMainHeroOverlay>
       <Image
-        src={data?.imgs[0] ?? grid3dBackground}
+        src={data.imgs[0] ?? grid3dBackground}
         alt="Grid 3D Background"
         class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
       />
@@ -81,7 +83,7 @@ const data = PROJECT_INFO.find((project) => project.slug === slug);
       <span>
         <Star className="inline mr-1 size-5" />
       </span>
-      Client: {data?.title}
+      Client: {data.title}
     </p>
     <p>
       <span>
@@ -111,7 +113,7 @@ const data = PROJECT_INFO.find((project) => project.slug === slug);
   </section>
   <section class="max-w-6xl mx-auto xmd:px-4 grid gap-4 not-xmd:gap-1">
     {
-      data?.imgs.map((img, i) => (
+      data.imgs.map((img, i) => (
         <Image
           class="xmd:rounded-xl not-xmd:last:-mb-23"
           src={img}

@@ -1,5 +1,5 @@
 ---
-import { EnhancedButton } from "./EnhancedButton";
+import CTAButton from "@/components/CTAButton";
 ---
 
 <section class="space-y-8 bg-tertiary/10 mb-1">
@@ -11,8 +11,11 @@ import { EnhancedButton } from "./EnhancedButton";
       Let's discuss your next construction project and bring your ideas to life
       with our expertise and dedication.
     </p>
-    <EnhancedButton effect="shineHover" variant="tertiary">
-      Contact Us
-    </EnhancedButton>
+    <CTAButton
+      effect="shineHover"
+      variant="tertiary"
+      link="/contact-us"
+      text="Contact Us"
+    />
   </div>
 </section>

@@ -1,0 +1,26 @@
+---
+import InputWithStartIcon from "@/components/InputWithStartIcon";
+---
+
+<div class="max-w-6xl mx-auto w-full px-4 z-20 -mt-20">
+  <form id="search-form">
+    <InputWithStartIcon className="rounded-xl" id="search-input" name="query" />
+  </form>
+</div>
+<script>
+  import { navigate } from "astro:transitions/client";
+  const form = document.getElementById("search-form") as HTMLFormElement;
+  const input = document.getElementById("search-input") as HTMLInputElement;
+  const searchParams = new URLSearchParams(window.location.search);
+  const query = searchParams.get("query");
+  if (form && input) {
+    input.placeholder = !query ? "Search a project" : (query as string);
+    query ? input.focus() : input.blur();
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const query = formData.get("query");
+      navigate("/projects?query=" + query);
+    });
+  }
+</script>

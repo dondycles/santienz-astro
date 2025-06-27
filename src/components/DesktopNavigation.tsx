@@ -1,5 +1,5 @@
 import type { Pages } from "@/lib/pages.types";
-import CTAGetQuote from "./CTAGetQuote";
+import CTAButton from "./CTAButton";
 import { Button } from "./ui/button";
 export default function DesktopNavigation({
   hideCTA = false,
@@ -62,7 +62,13 @@ export default function DesktopNavigation({
           <a href="/careers">Careers</a>
         </Button>
       </nav>
-      <CTAGetQuote text="Contact Us" style={`${hideCTA && "hidden"}`} />
+      <CTAButton
+        text="Contact Us"
+        className={`${hideCTA && "hidden"}`}
+        link="/contact-us"
+        effect="shineHover"
+        variant="tertiary"
+      />
     </div>
   );
 }

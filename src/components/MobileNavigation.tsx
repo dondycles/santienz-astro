@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { Facebook, Mail, Menu, Phone } from "lucide-react";
-import CTAGetQuote from "./CTAGetQuote";
+import CTAGetQuote from "./CTAButton";
 import type { Pages } from "@/lib/pages.types";
 export default function MobileNavigation({
   hideCTA = false,

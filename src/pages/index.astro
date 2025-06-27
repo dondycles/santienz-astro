@@ -1,7 +1,7 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { BicepsFlexed, CheckCircle, Medal, Play, Users } from "lucide-react";
-import CTAGetQuote from "@/components/CTAGetQuote";
+import CTAButton from "@/components/CTAButton";
 import LinkButton from "@/components/LinkButton";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Header from "@/components/syntax/Header.astro";
@@ -60,22 +60,23 @@ const featured_projects = [
             variant="tertiary">Learn More</EnhancedButton
           >
         </a>
-        <CTAGetQuote
+        <CTAButton
           text="Request Quote"
-          style="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex xmd:hidden"
+          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex xmd:hidden"
+          variant="tertiary"
+          effect="shineHover"
+          link="/contact-us"
         />
-        <a
-          href="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
+        <CTAButton
+          text="Play Video"
+          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
+          variant="outline"
+          effect="shineHover"
+          link="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
           target="_blank"
-          class="flex-1"
         >
-          <EnhancedButton
-            client:load
-            className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
-            effect="shineHover"
-            variant="outline">Play Video <Play /></EnhancedButton
-          >
-        </a>
+          <Play />
+        </CTAButton>
       </div>
     </H1AndP>
     <div

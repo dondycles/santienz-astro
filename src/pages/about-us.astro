@@ -5,15 +5,13 @@ import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
 import aboutUsBg from "@/images/about-us-bg.jpg";
 import { Image } from "astro:assets";
-import { EnhancedButton } from "@/components/EnhancedButton";
 import { Hammer, Heart, Medal, ShieldCheck, User } from "lucide-react";
 import History from "@/components/History";
-import CTACard from "@/components/CTACard.astro";
-import { Badge } from "@/components/ui/badge";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
+import CTAButton from "@/components/CTAButton";
 ---
 
 <MainLayout
@@ -30,23 +28,22 @@ import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
       p="Learn more about Santienz Philippines Inc., the leading provider of durable polyurethane mortar flooring solutions in the Philippines since 1998. Discover our history, mission, and commitment to quality."
     >
       <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-12 max-w-48">
-        <a href="/projects" class="flex-1 xmd:block hidden">
-          <EnhancedButton
-            client:load
-            className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full"
-            effect="shineHover"
-            variant="tertiary">See Our Projects</EnhancedButton
-          >
-        </a>
+        <CTAButton
+          text="See Our Projects"
+          link="/projects"
+          className="xmd:block hidden"
+          variant="tertiary"
+          effect="shineHover"
+        />
       </div>
+      <SectionMainHeroOverlay>
+        <Image
+          src={aboutUsBg}
+          alt="About Us Background"
+          class="absolute inset-0 w-full h-full object-cover blur-xs"
+        />
+      </SectionMainHeroOverlay>
     </H1AndP>
-    <SectionMainHeroOverlay>
-      <Image
-        src={aboutUsBg}
-        alt="About Us Background"
-        class="absolute inset-0 w-full h-full object-cover blur-xs"
-      />
-    </SectionMainHeroOverlay>
   </SectionMainHero>
 
   <!-- History -->

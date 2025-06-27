@@ -7,10 +7,10 @@ import { Image } from "astro:assets";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
-import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 import { PROJECT_INFO } from "@/lib/projects-info";
-import { Button } from "@/components/ui/button";
 import Grid3DBg from "@/components/Grid3DBg.astro";
+import SearchBar from "@/components/SearchBar.astro";
+import ProjectsMapper from "@/components/ProjectsMapper";
 ---
 
 <MainLayout
@@ -30,29 +30,10 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
       <Grid3DBg />
     </SectionMainHeroOverlay>
   </SectionMainHero>
+  <SearchBar />
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto xmd:px-4 w-full -mt-23 xmd:-mt-20 not-xmd:mb-1"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto xmd:px-4 w-full -mt-20 not-xmd:mb-1"
   >
-    {
-      PROJECT_INFO.sort((a, b) => a.title.localeCompare(b.title)).map(
-        (project) => (
-          <a href={`/projects/${project.slug}`} class="w-full mb-0 mt-auto ">
-            <section
-              class="bg-primary/10 xmd:rounded-xl flex flex-col h-fit overflow-hidden relative"
-              id={project.title}
-            >
-              <Image
-                src={project.imgs[0]}
-                alt={project.title}
-                class="w-full object-cover shrink-0"
-              />
-              <h2 class="text-primary-foreground text-2xl lg:text-4xl font-semibold  p-2 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
-                {project.title}
-              </h2>
-            </section>
-          </a>
-        ),
-      )
-    }
+    <ProjectsMapper client:load />
   </div>
 </MainLayout>

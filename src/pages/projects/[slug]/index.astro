@@ -9,7 +9,8 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import grid3dBackground from "@/images/grid_3d.png";
-import { Calendar, Info, MapPin, Star, Tag } from "lucide-react";
+import { Calendar, ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
+import CTAButton from "@/components/CTAButton";
 
 export function getStaticPaths() {
   return [
@@ -68,6 +69,17 @@ if (!data) return Astro.redirect("/projects");
         Explore our work on their project and how we helped bring their vision to
         life.`
     />
+    <div class="max-w-6xl mx-auto">
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
+        variant="outline"
+        effect="shineHover"
+        link="/contact-us"
+      >
+        <ChevronLeft />
+        <span>See all projects</span>
+      </CTAButton>
+    </div>
     <SectionMainHeroOverlay>
       <Image
         src={data.imgs[0] ?? grid3dBackground}

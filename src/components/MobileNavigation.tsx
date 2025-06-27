@@ -82,12 +82,13 @@ export default function MobileNavigation({
         <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted border-t-1 p-4 text-sm text-muted-foreground">
           {hideCTA ? null : (
             <CTAGetQuote
-              text="Contact Us"
               link="/contact-us"
               className="w-full"
               effect="shineHover"
               variant="tertiary"
-            />
+            >
+              Contact Us
+            </CTAGetQuote>
           )}
 
           <a

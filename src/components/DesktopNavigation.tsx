@@ -63,12 +63,13 @@ export default function DesktopNavigation({
         </Button>
       </nav>
       <CTAButton
-        text="Contact Us"
         className={`${hideCTA && "hidden"}`}
         link="/contact-us"
         effect="shineHover"
         variant="tertiary"
-      />
+      >
+        Contact Us
+      </CTAButton>
     </div>
   );
 }

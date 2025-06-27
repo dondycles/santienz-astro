@@ -5,7 +5,6 @@ import { Play } from "lucide-react";
 
 export default function CTAGetQuote({
   className,
-  text,
   link,
   effect,
   variant,
@@ -13,7 +12,6 @@ export default function CTAGetQuote({
   children,
 }: {
   className?: string;
-  text: string;
   link: string;
   effect?:
     | "expandIcon"
@@ -47,7 +45,6 @@ export default function CTAGetQuote({
         effect={effect}
         className={cn("relative z-20 ", className)}
       >
-        <span>{text}</span>
         {children}
       </EnhancedButton>
     </a>

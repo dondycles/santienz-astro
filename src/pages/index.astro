@@ -61,21 +61,24 @@ const featured_projects = [
           >
         </a>
         <CTAButton
-          text="Request Quote"
           className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex xmd:hidden"
           variant="tertiary"
           effect="shineHover"
           link="/contact-us"
-        />
+        >
+          Request Quote
+        </CTAButton>
         <CTAButton
-          text="Play Video"
           className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
           variant="outline"
           effect="shineHover"
           link="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
           target="_blank"
         >
-          <Play />
+          Play Video
+          <span>
+            <Play />
+          </span>
         </CTAButton>
       </div>
     </H1AndP>

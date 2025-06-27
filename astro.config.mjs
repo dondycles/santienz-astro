@@ -17,4 +17,8 @@ export default defineConfig({
   devToolbar: {
     enabled: true,
   },
+  redirects: {
+    "/careers": "/",
+    "/testimonials": "/",
+  },
 });

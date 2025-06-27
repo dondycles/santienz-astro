@@ -5,10 +5,10 @@ export default function DesktopNavigation({
   hideCTA = false,
   hideBrochure = false,
   hideAboutUs = false,
-  hideCareers = false,
+  hideCareers = true,
   hideProducts = false,
   hideProjects = false,
-  hideTestimonials = false,
+  hideTestimonials = true,
 }: Pages) {
   return (
     <div className="xmd:flex hidden flex-1 items-center justify-end gap-4">

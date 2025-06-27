@@ -12,37 +12,62 @@ import {
 const items = [
   {
     id: 1,
-    date: "Mar 15, 2024",
-    title: "Project Kickoff",
+    date: "1998",
+    title: "Started Operations",
     description:
-      "Initial team meeting and project scope definition. Established key milestones and resource allocation.",
+      "Established on December 24, 1998 to engage in the supply and install surface protection system. Forged an agreement with ENVIROCHEM-USA, Covercrete-Canada and BASF-Germany.",
   },
   {
     id: 2,
-    date: "Mar 22, 2024",
-    title: "Design Phase",
-    description:
-      "Completed wireframes and user interface mockups. Stakeholder review and feedback incorporated.",
+    date: "2002",
+    title: "Joined CCAP Cold Chain Association of the Philippines",
+    description: "",
   },
   {
     id: 3,
-    date: "Apr 5, 2024",
-    title: "Development Sprint",
-    description:
-      "Backend API implementation and frontend component development in progress.",
+    date: "2003",
+    title: "Opened ware house at Tambler, Gen. Santos City",
+    description: "",
   },
   {
     id: 4,
-    date: "Apr 19, 2024",
-    title: "Testing & Deployment",
+    date: "2005",
+    title: "Moved to new Santienz Phils., Inc. Office and Warehouse",
     description:
-      "Quality assurance testing, performance optimization, and production deployment preparation.",
+      "#357 San Agustin Ave., Brgy. Palatiw, Pasig City, Philippines",
+  },
+  {
+    id: 5,
+    date: "2006",
+    title: "Malaysia Branch",
+    description:
+      "Established regional branch and manufacturing plant in Malaysia thru Creative Analysis Sdn. Bhd.",
+  },
+  {
+    id: 6,
+    date: "2007",
+    title: "Minglanilla, Cebu City Branch",
+    description: "",
+  },
+  {
+    id: 7,
+    date: "2010",
+    title: "C.B27 Partnership Agreement",
+    description:
+      "Forged a partnership agreement with C.B27 Engineering Co., Ltd., Hon Chi Minh City, Vietnam.",
+  },
+  {
+    id: 8,
+    date: "2014",
+    title: "Installed 700,000 sq. mts. Surface Area",
+    description:
+      "Has already completed installation of about 700,00 sq. mts. surface area nationwide for various industry application.",
   },
 ];
 
 export default function History() {
   return (
-    <Timeline defaultValue={4}>
+    <Timeline defaultValue={8}>
       {items.map((item) => (
         <TimelineItem key={item.id} step={item.id}>
           <TimelineHeader>

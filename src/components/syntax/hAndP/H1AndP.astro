@@ -11,11 +11,11 @@ interface Props {
 const { h, p, pClassName, hClassName } = Astro.props;
 ---
 
-<div class="max-w-6xl px-4 space-y-4 mx-auto">
+<div class="max-w-6xl px-4 space-y-4 mx-auto text-center">
   <H1 h={h} className={hClassName} />
   <p
     class={cn(
-      "text-primary-foreground relative z-20 drop-shadow-lg text-center leading-tight",
+      "text-primary-foreground relative z-20 drop-shadow-lg",
       pClassName,
     )}
   >

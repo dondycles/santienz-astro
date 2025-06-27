@@ -8,11 +8,11 @@ export default function MobileNavigation({
   hideCTA = false,
   hideBrochure = false,
   hideAboutUs = false,
-  hideCareers = false,
+  hideCareers = true,
   hideProducts = false,
   hideHome = false,
   hideProjects = false,
-  hideTestimonials = false,
+  hideTestimonials = true,
 }: Pages) {
   return (
     <Sheet>

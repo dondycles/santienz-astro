@@ -30,89 +30,34 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
       <Grid3DBg />
     </SectionMainHeroOverlay>
   </SectionMainHero>
-
-  <section>
-    <div class="mx-auto px-4 max-w-6xl space-y-1 -mt-20">
-      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
-        <div class="space-y-2">
-          <h2 class="font-bold text-4xl text-primary">Job Name</h2>
-          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
-          <div class="flex flex-wrap gap-1">
-            <Badge>Remote</Badge>
-            <Badge>Technical Department</Badge>
-            <Badge>Head Office</Badge>
+  <div
+    class="mx-auto xmd:px-4 max-w-6xl space-y-1 xmd:space-y-4 -mt-23 xmd:-mt-20 not-xmd:mb-1"
+  >
+    {
+      Array.from({ length: 4 }).map(() => (
+        <div class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col gap-4">
+          <div class="space-y-2">
+            <h2 class="font-bold text-4xl text-primary">Job Name</h2>
+            <p class="text-muted-foreground">Santienz Philippines Inc.</p>
+            <div class="flex flex-wrap gap-1">
+              <Badge>Remote</Badge>
+              <Badge>Technical Department</Badge>
+              <Badge>Head Office</Badge>
+            </div>
           </div>
+          <p class="text-muted-foreground">
+            Sample Job Description. Lorem, ipsum dolor sit amet consectetur
+            adipisicing elit. Facilis necessitatibus animi architecto.
+          </p>
+          <EnhancedButton
+            className="ml-auto mr-0"
+            effect="shineHover"
+            variant="tertiary"
+          >
+            Apply Now
+          </EnhancedButton>
         </div>
-        <p class="text-muted-foreground">
-          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Facilis necessitatibus animi architecto.
-        </p>
-        <EnhancedButton
-          className="ml-auto mr-0"
-          effect="shineHover"
-          variant="tertiary">Apply Now</EnhancedButton
-        >
-      </div>
-      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
-        <div class="space-y-2">
-          <h2 class="font-bold text-4xl text-primary">Another Job Name</h2>
-          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
-          <div class="flex flex-wrap gap-1">
-            <Badge>On-Site</Badge>
-            <Badge>Sales Department</Badge>
-            <Badge>Davao Office</Badge>
-          </div>
-        </div>
-        <p class="text-muted-foreground">
-          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Facilis necessitatibus animi architecto.
-        </p>
-        <EnhancedButton
-          className="ml-auto mr-0"
-          effect="shineHover"
-          variant="tertiary">Apply Now</EnhancedButton
-        >
-      </div>
-      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4">
-        <div class="space-y-2">
-          <h2 class="font-bold text-4xl text-primary">Third Job Name</h2>
-          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
-          <div class="flex flex-wrap gap-1">
-            <Badge>On-Site</Badge>
-            <Badge>IT Department</Badge>
-            <Badge>Head Office</Badge>
-          </div>
-        </div>
-        <p class="text-muted-foreground">
-          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Facilis necessitatibus animi architecto.
-        </p>
-        <EnhancedButton
-          className="ml-auto mr-0"
-          effect="shineHover"
-          variant="tertiary">Apply Now</EnhancedButton
-        >
-      </div>
-      <div class="bg-primary/10 rounded-xl p-4 flex flex-col gap-4 -mb-20">
-        <div class="space-y-2">
-          <h2 class="font-bold text-4xl text-primary">Last Job Name</h2>
-          <p class="text-muted-foreground">Santienz Philippines Inc.</p>
-          <div class="flex flex-wrap gap-1">
-            <Badge>Remote</Badge>
-            <Badge>Marketing Department</Badge>
-            <Badge>Cebu Office</Badge>
-          </div>
-        </div>
-        <p class="text-muted-foreground">
-          Sample Job Description. Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Facilis necessitatibus animi architecto.
-        </p>
-        <EnhancedButton
-          className="ml-auto mr-0"
-          effect="shineHover"
-          variant="tertiary">Apply Now</EnhancedButton
-        >
-      </div>
-    </div>
-  </section>
+      ))
+    }
+  </div>
 </MainLayout>

@@ -31,27 +31,26 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
     </SectionMainHeroOverlay>
   </SectionMainHero>
   <div
-    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 max-w-6xl mx-auto px-4 w-full -mt-20"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto xmd:px-4 w-full -mt-23 xmd:-mt-20 not-xmd:mb-1"
   >
     {
       PROJECT_INFO.sort((a, b) => a.title.localeCompare(b.title)).map(
         (project) => (
-          <section
-            class="aspect-square bg-primary/10 rounded-xl flex gap-4 flex-col h-full overflow-hidden"
-            id={project.title}
-          >
-            <Image
-              src={project.imgs[0]}
-              alt={project.title}
-              class="w-full object-cover shrink-0"
-            />
-            <h2 class="text-primary font-semibold px-4 truncate">
-              {project.title}
-            </h2>
-            <a href={`/projects/${project.slug}`} class="w-full mb-0 mt-auto ">
-              <Button className="w-full rounded-none">View</Button>
-            </a>
-          </section>
+          <a href={`/projects/${project.slug}`} class="w-full mb-0 mt-auto ">
+            <section
+              class="bg-primary/10 xmd:rounded-xl flex flex-col h-fit overflow-hidden relative"
+              id={project.title}
+            >
+              <Image
+                src={project.imgs[0]}
+                alt={project.title}
+                class="w-full object-cover shrink-0"
+              />
+              <h2 class="text-primary-foreground text-2xl lg:text-4xl font-semibold  p-2 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
+                {project.title}
+              </h2>
+            </section>
+          </a>
         ),
       )
     }

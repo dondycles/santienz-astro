@@ -21,4 +21,7 @@ export default defineConfig({
     "/careers": "/",
     "/testimonials": "/",
   },
+  server: {
+    port: 1117,
+  },
 });

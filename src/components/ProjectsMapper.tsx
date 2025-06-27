@@ -22,7 +22,7 @@ export default function ProjectsMapper() {
         key={project.slug}
       >
         <section
-          className="bg-primary/10 xmd:rounded-xl flex flex-col h-fit overflow-hidden relative"
+          className="bg-primary/10 rounded-xl flex flex-col h-fit overflow-hidden relative"
           id={project.title}
         >
           <img
@@ -30,7 +30,7 @@ export default function ProjectsMapper() {
             alt={project.title}
             className="w-full object-cover shrink-0"
           />
-          <h2 className="text-primary-foreground text-2xl lg:text-4xl font-semibold  p-2 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
+          <h2 className="text-primary-foreground text-2xl lg:text-4xl font-semibold p-3 xmd:p-4 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
             {project.title}
           </h2>
         </section>

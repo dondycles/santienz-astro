@@ -69,7 +69,7 @@ if (!data) return Astro.redirect("/projects");
         Explore our work on their project and how we helped bring their vision to
         life.`
     />
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto w-fit">
       <CTAButton
         className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
         variant="outline"
@@ -77,7 +77,7 @@ if (!data) return Astro.redirect("/projects");
         link="/contact-us"
       >
         <ChevronLeft />
-        <span>See all projects</span>
+        <span>Back to all projects</span>
       </CTAButton>
     </div>
     <SectionMainHeroOverlay>
@@ -89,7 +89,7 @@ if (!data) return Astro.redirect("/projects");
     </SectionMainHeroOverlay>
   </SectionMainHero>
   <section
-    class="mx-auto max-w-6xl px-4 text-muted-foreground -mt-16 mb-8 space-y-2"
+    class="mx-auto max-w-6xl px-4 text-muted-foreground -mt-10 mb-6 space-y-2"
   >
     <p>
       <span>
@@ -123,11 +123,11 @@ if (!data) return Astro.redirect("/projects");
       Other info: 8000sqm
     </p>
   </section>
-  <section class="max-w-6xl mx-auto xmd:px-4 grid gap-4 not-xmd:gap-1">
+  <section class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1">
     {
       data.imgs.map((img, i) => (
         <Image
-          class="xmd:rounded-xl not-xmd:last:-mb-23"
+          class="rounded-xl not-xmd:last:-mb-15"
           src={img}
           alt={`image-${i}-of-${data.slug}`}
         />

@@ -39,14 +39,15 @@ export default function CTAGetQuote({
   children?: React.ReactNode;
 }) {
   return (
-    <a href={link} target={target}>
-      <EnhancedButton
-        variant={variant}
-        effect={effect}
-        className={cn("relative z-20 ", className)}
-      >
+    <EnhancedButton
+      variant={variant}
+      effect={effect}
+      className={cn("relative z-20 ", className)}
+      asChild
+    >
+      <a href={link} target={target}>
         {children}
-      </EnhancedButton>
-    </a>
+      </a>
+    </EnhancedButton>
   );
 }

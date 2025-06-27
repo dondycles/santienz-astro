@@ -26,32 +26,37 @@ import CTAButton from "@/components/CTAButton";
     <H1AndP
       h="About Us"
       p="We are a proudly 100% Filipino-owned company, now in our 24th year of progressive operations. Over the years, we have successfully completed more than 1 million square meters of installations across the Philippines, demonstrating our commitment to quality, innovation, and nationwide service."
-      pClassName="text-left indent-8"
-    >
-      <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-12 max-w-48">
-        <CTAButton
-          link="/projects"
-          className="xmd:block hidden"
-          variant="tertiary"
-          effect="shineHover"
-        >
-          See Our Projects
-        </CTAButton>
-      </div>
-      <SectionMainHeroOverlay>
-        <Image
-          src={aboutUsBg}
-          alt="About Us Background"
-          class="absolute inset-0 w-full h-full object-cover blur-xs"
-        />
-      </SectionMainHeroOverlay>
-    </H1AndP>
+      pClassName="text-justify indent-8"
+    />
+
+    <div class="max-w-6xl mx-auto w-fit">
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
+        variant="outline"
+        effect="shineHover"
+        link="/projects"
+      >
+        See All Projects
+      </CTAButton>
+    </div>
+    <SectionMainHeroOverlay>
+      <Image
+        src={aboutUsBg}
+        alt="About Us Background"
+        class="absolute inset-0 w-full h-full object-cover blur-xs"
+      />
+    </SectionMainHeroOverlay>
   </SectionMainHero>
 
   <!-- History -->
-  <section class="space-y-16 px-4 max-w-6xl mx-auto">
-    <h2 class="font-bold text-4xl text-primary text-left mb-8">History</h2>
-    <History />
+  <section class="space-y-4 px-4 max-w-6xl mx-auto not-xmd:-mt-10">
+    <h2 class="font-bold text-4xl text-primary text-left xmd:text-center">
+      History
+    </h2>
+    <div>
+      <History />
+    </div>
+
     <!-- <div class="text-muted-foreground space-y-4 text-left">
       <p class="indent-8">
         Creative Analysis Sdn. Bhd was able to come up exactly with the same
@@ -68,46 +73,50 @@ import CTAButton from "@/components/CTAButton";
   </section>
 
   <!-- Our Commitment-->
-  <section class="mx-auto max-w-6xl space-y-4 px-4">
-    <h2 class="font-bold text-4xl text-primary mb-8">Our Commitment</h2>
-    <p class="text-muted-foreground text-left indent-8">
+  <section class="mx-auto max-w-6xl space-y-2 px-4 text-left xmd:text-center">
+    <h2 class="font-bold text-4xl text-primary">Our Commitment</h2>
+    <p class="text-muted-foreground text-justify indent-8">
       To continually provide the local construction and manufacturing industry
       with the latest advances in engineering methods, specifically in concrete
       floor repair, renovation and floor, roof protection systems.
     </p>
-    <p class="text-muted-foreground text-left indent-8">
+    <br />
+    <p class="text-muted-foreground text-justify indent-8">
       Truly, with our long line of advance technology products, which have
       gained popular acceptance among maintenance and construction engineer,
       Santienz Philippines, Inc. id destined to be a "household" name.
     </p>
-    <p class="text-muted-foreground text-left indent-8">
+    <br />
+
+    <p class="text-muted-foreground text-justify indent-8">
       Our company would like to come to you as a solution to your flooring and
       roofing problems.
     </p>
-    <p class="text-muted-foreground text-left indent-8">
+    <br />
+
+    <p class="text-muted-foreground text-justify indent-8">
       On this premise will Santienz Philippines, Inc. serve its Philippine
       partners towards progressive industrialization.
     </p>
   </section>
 
   <!-- Meet The Team -->
-  <section class="space-y-8 not-xmd:mb-1">
+  <section class="space-y-4 not-xmd:mb-1">
     <H2AndP
       h="Meet The Team"
       p="Our experienced leadership team brings together decades of construction expertise, innovative thinking, and unwavering commitment to excellence."
-      pClassName="indent-8 text-left"
-      hClassName="text-left"
+      pClassName="indent-8 text-justify"
     />
-    <div class="max-w-6xl mx-auto xmd:px-4 space-y-8">
-      <div class="space-y-4">
+    <div class="max-w-6xl mx-auto px-1 xmd:px-4 space-y-8">
+      <section class="space-y-4">
         <h3 class="text-primary font-semibold text-xl text-center">
           Directors
         </h3>
         <div
-          class="grid grid-cols-2 xmd:grid-cols-3 not-xmd:grid-rows-2 gap-1 h-fit"
+          class="grid grid-cols-2 xmd:grid-cols-3 not-xmd:grid-rows-2 gap-1 xmd:gap-4 h-fit"
         >
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square not-xmd:col-span-2 not-xmd:row-span-2"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-xmd:col-span-2 not-xmd:row-span-2"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -125,7 +134,7 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -143,7 +152,7 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -161,14 +170,16 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
         </div>
-      </div>
-      <div class="space-y-4">
+      </section>
+      <section class="space-y-4">
         <h3 class="text-primary font-semibold text-xl text-center">
           Department Heads
         </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 h-fit">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 xmd:gap-4 h-fit"
+        >
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -186,7 +197,7 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -204,7 +215,7 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -222,7 +233,7 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
           <div
-            class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/10 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -240,38 +251,38 @@ import CTAButton from "@/components/CTAButton";
             </p>
           </div>
         </div>
-      </div>
-      <div class="space-y-4">
+      </section>
+      <section class="space-y-4">
         <h3 class="text-primary font-semibold text-xl text-center">
           Our Team by the Numbers
         </h3>
-        <div class="grid gap-1 grid-cols-2 md:grid-cols-4">
+        <div class="grid gap-1 xmd:gap-4 grid-cols-2 md:grid-cols-4">
           <div
-            class="flex flex-col gap-2 z-20 bg-primary/10 p-4 xmd:rounded-xl"
+            class="flex flex-col gap-2 z-20 bg-primary/10 p-3 xmd:p-4 rounded-xl"
           >
             <div class="text-3xl md:text-6xl font-bold text-primary">50+</div>
             <div class="text-muted-foreground">Staffs</div>
           </div>
           <div
-            class="flex flex-col gap-2 z-20 bg-primary/10 p-4 xmd:rounded-xl"
+            class="flex flex-col gap-2 z-20 bg-primary/10 p-3 xmd:p-4 rounded-xl"
           >
             <div class="text-3xl md:text-6xl font-bold text-primary">20+</div>
             <div class="text-muted-foreground">Years of Experience</div>
           </div>
           <div
-            class="flex flex-col gap-2 z-20 bg-primary/10 p-4 xmd:rounded-xl"
+            class="flex flex-col gap-2 z-20 bg-primary/10 p-3 xmd:p-4 rounded-xl"
           >
             <div class="text-3xl md:text-6xl font-bold text-primary">100+</div>
             <div class="text-muted-foreground">Projects Completed</div>
           </div>
           <div
-            class="flex flex-col gap-2 z-20 bg-primary/10 p-4 xmd:rounded-xl"
+            class="flex flex-col gap-2 z-20 bg-primary/10 p-3 xmd:p-4 rounded-xl"
           >
             <div class="text-3xl md:text-6xl font-bold text-primary">60+</div>
             <div class="text-muted-foreground">Statisfied Clients</div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </section>
 </MainLayout>

@@ -5,7 +5,6 @@ import CTAButton from "@/components/CTAButton";
 import LinkButton from "@/components/LinkButton";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Header from "@/components/syntax/Header.astro";
-import { EnhancedButton } from "@/components/EnhancedButton";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
 import { PROJECT_INFO } from "@/lib/projects-info";
@@ -48,47 +47,44 @@ const featured_projects = [
     <H1AndP
       h="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
       p="Santienz Philippines Inc. is preferred by over 60 clients in manufacturing, food, and pharma sectors."
-    >
-      <div
-        class="mx-auto z-20 flex gap-1 flex-col sm:flex-row mt-12 max-w-48 sm:max-w-sm"
+    />
+    <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row w-fit">
+      <CTAButton
+        link="/about-us"
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex-1 xmd:block hidden"
+        effect="shineHover"
+        variant="tertiary"
       >
-        <a href="about-us" class="flex-1 xmd:block hidden">
-          <EnhancedButton
-            client:load
-            className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full"
-            effect="shineHover"
-            variant="tertiary">Learn More</EnhancedButton
-          >
-        </a>
-        <CTAButton
-          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex xmd:hidden"
-          variant="tertiary"
-          effect="shineHover"
-          link="/contact-us"
-        >
-          Request Quote
-        </CTAButton>
-        <CTAButton
-          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
-          variant="outline"
-          effect="shineHover"
-          link="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
-          target="_blank"
-        >
-          Play Video
-          <span>
-            <Play />
-          </span>
-        </CTAButton>
-      </div>
-    </H1AndP>
+        Learn More
+      </CTAButton>
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex-1 flex xmd:hidden"
+        variant="tertiary"
+        effect="shineHover"
+        link="/contact-us"
+      >
+        Request Quote
+      </CTAButton>
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full flex-1"
+        variant="outline"
+        effect="shineHover"
+        link="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/view"
+        target="_blank"
+      >
+        Play Video
+        <span>
+          <Play />
+        </span>
+      </CTAButton>
+    </div>
     <div
-      class="max-w-6xl px-4 mx-auto hidden md:grid gap-1 grid-cols-2 md:grid-cols-4 mt-8"
+      class="max-w-6xl px-1 xmd:px-4 mx-auto grid gap-1 grid-cols-2 md:grid-cols-4 mt-6"
     >
       {
         features.map((feature) => (
-          <div class="flex flex-col rounded-xl gap-2 z-20 bg-background/5 backdrop-blur-xs p-4">
-            <div class="text-3xl md:text-6xl font-bold text-tertiary">
+          <div class="flex flex-col rounded-xl z-20 bg-background/5 backdrop-blur-xs p-3 xmd:p-4">
+            <div class="text-2xl md:text-4xl font-bold text-tertiary">
               {feature.count}+
             </div>
             <div class="text-primary-foreground">{feature.title}</div>
@@ -96,6 +92,7 @@ const featured_projects = [
         ))
       }
     </div>
+
     <SectionMainHeroOverlay>
       <video
         src="AVP_2023.mp4"
@@ -131,13 +128,13 @@ const featured_projects = [
   </section> -->
 
   <!-- Featured Projects -->
-  <section class="flex flex-col gap-8">
+  <section class="space-y-4 not-xmd:-mt-10">
     <H2AndP
       h="Featured Projects"
       p="Take a look at some of our recent completed projects"
     />
     <div
-      class="grid gap-1 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl xmd:px-4"
+      class="grid gap-1 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl px-1 xmd:px-4"
     >
       {
         featured_projects.map((project, i) => (
@@ -145,10 +142,10 @@ const featured_projects = [
             href={`/projects/${project.slug}`}
             class={`overflow-hidden w-full relative
                 ${(i === 1 || i === 2) && "row-span-2"}
-                ${i === 0 && "xmd:rounded-tl-xl"}
-                ${i === 1 && "xmd:rounded-tr-xl"}
-                ${i === 2 && "xmd:rounded-bl-xl"}
-                ${i === 3 && "xmd:rounded-br-xl"}
+                ${i === 0 && "rounded-xl xmd:rounded-tl-xl"}
+                ${i === 1 && "rounded-xl xmd:rounded-tr-xl"}
+                ${i === 2 && "rounded-xl xmd:rounded-bl-xl"}
+                ${i === 3 && "rounded-xl xmd:rounded-br-xl"}
               `}
           >
             <Image
@@ -156,22 +153,24 @@ const featured_projects = [
               class="aspect-[2/1] h-full bg-primary object-cover"
               alt={project.title}
             />
-            <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-4 from-foreground/75 to-foreground/0 backdrop-blur-xs text-2xl font-bold text-primary-foreground truncate">
+            <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 backdrop-blur-xs text-2xl font-bold text-primary-foreground truncate">
               {project.title}
             </h3>
           </a>
         ))
       }
     </div>
-    <LinkButton href="/projects" title="View Projects" />
+    <div class="flex px-4">
+      <LinkButton href="/projects" title="View More Projects" />
+    </div>
   </section>
 
   <!-- About -->
-  <section class="flex flex-col gap-8">
+  <section class="space-y-4">
     <H2AndP
       h="About Santienz"
       p="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam perspiciatis omnis officia quibusdam odit veniam! Earum tempora quae aperiam enim nobis eius. Architecto iste deserunt eum non officiis a repellat."
-      pClassName="text-left indent-8"
+      pClassName="text-justify indent-8"
     />
 
     <div class="max-w-6xl xmd:px-4 mx-auto">
@@ -181,7 +180,9 @@ const featured_projects = [
         alt="basta"
       />
     </div>
-    <div class="flex flex-wrap justify-evenly gap-4 max-w-6xl px-4 mx-auto">
+    <div
+      class="flex flex-wrap justify-evenly gap-4 max-w-6xl w-fit px-4 mx-auto mt-8"
+    >
       <div>
         <Medal className="inline size-6 text-primary" />
         <h3 class="text-base text-muted-foreground inline">Certified</h3>
@@ -199,50 +200,56 @@ const featured_projects = [
         <h3 class="text-base text-muted-foreground inline">Reliable</h3>
       </div>
     </div>
-    <LinkButton href="/about-us" title="Read More About Us" />
+    <div class="flex px-4">
+      <LinkButton href="/about-us" title="Read More About Us" />
+    </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="flex flex-col gap-8">
+  <section class="space-y-4">
     <H2AndP h="What Our Clients Say" p="Hear from our satisfied customers" />
-    <InfiniteMovingCards
-      client:load
-      className="mx-auto max-w-6xl w-full"
-      items={[
-        {
-          name: "April Pearl Fedalgo",
-          quote:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-          title: "Ma'am Inasal",
-        },
-        {
-          name: "Elijah Redondo",
-          quote:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-          title: "Angel's Burger",
-        },
-        {
-          name: "John Rod Dondoyano",
-          quote:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-          title: "Company",
-        },
-        {
-          name: "Client Name",
-          quote:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-          title: "Client's Company",
-        },
-        {
-          name: "Client Name",
-          quote:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-          title: "Client's Company",
-        },
-      ]}
-      direction="right"
-      speed="slow"
-    />
-    <LinkButton href="/testimonials" title="View More Testimonials" />
+    <div class="max-w-6xl xmd:px-4 mx-auto">
+      <InfiniteMovingCards
+        client:load
+        className="mx-auto max-w-6xl w-full"
+        items={[
+          {
+            name: "April Pearl Fedalgo",
+            quote:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+            title: "Ma'am Inasal",
+          },
+          {
+            name: "Elijah Redondo",
+            quote:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+            title: "Angel's Burger",
+          },
+          {
+            name: "John Rod Dondoyano",
+            quote:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+            title: "Company",
+          },
+          {
+            name: "Client Name",
+            quote:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+            title: "Client's Company",
+          },
+          {
+            name: "Client Name",
+            quote:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
+            title: "Client's Company",
+          },
+        ]}
+        direction="right"
+        speed="slow"
+      />
+    </div>
+    <div class="flex px-4">
+      <LinkButton href="/testimonials" title="View More Testimonials" />
+    </div>
   </section>
 </MainLayout>

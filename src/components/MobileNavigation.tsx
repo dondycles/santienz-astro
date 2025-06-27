@@ -80,7 +80,16 @@ export default function MobileNavigation({
           </Button>
         </div>
         <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted border-t-1 p-4 text-sm text-muted-foreground">
-          <CTAGetQuote text="Contact Us" style={`${hideCTA && "hidden"}`} />
+          {hideCTA ? null : (
+            <CTAGetQuote
+              text="Contact Us"
+              link="/contact-us"
+              className="w-full"
+              effect="shineHover"
+              variant="tertiary"
+            />
+          )}
+
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=santienz@gmail.com"
             target="_blank"

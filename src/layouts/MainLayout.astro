@@ -2,6 +2,7 @@
 interface Props {
   desc: string;
   title: string;
+  hideCTACard?: boolean;
 }
 import CTACard from "@/components/CTACard.astro";
 import "../styles/global.css";
@@ -9,7 +10,7 @@ import Footer from "@/components/syntax/Footer.astro";
 import Main from "@/components/syntax/Main.astro";
 import { Toaster } from "@/components/ui/sonner";
 
-const { desc, title } = Astro.props;
+const { desc, title, hideCTACard = false } = Astro.props;
 ---
 
 <html lang="en">
@@ -41,9 +42,9 @@ const { desc, title } = Astro.props;
   >
     <Main>
       <slot />
-      <CTACard />
+      {hideCTACard ? null : <CTACard />}
+      <Footer />
+      <Toaster client:load richColors={true} />
     </Main>
-    <Footer />
-    <Toaster client:load richColors={true} />
   </body>
 </html>

@@ -19,7 +19,7 @@ export default function InputWithStartIcon({
       <Input
         id={id}
         className={cn(
-          "peer ps-9 text-foreground placeholder:text-foreground",
+          "peer ps-9 text-foreground placeholder:text-muted-foreground",
           className,
         )}
         name={name}

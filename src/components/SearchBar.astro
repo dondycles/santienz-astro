@@ -4,7 +4,11 @@ import InputWithStartIcon from "@/components/InputWithStartIcon";
 
 <div class="max-w-6xl mx-auto w-full px-4 z-20 -mt-20">
   <form id="search-form">
-    <InputWithStartIcon className="rounded-xl" id="search-input" name="query" />
+    <InputWithStartIcon
+      className="rounded-xl border-primary bg-primary/10 focus-visible:ring-primary"
+      id="search-input"
+      name="query"
+    />
   </form>
 </div>
 <script>
@@ -20,7 +24,7 @@ import InputWithStartIcon from "@/components/InputWithStartIcon";
       event.preventDefault();
       const formData = new FormData(form);
       const query = formData.get("query");
-      navigate("/projects?query=" + query);
+      navigate("/projects/?query=" + query);
     });
   }
 </script>

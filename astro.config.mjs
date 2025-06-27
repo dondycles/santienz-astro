@@ -14,4 +14,7 @@ export default defineConfig({
 
   integrations: [react()],
   adapter: vercel(),
+  devToolbar: {
+    enabled: true,
+  },
 });

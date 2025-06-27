@@ -5,7 +5,7 @@ export default function ProjectsMapper() {
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window?.location?.search);
+    const searchParams = new URLSearchParams(window.location.search);
     const queryData = searchParams.get("query");
     if (queryData) setQuery(queryData);
   }, [query, setQuery]);

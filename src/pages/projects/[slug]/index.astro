@@ -97,30 +97,24 @@ if (!data) return Astro.redirect("/projects");
       </span>
       Client: {data.title}
     </p>
-    <p>
+    <p hidden={!data.address}>
       <span>
         <MapPin className="inline mr-1 size-5" />
       </span>
-      Location: Sample Location
-    </p>
-    <p>
-      <span>
-        <Calendar className="inline mr-1  size-5" />
-      </span>
-      Completed on: {new Date().toLocaleDateString()}
+      Location: {data.address}
     </p>
     <p>
       <span>
         <Tag className="inline mr-1  size-5" />
       </span>
 
-      Products used: Polyurethane
+      Products used: Polyurethane Flooring System
     </p>
-    <p>
+    <p hidden={!data.sqm}>
       <span>
         <Info className="inline mr-1  size-5" />
       </span>
-      Other info: 8000sqm
+      Other info: {data.sqm ? `${data.sqm}sqm` : null}
     </p>
   </section>
   <section class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1">

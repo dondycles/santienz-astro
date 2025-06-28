@@ -128,6 +128,8 @@ export const PROJECT_INFO = [
     slug: "antartica-cold-storage",
     title: "Antartica Cold Storage",
     imgs: ANTARTICA_IMGS,
+    address: "1618 Advincula Ave., Kawit, 4104 Cavite",
+    sqm: 8000,
   },
   {
     slug: "corpbay-realty-corp",
@@ -138,8 +140,16 @@ export const PROJECT_INFO = [
     slug: "deckta-pacific-equities-inc",
     title: "Deckta Pacific Equities Inc",
     imgs: DECKTA_IMGS,
+    address: "268 C Raymundo Avenue, Pasig City",
+    sqm: 4000,
   },
-  { slug: "delimondo", title: "Delimondo", imgs: DELIMONDO_IMGS },
+  {
+    slug: "delimondo",
+    title: "Delimondo",
+    imgs: DELIMONDO_IMGS,
+    address: "Tanza, Cavite",
+    sqm: 6000,
+  },
   {
     slug: "first-inland-kingdom-cold-storage",
     title: "First Inland Kingdom Cold Storage",
@@ -149,6 +159,7 @@ export const PROJECT_INFO = [
     slug: "five-s-vehicle-inspection-center",
     title: "Five S Vehicle Inspection Center",
     imgs: FIVE_S_IMGS,
+    address: "Cabanatuan, Nueva Ecija",
   },
   {
     slug: "frabelle-group-of-companies",
@@ -159,8 +170,16 @@ export const PROJECT_INFO = [
     slug: "jentec-storage-inc",
     title: "Jentec Storage Inc",
     imgs: JENTEC_IMGS,
+    address: "C Raymundo Avenue, Pasig City",
+    sqm: 6000,
   },
-  { slug: "mets-logistics-inc", title: "METS Logistics Inc", imgs: METS_IMGS },
+  {
+    slug: "mets-logistics-inc",
+    title: "METS Logistics Inc",
+    imgs: METS_IMGS,
+    address: "Governor's Drive, Bancal, Carmona, Cavite",
+    sqm: 20000,
+  },
   {
     slug: "nordic-atlantic-logistic-inc",
     title: "Nordic Atlantic Logistic Inc",
@@ -170,6 +189,7 @@ export const PROJECT_INFO = [
     slug: "pinnacle-cold-storage-solution",
     title: "Pinnacle Cold Storage Solution",
     imgs: PINNACLE_IMGS,
+    sqm: 8000,
   },
   {
     slug: "plx-dry-and-cold-logistics-hub",
@@ -181,8 +201,20 @@ export const PROJECT_INFO = [
     title: "Pure Logistics Express Inc",
     imgs: PURE_IMGS,
   },
-  { slug: "quaensa-foods-inc", title: "Quaensa Foods Inc", imgs: QUAENSA_IMGS },
-  { slug: "royal-cargo-inc", title: "Royal Cargo Inc", imgs: ROYAL_CARGO_IMGS },
+  {
+    slug: "quaensa-foods-inc",
+    title: "Quaensa Foods Inc",
+    imgs: QUAENSA_IMGS,
+    address: "Interior Provincial Road, Brgy. Pulong Gubat, Balagtas, Bulcan",
+    sqm: 8000,
+  },
+  {
+    slug: "royal-cargo-inc",
+    title: "Royal Cargo Inc",
+    imgs: ROYAL_CARGO_IMGS,
+    address: "North Hub Bulacan",
+    sqm: 10000,
+  },
   {
     slug: "royale-cold-storage",
     title: "Royale Cold Storage",
@@ -202,10 +234,12 @@ export const PROJECT_INFO = [
     slug: "viking-cold-storage",
     title: "Viking Cold Storage",
     imgs: VIKING_IMGS,
+    sqm: 5000,
   },
   {
     slug: "zuru-argo-industrial-corp",
     title: "Zuru Argo Industrial Corp",
     imgs: ZURU_IMGS,
+    sqm: 5000,
   },
 ];

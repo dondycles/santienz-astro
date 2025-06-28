@@ -3,7 +3,6 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { BicepsFlexed, CheckCircle, Medal, Play, Users } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import LinkButton from "@/components/LinkButton";
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Header from "@/components/syntax/Header.astro";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
@@ -13,7 +12,7 @@ import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHero
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
-
+import aboutUsBg from "@/images/about-us-bg.jpg";
 const features: {
   count: number;
   title: string;
@@ -48,7 +47,7 @@ const featured_projects = [
       h="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
       p="Santienz Philippines Inc. is preferred by over 60 clients in manufacturing, food, and pharma sectors."
     />
-    <div class="mx-auto z-20 flex gap-1 flex-col sm:flex-row w-fit">
+    <div class="mx-auto z-20 flex gap-1 xmd:gap-4 flex-col sm:flex-row w-fit">
       <CTAButton
         link="/about-us"
         className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex-1 xmd:block hidden"
@@ -79,7 +78,7 @@ const featured_projects = [
       </CTAButton>
     </div>
     <div
-      class="max-w-6xl px-1 xmd:px-4 mx-auto grid gap-1 grid-cols-2 md:grid-cols-4 mt-6"
+      class="max-w-6xl px-1 xmd:px-4 mx-auto grid gap-1 xmd:gap-4 grid-cols-2 md:grid-cols-4 mt-6"
     >
       {
         features.map((feature) => (
@@ -131,10 +130,10 @@ const featured_projects = [
   <section class="space-y-4 not-xmd:-mt-10">
     <H2AndP
       h="Featured Projects"
-      p="Take a look at some of our recent completed projects"
+      p="Take a look at some of our completed projects"
     />
     <div
-      class="grid gap-1 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl px-1 xmd:px-4"
+      class="grid gap-1 xmd:gap-4 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl px-1 xmd:px-4"
     >
       {
         featured_projects.map((project, i) => (
@@ -169,15 +168,15 @@ const featured_projects = [
   <section class="space-y-4">
     <H2AndP
       h="About Santienz"
-      p="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam perspiciatis omnis officia quibusdam odit veniam! Earum tempora quae aperiam enim nobis eius. Architecto iste deserunt eum non officiis a repellat."
+      p="Over the years, we have successfully completed more than 1 million square meters of installations across the Philippines, demonstrating our commitment to quality, innovation, and nationwide service."
       pClassName="text-justify indent-8"
     />
 
-    <div class="max-w-6xl xmd:px-4 mx-auto">
-      <img
-        src="https://fellow.app/wp-content/uploads/2022/11/Team-Member-Strengths2.jpg"
-        class="aspect-[2/1] w-full object-cover xmd:rounded-xl"
-        alt="basta"
+    <div class="max-w-6xl px-1 xmd:px-4 mx-auto">
+      <Image
+        src={aboutUsBg}
+        class="aspect-[2/1] w-full object-cover rounded-xl"
+        alt="About Us Image"
       />
     </div>
     <div
@@ -206,7 +205,7 @@ const featured_projects = [
   </section>
 
   <!-- Testimonials -->
-  <section class="space-y-4">
+  <!-- <section class="space-y-4">
     <H2AndP h="What Our Clients Say" p="Hear from our satisfied customers" />
     <div class="max-w-6xl xmd:px-4 mx-auto">
       <InfiniteMovingCards
@@ -251,5 +250,5 @@ const featured_projects = [
     <div class="flex px-4">
       <LinkButton href="/testimonials" title="View More Testimonials" />
     </div>
-  </section>
+  </section> -->
 </MainLayout>

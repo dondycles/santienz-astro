@@ -5,13 +5,15 @@ import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
 import aboutUsBg from "@/images/about-us-bg.jpg";
 import { Image } from "astro:assets";
-import { Hammer, Heart, Medal, ShieldCheck, User } from "lucide-react";
+import { User } from "lucide-react";
 import History from "@/components/History";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 import CTAButton from "@/components/CTAButton";
+import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
+import { CERTS_INFO } from "@/lib/certs-info";
 ---
 
 <MainLayout
@@ -101,7 +103,7 @@ import CTAButton from "@/components/CTAButton";
   </section>
 
   <!-- Meet The Team -->
-  <section class="space-y-4 not-xmd:mb-1">
+  <section class="space-y-4">
     <H2AndP
       h="Meet The Team"
       p="Our experienced leadership team brings together decades of construction expertise, innovative thinking, and unwavering commitment to excellence."
@@ -252,7 +254,7 @@ import CTAButton from "@/components/CTAButton";
           </div>
         </div>
       </section>
-      <section class="space-y-4">
+      <!-- <section class="space-y-4">
         <h3 class="text-primary font-semibold text-xl text-center">
           Our Team by the Numbers
         </h3>
@@ -282,7 +284,19 @@ import CTAButton from "@/components/CTAButton";
             <div class="text-muted-foreground">Statisfied Clients</div>
           </div>
         </div>
-      </section>
+      </section> -->
     </div>
+  </section>
+
+  <section class="space-y-4 not-xmd:mb-1">
+    <H2AndP
+      h="Certificates"
+      p="Our certifications reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
+      pClassName="indent-8 text-justify"
+    />
+    <InfiniteMovingCards
+      client:load
+      items={CERTS_INFO.map((cert) => ({ ...cert, img: cert.img.src }))}
+    />
   </section>
 </MainLayout>

@@ -95,7 +95,7 @@ export const InfiniteMovingCards = ({
                   className="w-full aspect-[2/3] object-cover object-top rounded-lg"
                 />
               </div>
-              <h3 className="px-1 xmd:px-4 pb-1 pt-1 xmd:pt-0 xmd:pb-4 text-primary font-semibold">
+              <h3 className="px-1 xmd:px-4 pb-1 pt-1 xmd:pt-0 xmd:pb-4 text-primary font-semibold text-center">
                 {item.title}
               </h3>
             </li>

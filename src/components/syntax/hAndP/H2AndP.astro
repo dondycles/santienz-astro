@@ -4,7 +4,7 @@ import H2 from "./H2.astro";
 
 interface Props {
   h: string;
-  p: string;
+  p?: string;
   hClassName?: string;
   pClassName?: string;
 }
@@ -18,8 +18,6 @@ const { h, p, hClassName, pClassName } = Astro.props;
   )}
 >
   <H2 h={h} />
-  <p class={cn("text-muted-foreground", pClassName)}>
-    {p}
-  </p>
+  {p ? <p class={cn("text-muted-foreground", pClassName)}>{p}</p> : null}
   <slot />
 </div>

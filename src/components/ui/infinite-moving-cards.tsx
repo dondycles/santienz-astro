@@ -83,7 +83,7 @@ export const InfiniteMovingCards = ({
         )}
       >
         {items.map((item, idx) => (
-          <a href={item.img} key={idx}>
+          <a href={item.img} key={idx} target="_blank">
             <li
               className="relative h-full w-[244px] xmd:w-[312px] max-w-full shrink-0 rounded-xl bg-primary/10  dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
               key={item.title}

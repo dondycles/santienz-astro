@@ -1,0 +1,47 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/syntax/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import { CERTS_INFO } from "@/lib/certs-info";
+import { Image } from "astro:assets";
+---
+
+<MainLayout
+  title="Certificates of  Santienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  desc="Our certifications reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
+>
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideAboutUs client:load />
+    <MobileNavigation hideAboutUs client:load />
+  </Header>
+  <SectionMainHero>
+    <H1AndP
+      h="Certificates"
+      p="Our certifications reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
+      pClassName="text-justify indent-8"
+    />
+    <SectionMainHeroOverlay>
+      <Grid3DBg />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
+  {
+    CERTS_INFO.map((cert) => (
+      <section class="space-y-4 px-1 xmd:px-4">
+        <div class="mx-auto max-w-6xl space-y-2 px-4 text-left xmd:text-center">
+          <h2 class="font-bold text-2xl text-primary">{cert.title}</h2>
+        </div>
+        <div class="max-w-2xl p-1 xmd:p-4 rounded-xl mx-auto bg-primary/10">
+          <a href={cert.img.src} target="_blank">
+            <Image src={cert.img} alt={cert.title} class="rounded-lg" />
+          </a>
+        </div>
+      </section>
+    ))
+  }
+</MainLayout>

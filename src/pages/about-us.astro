@@ -14,6 +14,7 @@ import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 import CTAButton from "@/components/CTAButton";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { CERTS_INFO } from "@/lib/certs-info";
+import LinkButton from "@/components/LinkButton";
 ---
 
 <MainLayout
@@ -299,6 +300,9 @@ import { CERTS_INFO } from "@/lib/certs-info";
         client:load
         items={CERTS_INFO.map((cert) => ({ ...cert, img: cert.img.src }))}
       />
+    </div>
+    <div class="flex px-4">
+      <LinkButton href="/certificates" title="See Details" />
     </div>
   </section>
 </MainLayout>

@@ -30,7 +30,6 @@ export default function ProjectsMapper() {
             alt={project.title}
             className="w-full object-cover shrink-0"
           />
-          1
           <h2 className="text-primary-foreground text-2xl lg:text-4xl font-semibold p-3 xmd:p-4 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
             {project.title}
           </h2>

@@ -152,6 +152,7 @@ const featured_projects = [
               src={project.imgs[0]}
               class="aspect-[2/1] h-full bg-primary object-cover"
               alt={project.title}
+              loading="eager"
             />
             <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 backdrop-blur-xs text-2xl font-bold text-primary-foreground truncate">
               {project.title}
@@ -177,7 +178,7 @@ const featured_projects = [
       <Image
         src={aboutUsBg}
         class="aspect-[2/1] w-full object-cover rounded-xl"
-        alt="About Us Image"
+        alt="About Us"
       />
     </div>
     <div

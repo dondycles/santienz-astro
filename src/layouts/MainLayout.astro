@@ -44,7 +44,7 @@ const { desc, title, hideCTACard = false } = Astro.props;
       <slot />
       {hideCTACard ? null : <CTACard />}
       <Footer />
-      <Toaster client:load richColors={true} />
     </Main>
+    <Toaster client:load richColors={true} />
   </body>
 </html>

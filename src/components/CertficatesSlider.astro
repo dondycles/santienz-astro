@@ -1,0 +1,23 @@
+---
+import { CERTS_INFO } from "@/lib/certs-info";
+import LinkButton from "./LinkButton";
+import H2AndP from "./syntax/hAndP/H2AndP.astro";
+import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
+---
+
+<section class="space-y-4 not-xmd:mb-1">
+  <H2AndP
+    h="Certificates"
+    p="Our certifications reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
+    pClassName="indent-8 text-justify"
+  />
+  <div class="max-w-6xl mx-auto px-1 xmd:px-4">
+    <InfiniteMovingCards
+      client:load
+      items={CERTS_INFO.map((cert) => ({ ...cert, img: cert.img.src }))}
+    />
+  </div>
+  <div class="flex px-4">
+    <LinkButton href="/certificates" title="See Details" />
+  </div>
+</section>

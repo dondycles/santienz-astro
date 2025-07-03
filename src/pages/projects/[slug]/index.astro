@@ -107,8 +107,18 @@ if (!data) return Astro.redirect("/projects");
       <span>
         <Tag className="inline mr-1  size-5" />
       </span>
-
-      Products used: Polyurethane Flooring System
+      Products used: {
+        data.products.map((prod, i) => (
+          <span>
+            <a
+              href={`/products#${prod.id}`}
+              class="text-primary hover:underline"
+            >
+              {data.products.length - 1 !== i ? `${prod.title}, ` : prod.title}
+            </a>
+          </span>
+        ))
+      }
     </p>
     <p hidden={!data.sqm}>
       <span>

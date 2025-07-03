@@ -130,11 +130,13 @@ export const PROJECT_INFO = [
     imgs: ANTARTICA_IMGS,
     address: "1618 Advincula Ave., Kawit, 4104 Cavite",
     sqm: 8000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "corpbay-realty-corp",
     title: "Corpbay Realty Corp",
     imgs: CORPBAY_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "deckta-pacific-equities-inc",
@@ -142,6 +144,7 @@ export const PROJECT_INFO = [
     imgs: DECKTA_IMGS,
     address: "268 C Raymundo Avenue, Pasig City",
     sqm: 4000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "delimondo",
@@ -149,22 +152,26 @@ export const PROJECT_INFO = [
     imgs: DELIMONDO_IMGS,
     address: "Tanza, Cavite",
     sqm: 6000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "first-inland-kingdom-cold-storage",
     title: "First Inland Kingdom Cold Storage",
     imgs: FIRST_LAND_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "five-s-vehicle-inspection-center",
     title: "Five S Vehicle Inspection Center",
     imgs: FIVE_S_IMGS,
     address: "Cabanatuan, Nueva Ecija",
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "frabelle-group-of-companies",
     title: "Frabelle Group of Companies",
     imgs: FRABELLE_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "jentec-storage-inc",
@@ -172,6 +179,7 @@ export const PROJECT_INFO = [
     imgs: JENTEC_IMGS,
     address: "C Raymundo Avenue, Pasig City",
     sqm: 6000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "mets-logistics-inc",
@@ -179,27 +187,32 @@ export const PROJECT_INFO = [
     imgs: METS_IMGS,
     address: "Governor's Drive, Bancal, Carmona, Cavite",
     sqm: 20000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "nordic-atlantic-logistic-inc",
     title: "Nordic Atlantic Logistic Inc",
     imgs: NORDIC_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "pinnacle-cold-storage-solution",
     title: "Pinnacle Cold Storage Solution",
     imgs: PINNACLE_IMGS,
     sqm: 8000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "plx-dry-and-cold-logistics-hub",
     title: "PLX Dry and Cold Logistics Hub",
     imgs: PLX_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "pure-logistics-express-inc",
     title: "Pure Logistics Express Inc",
     imgs: PURE_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "quaensa-foods-inc",
@@ -207,6 +220,7 @@ export const PROJECT_INFO = [
     imgs: QUAENSA_IMGS,
     address: "Interior Provincial Road, Brgy. Pulong Gubat, Balagtas, Bulcan",
     sqm: 8000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "royal-cargo-inc",
@@ -214,32 +228,38 @@ export const PROJECT_INFO = [
     imgs: ROYAL_CARGO_IMGS,
     address: "North Hub Bulacan",
     sqm: 10000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "royale-cold-storage",
     title: "Royale Cold Storage",
     imgs: ROYALE_COLD_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "san-miguel-foods-inc",
     title: "San Miguel Foods Inc",
     imgs: SAN_MIGUEL_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "starkson-realty-inc",
     title: "Starkson Realty Inc",
     imgs: STARKSON_IMGS,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "viking-cold-storage",
     title: "Viking Cold Storage",
     imgs: VIKING_IMGS,
     sqm: 5000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
   {
     slug: "zuru-argo-industrial-corp",
     title: "Zuru Argo Industrial Corp",
     imgs: ZURU_IMGS,
     sqm: 5000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
 ];

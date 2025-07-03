@@ -24,4 +24,13 @@ export default defineConfig({
   server: {
     port: 1117,
   },
+  output: "server",
+  image: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cmvuenlcht.ufs.sh",
+      },
+    ],
+  },
 });

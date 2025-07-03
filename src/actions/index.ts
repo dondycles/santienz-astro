@@ -1,6 +1,7 @@
 import { ActionError, defineAction } from "astro:actions";
 import { Resend } from "resend";
 import { z } from "astro:schema";
+import { UTApi } from "uploadthing/server";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const formSchema = z.object({

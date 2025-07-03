@@ -3,53 +3,21 @@ import DesktopNavigation from "@/components/DesktopNavigation";
 import Header from "@/components/syntax/Header.astro";
 import MobileNavigation from "@/components/MobileNavigation";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { PROJECT_INFO } from "@/lib/projects-info";
-import { Image } from "astro:assets";
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import grid3dBackground from "@/images/grid_3d.png";
-import { Calendar, ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
+import { ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
+import { supabase } from "@/db/supabase";
+import { Image } from "astro:assets";
 
-export function getStaticPaths() {
-  return [
-    { params: { slug: "antartica-cold-storage" } },
-    { params: { slug: "corpbay-realty-corp" } },
-    { params: { slug: "deckta-pacific-equities-inc" } },
-    { params: { slug: "delimondo" } },
-    {
-      params: {
-        slug: "first-inland-kingdom-cold-storage",
-      },
-    },
-    {
-      params: {
-        slug: "five-s-vehicle-inspection-center",
-      },
-    },
-    { params: { slug: "frabelle-group-of-companies" } },
-    { params: { slug: "jentec-storage-inc" } },
-    { params: { slug: "mets-logistics-inc" } },
-    { params: { slug: "nordic-atlantic-logistic-inc" } },
-    {
-      params: { slug: "pinnacle-cold-storage-solution" },
-    },
-    {
-      params: { slug: "plx-dry-and-cold-logistics-hub" },
-    },
-    { params: { slug: "pure-logistics-express-inc" } },
-    { params: { slug: "quaensa-foods-inc" } },
-    { params: { slug: "royal-cargo-inc" } },
-    { params: { slug: "royale-cold-storage" } },
-    { params: { slug: "san-miguel-foods-inc" } },
-    { params: { slug: "starkson-realty-inc" } },
-    { params: { slug: "viking-cold-storage" } },
-    { params: { slug: "zuru-argo-industrial-corp" } },
-  ];
-}
 const { slug } = Astro.params;
-const data = PROJECT_INFO.find((project) => project.slug === slug);
+const { data } = await supabase
+  .from("projects")
+  .select()
+  .eq("slug", slug ?? "")
+  .single();
 if (!data) return Astro.redirect("/projects");
 ---
 
@@ -74,7 +42,7 @@ if (!data) return Astro.redirect("/projects");
         className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full"
         variant="outline"
         effect="shineHover"
-        link="/contact-us"
+        link="/projects"
       >
         <ChevronLeft />
         <span>Back to all projects</span>
@@ -82,9 +50,11 @@ if (!data) return Astro.redirect("/projects");
     </div>
     <SectionMainHeroOverlay>
       <Image
-        src={data.imgs[0] ?? grid3dBackground}
-        alt="Grid 3D Background"
+        src={(data.imgs as string[])[0]}
+        alt={data.title ? data.title : "Grid 3D Background"}
         class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
+        quality="low"
+        inferSize
       />
     </SectionMainHeroOverlay>
   </SectionMainHero>
@@ -108,19 +78,21 @@ if (!data) return Astro.redirect("/projects");
         <Tag className="inline mr-1  size-5" />
       </span>
       Products used: {
-        data.products.map((prod, i) => (
+        (data.products as { id: string; title: string }[]).map((prod, i) => (
           <span>
             <a
               href={`/products#${prod.id}`}
               class="text-primary hover:underline"
             >
-              {data.products.length - 1 !== i ? `${prod.title}, ` : prod.title}
+              {(data.products as string[]).length - 1 !== i
+                ? `${prod.title}, `
+                : prod.title}
             </a>
           </span>
         ))
       }
     </p>
-    <p hidden={!data.sqm}>
+    <p hidden <p hidden={!data.sqm}>
       <span>
         <Info className="inline mr-1  size-5" />
       </span>
@@ -129,11 +101,13 @@ if (!data) return Astro.redirect("/projects");
   </section>
   <section class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1">
     {
-      data.imgs.map((img, i) => (
+      data.imgs?.map((img, i) => (
         <Image
           class="rounded-xl not-xmd:last:-mb-15"
-          src={img}
+          src={img as string}
           alt={`image-${i}-of-${data.slug}`}
+          quality="mid"
+          inferSize
         />
       ))
     }

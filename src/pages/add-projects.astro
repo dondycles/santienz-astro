@@ -1,0 +1,29 @@
+---
+import { ImageUploader } from "@/components/ImageUploader";
+import { supabase } from "@/db/supabase";
+import { PROJECT_INFO } from "@/lib/projects-info";
+const { data } = await supabase
+  .from("projects")
+  .select("*")
+  .order("title", { ascending: true });
+---
+
+<form action="/api/addprojects" method="post">
+  <button type="submit">Add Projects</button>
+</form>
+
+<!-- {
+  PROJECT_INFO?.map((project) => (
+    <div>
+      <h1>{project.title}</h1>
+      {project.imgs?.map((img, i) => (
+        <img
+          class="h-12 aspect-video"
+          src={img.src}
+          alt={`image-${i}-of-${project.slug}`}
+        />
+      ))}
+    </div>
+  ))
+} -->
+<ImageUploader client:load />

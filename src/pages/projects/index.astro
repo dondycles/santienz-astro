@@ -8,9 +8,18 @@ import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHero
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import Grid3DBg from "@/components/Grid3DBg.astro";
 import SearchBar from "@/components/SearchBar.astro";
-import { PROJECT_INFO } from "@/lib/projects-info";
-import { Image } from "astro:assets";
-import ProjectsMapper from "@/components/ProjectsMapper";
+import ProjectsMapper from "@/components/ProjectsMapper.astro";
+// import {
+//   Table,
+//   TableBody,
+//   TableCaption,
+//   TableCell,
+//   TableHead,
+//   TableHeader,
+//   TableRow,
+// } from "@/components/ui/table";
+// import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
+// import { type PROJECT_INFO } from "@/lib/projects-info";
 ---
 
 <MainLayout
@@ -35,6 +44,52 @@ import ProjectsMapper from "@/components/ProjectsMapper";
   <div
     class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto px-1 xmd:px-4 w-full -mt-10 not-xmd:mb-1"
   >
-    <ProjectsMapper client:load />
+    <ProjectsMapper />
   </div>
+  <!-- <section class="space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
+    <H2AndP h="Other Finished Projects" />
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Client</TableHead>
+          <TableHead>Location</TableHead>
+          <TableHead>Products Used</TableHead>
+          <TableHead>Area</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          projects.data
+            ?.filter((project) => !project.imgs)
+            .map((project) => (
+              <TableRow>
+                <TableCell className="font-medium">{project.title}</TableCell>
+                <TableCell>{project.address}</TableCell>
+                <TableCell>
+                  {(
+                    project.products as (typeof PROJECT_INFO)[number]["products"]
+                  )?.map((product, i) => (
+                    <span>
+                      <a
+                        href={`/products#${product.id}`}
+                        class="text-primary hover:underline"
+                      >
+                        {(
+                          project.products as (typeof PROJECT_INFO)[number]["products"]
+                        )?.length -
+                          1 !==
+                        i
+                          ? `${product.title}, `
+                          : product.title}
+                      </a>
+                    </span>
+                  ))}
+                </TableCell>
+                <TableCell>{project.sqm}sqm</TableCell>
+              </TableRow>
+            ))
+        }
+      </TableBody>
+    </Table>
+  </section> -->
 </MainLayout>

@@ -27,11 +27,23 @@ const features: {
   { count: 50, title: "Team Members 👥" },
 ];
 
-const featured_projects = [
-  { ...PROJECT_INFO[0], imgs: [PROJECT_INFO[0].imgs[2]] },
-  { ...PROJECT_INFO[3], imgs: [PROJECT_INFO[3].imgs[3]] },
-  { ...PROJECT_INFO[5], imgs: [PROJECT_INFO[5].imgs[2]] },
-  { ...PROJECT_INFO[14], imgs: [PROJECT_INFO[14].imgs[3]] },
+const featured_projects: typeof PROJECT_INFO = [
+  {
+    ...PROJECT_INFO[0],
+    imgs: PROJECT_INFO[0].imgs ? [PROJECT_INFO[0].imgs[2]] : null,
+  },
+  {
+    ...PROJECT_INFO[3],
+    imgs: PROJECT_INFO[3].imgs ? [PROJECT_INFO[3].imgs[3]] : null,
+  },
+  {
+    ...PROJECT_INFO[5],
+    imgs: PROJECT_INFO[5].imgs ? [PROJECT_INFO[5].imgs[2]] : null,
+  },
+  {
+    ...PROJECT_INFO[14],
+    imgs: PROJECT_INFO[14].imgs ? [PROJECT_INFO[14].imgs[3]] : null,
+  },
 ];
 ---
 
@@ -80,7 +92,6 @@ const featured_projects = [
         ))
       }
     </div>
-
     <SectionMainHeroOverlay>
       <video
         src="AVP_2023.mp4"
@@ -125,28 +136,27 @@ const featured_projects = [
       class="grid gap-1 xmd:gap-4 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl px-1 xmd:px-4"
     >
       {
-        featured_projects.map((project, i) => (
-          <a
-            href={`/projects/${project.slug}`}
-            class={`overflow-hidden w-full relative
+        featured_projects.map((project, i) => {
+          if (project.imgs)
+            return (
+              <a
+                href={`/projects/${project.slug}`}
+                class={`overflow-hidden w-full relative rounded-xl
                 ${(i === 1 || i === 2) && "row-span-2"}
-                ${i === 0 && "rounded-xl xmd:rounded-tl-xl"}
-                ${i === 1 && "rounded-xl xmd:rounded-tr-xl"}
-                ${i === 2 && "rounded-xl xmd:rounded-bl-xl"}
-                ${i === 3 && "rounded-xl xmd:rounded-br-xl"}
               `}
-          >
-            <Image
-              src={project.imgs[0]}
-              class="aspect-[2/1] h-full bg-primary object-cover"
-              alt={project.title}
-              loading="eager"
-            />
-            <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 backdrop-blur-xs text-2xl font-bold text-primary-foreground truncate">
-              {project.title}
-            </h3>
-          </a>
-        ))
+              >
+                <Image
+                  src={project.imgs[0]}
+                  class="aspect-[2/1] h-full bg-primary object-cover"
+                  alt={project.title}
+                  loading="eager"
+                />
+                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 backdrop-blur-xs text-2xl font-bold text-primary-foreground truncate">
+                  {project.title}
+                </h3>
+              </a>
+            );
+        })
       }
     </div>
     <div class="flex px-4">

@@ -64,7 +64,6 @@ import vikingImg1 from "@/images/projects/viking/viking-0.jpg";
 import vikingImg2 from "@/images/projects/viking/viking-1.jpg";
 
 import zuruImg1 from "@/images/projects/zuru/zuru-0.jpg";
-import { m } from "motion/react";
 
 const ANTARTICA_IMGS = [antarticImg1, antarticImg2, antarticImg3];
 
@@ -123,7 +122,14 @@ const VIKING_IMGS = [vikingImg1, vikingImg2];
 
 const ZURU_IMGS = [zuruImg1];
 
-export const PROJECT_INFO = [
+export const PROJECT_INFO: {
+  slug: string;
+  title: string;
+  imgs?: ImageMetadata[] | null;
+  address?: string;
+  sqm?: number;
+  products: { title: string; id: string }[];
+}[] = [
   {
     slug: "antartica-cold-storage",
     title: "Antartica Cold Storage",
@@ -260,6 +266,197 @@ export const PROJECT_INFO = [
     title: "Zuru Argo Industrial Corp",
     imgs: ZURU_IMGS,
     sqm: 5000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "aboitiz-power-plant",
+    title: "Aboitiz Power Plant",
+    address: "Magat, Isabela",
+    sqm: 3500,
+    products: [{ title: "Epoxy Coating", id: "epoxy-coating" }],
+  },
+  {
+    slug: "ad-gothong",
+    title: "Ad Gothong",
+    address: "Mandaue City, Cebu",
+    sqm: 125,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "andoks-manok",
+    title: "Andoks Manok",
+    address: "Batangas",
+    sqm: 1200,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "angel-s-burger",
+    title: "Angel's Burger",
+    address: "Tayud, Consolacion Cebu City",
+    sqm: 1500,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "alaska",
+    title: "Alaska",
+    address: "San Pedro, Laguna",
+    sqm: 2000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "alcan-packaging-starpack",
+    title: "Alcan Packaging Starpack",
+    address: "Mapandan, Cainta Rizal",
+    sqm: 1800,
+    products: [{ title: "Epoxy Coating", id: "epoxy-coating" }],
+  },
+  {
+    slug: "alpha-alleanza-manufacturing",
+    title: "Alpha Alleanza Manufacturing",
+    address: "Marilao Bulacan",
+    sqm: 1200,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "alturas-ice-plant",
+    title: "Alturas Ice Plant",
+    address: "Bohol",
+    sqm: 360,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "alturas-talibon",
+    title: "Alturas Talibon",
+    address: "Bohol",
+    sqm: 770,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "american-home-dept",
+    title: "American Home Dept",
+    address: "Fairview Quezon City",
+    sqm: 3500,
+    products: [{ title: "Diamond Polish", id: "diamond-polish" }],
+  },
+  {
+    slug: "american-power-corp",
+    title: "American Power Corp.",
+    address: "EPZA, Rosario Cavite",
+    sqm: 1200,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "ankaciano-incorporated",
+    title: "Ankaciano Incorporated",
+    address: "Imus, Cavite",
+    sqm: 180,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "amici-restaurant",
+    title: "Amici Restaurant",
+    address: "Makati City",
+    sqm: 500,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "anna-s-breeders",
+    title: "Anna's Breeders",
+    address: "Toril, Davao City",
+    sqm: 2000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "andoks",
+    title: "Andoks",
+    address: "Manila City",
+    sqm: 400,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "asian-development-bank",
+    title: "Asian Development Bank",
+    address: "Ortigas, Mandaluyong",
+    sqm: 405,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "a-tung-chingco-mfg-corp",
+    title: "A Tung Chingco Mfg. Corp",
+    address: "Zamboanga City",
+    sqm: 1005,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "automated-technology-phil-inc",
+    title: "Automated Technology Phil. Inc.",
+    address: "Cabuyao, Laguna",
+    sqm: 60,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "bread-of-life-ministry",
+    title: "Bread of Life Ministry",
+    address: "Quezon City",
+    sqm: 1265,
+    products: [
+      { title: "Polyurethane Insulation", id: "polyurethane-insulation" },
+    ],
+  },
+  {
+    slug: "bristol-myers-squibb-phil-inc",
+    title: "Bristol Myers Squibb (Phil.) Inc.",
+    address: "Makati City",
+    sqm: 800,
+    products: [{ title: "Waterproofing", id: "waterproofing" }],
+  },
+  {
+    slug: "bernabest-siomai-house",
+    title: "Bernabest Siomai House",
+    address: "Caloocan",
+    sqm: 500,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "cabuyao-meat-processing",
+    title: "Cabuyao Meat Processing",
+    address: "Cabuyao, Laguna",
+    sqm: 3000,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "casa-verde-de-cebu",
+    title: "Casa Verde de Cebu",
+    address: "Cebu City, Cebu",
+    sqm: 50,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "cdo-ice-plant",
+    title: "CDO Ice Plant",
+    address: "General Santos City",
+    sqm: 1280,
+    products: [{ title: "Epoxy Mortar", id: "epoxy-mortar" }],
+  },
+  {
+    slug: "cebu-industrial-management-corp",
+    title: "Cebu Industrial Management Corp.",
+    address: "San Fernando, Pampanga",
+    sqm: 7220,
+    products: [{ title: "Epoxy Mortar", id: "epoxy-mortar" }],
+  },
+  {
+    slug: "cebu-sherilyn",
+    title: "Cebu Sherilyn",
+    address: "Cebu City, Cebu",
+    sqm: 1300,
+    products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
+  },
+  {
+    slug: "century-canning",
+    title: "Century Canning",
+    address: "Bicutan",
+    sqm: 1000,
     products: [{ title: "Polyurethane Flooring", id: "polyurethane-flooring" }],
   },
 ];

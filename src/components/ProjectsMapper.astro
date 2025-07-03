@@ -22,7 +22,10 @@ const filteredProjects = projects.data;
               id={project.title}
             >
               <Image
-                src={(project.imgs as string[])[0]}
+                src={
+                  `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
+                  (project.imgs as string[])[0]
+                }
                 alt={project.title}
                 class="w-full object-cover shrink-0"
                 quality="mid"

@@ -50,7 +50,8 @@ if (!data) return Astro.redirect("/projects");
     </div>
     <SectionMainHeroOverlay>
       <Image
-        src={(data.imgs as string[])[0]}
+        src={`${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
+          (data.imgs as string[])[0]}
         alt={data.title ? data.title : "Grid 3D Background"}
         class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
         quality="low"
@@ -104,7 +105,10 @@ if (!data) return Astro.redirect("/projects");
       data.imgs?.map((img, i) => (
         <Image
           class="rounded-xl not-xmd:last:-mb-15"
-          src={img as string}
+          src={
+            `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
+            (img as string)
+          }
           alt={`image-${i}-of-${data.slug}`}
           quality="mid"
           inferSize

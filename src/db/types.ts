@@ -38,7 +38,7 @@ export type Database = {
         Row: {
           address: string | null;
           id: string;
-          imgs: Json[] | null;
+          imgs: string[] | null;
           products: Json | null;
           slug: string;
           sqm: number | null;
@@ -47,7 +47,7 @@ export type Database = {
         Insert: {
           address?: string | null;
           id?: string;
-          imgs?: Json[] | null;
+          imgs?: string[] | null;
           products?: Json | null;
           slug: string;
           sqm?: number | null;
@@ -56,7 +56,7 @@ export type Database = {
         Update: {
           address?: string | null;
           id?: string;
-          imgs?: Json[] | null;
+          imgs?: string[] | null;
           products?: Json | null;
           slug?: string;
           sqm?: number | null;

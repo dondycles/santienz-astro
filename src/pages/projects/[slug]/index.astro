@@ -11,6 +11,7 @@ import CTAButton from "@/components/CTAButton";
 import { supabase } from "@/db/supabase";
 import { Image } from "astro:assets";
 import Grid3DBg from "@/components/Grid3DBg.astro";
+import { undefined } from "astro:schema";
 
 export const prerender = false;
 
@@ -34,6 +35,7 @@ const images = data.imgs?.length
 <MainLayout
   title={`${data.title} and Santienz Phils. Inc.`}
   desc=`${data.title} is one of the valued clients served by Santienz Phils. Inc. Explore our work on their project and how we helped bring their vision to life.`
+  image={images !== null ? images[0] : null}
 >
   <Header className="text-primary-foreground">
     <DesktopNavigation hideProjects client:load />

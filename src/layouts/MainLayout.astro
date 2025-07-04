@@ -3,6 +3,7 @@ interface Props {
   desc: string;
   title: string;
   hideCTACard?: boolean;
+  image?: string | null;
 }
 import CTACard from "@/components/CTACard.astro";
 import "../styles/global.css";
@@ -10,7 +11,7 @@ import Footer from "@/components/syntax/Footer.astro";
 import Main from "@/components/syntax/Main.astro";
 import { Toaster } from "@/components/ui/sonner";
 import { SEO } from "astro-seo";
-const { desc, title, hideCTACard = false } = Astro.props;
+const { desc, title, hideCTACard = false, image } = Astro.props;
 const url = Astro.url;
 ---
 
@@ -22,24 +23,6 @@ const url = Astro.url;
     <link rel="canonical" href=`${url.origin}${url.pathname}` />
     <link rel="sitemap" href=`${url.origin}/sitemap-index.xml` />
     <meta name="generator" content={Astro.generator} />
-    <!-- <title>{title}</title>
-    <meta name="description" content={desc} />
-    <meta
-      property="twitter:image"
-      content="https://santienz-astro.vercel.app/summary-new.png"
-    />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={desc} />
-    <meta
-      property="og:image"
-      content="https://santienz-astro.vercel.app/summary-new.png"
-    />
-    <meta property="og:site_name" content={title} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc} />
-    <meta property="og:url" content=`${url.origin}${url.pathname}` />
-    <meta property="" /> -->
     <SEO
       title={title}
       titleTemplate="%s | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
@@ -50,7 +33,7 @@ const url = Astro.url;
         basic: {
           title,
           type: "website",
-          image: `${url.origin}/summary-new.png`,
+          image: image ?? `${url.origin}/summary-new.png`,
           url: `${url.origin}${url.pathname}`,
         },
         optional: {
@@ -62,7 +45,7 @@ const url = Astro.url;
         title,
         description: desc,
         card: "summary_large_image",
-        image: `${url.origin}/summary-new.png`,
+        image: image ?? `${url.origin}/summary-new.png`,
         creator: "@dondycles",
       }}
       extend={{
@@ -72,7 +55,7 @@ const url = Astro.url;
         meta: [
           {
             name: "twitter:image",
-            content: "https://santienz-astro.vercel.app/summary-new.png",
+            content: image ?? `${url.origin}/summary-new.png`,
           },
           { name: "twitter:title", content: title },
           { name: "twitter:description", content: desc },

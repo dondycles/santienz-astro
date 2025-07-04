@@ -48,55 +48,64 @@ const projects = await supabase
     </SectionMainHeroOverlay>
   </SectionMainHero>
   <SearchBar />
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto px-1 xmd:px-4 w-full -mt-10"
-  >
-    <ProjectsMapper projects={projects.data ?? []} />
-  </div>
+  {
+    projects.data ? (
+      <section class="-mt-10 space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
+        <H2AndP h="Featured Projects" />
+        <div
+          class={`grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-1 xmd:gap-4 w-full`}
+        >
+          <ProjectsMapper projects={projects.data} />
+        </div>
+      </section>
+    ) : null
+  }
   <section class="space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
     <H2AndP h="Other Finished Projects" />
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Client</TableHead>
-          <TableHead>Location</TableHead>
-          <TableHead>Products Used</TableHead>
-          <TableHead>Area</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {
-          projects.data
-            ?.filter((project) => !project.imgs)
-            .map((project) => (
-              <TableRow>
-                <TableCell className="font-medium">{project.title}</TableCell>
-                <TableCell>{project.address}</TableCell>
-                <TableCell>
-                  {(
-                    project.products as (typeof PROJECT_INFO)[number]["products"]
-                  )?.map((product, i) => (
-                    <span>
-                      <a
-                        href={`/products#${product.id}`}
-                        class="text-primary hover:underline"
-                      >
-                        {(
-                          project.products as (typeof PROJECT_INFO)[number]["products"]
-                        )?.length -
-                          1 !==
-                        i
-                          ? `${product.title}, `
-                          : product.title}
-                      </a>
-                    </span>
-                  ))}
-                </TableCell>
-                <TableCell>{project.sqm}sqm</TableCell>
-              </TableRow>
-            ))
-        }
-      </TableBody>
-    </Table>
+    <div class="border rounded-xl px-3 xmd:px-1">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Client</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead>Products Used</TableHead>
+            <TableHead>Area</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {
+            projects.data
+              ?.filter((project) => !project.imgs)
+              .map((project) => (
+                <TableRow>
+                  <TableCell className="font-medium">{project.title}</TableCell>
+                  <TableCell>{project.address}</TableCell>
+                  <TableCell>
+                    {(
+                      project.products as (typeof PROJECT_INFO)[number]["products"]
+                    )?.map((product, i) => (
+                      <span>
+                        <a
+                          href={`/products#${product.id}`}
+                          class="text-primary hover:underline"
+                        >
+                          {(
+                            project.products as (typeof PROJECT_INFO)[number]["products"]
+                          )?.length -
+                            1 !==
+                          i
+                            ? `${product.title}, `
+                            : product.title}
+                        </a>
+                      </span>
+                    ))}
+                  </TableCell>
+                  <TableCell>{project.sqm}sqm</TableCell>
+                </TableRow>
+              ))
+          }
+        </TableBody>
+      </Table>
+    </div>
   </section>
 </MainLayout>

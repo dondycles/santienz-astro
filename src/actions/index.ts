@@ -39,7 +39,7 @@ export const server = {
         style="height: 32px;"
       />
       <h2 style="color: white; margin-left:16px; ">
-        Santienz Philippines Inc.
+        Santienz Phils. Inc.
       </h2>
     </div>
     <div style="padding: 0 16px;">

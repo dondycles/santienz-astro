@@ -1,9 +1,7 @@
 ---
 export const prerender = false;
-import { supabase } from "@/db/supabase";
 import type { Database } from "@/db/types";
 import { Image } from "astro:assets";
-import { Frown } from "lucide-react";
 
 interface Props {
   projects: Database["public"]["Tables"]["projects"]["Row"][];
@@ -16,41 +14,40 @@ const featured_projects = projects.filter((project) => project.imgs !== null);
 ---
 
 {
-  featured_projects.length ? (
-    featured_projects.map((project, i) => {
-      return (
-        // <a
-        //   href={`/projects/${project.slug}`}
-        //   class={`w-full mb-0 mt-auto ${i === 1 && "col-span-2"}`}
-        // >
-        <section
-          class={`bg-primary/10 rounded-xl flex flex-col h-full  overflow-hidden relative ${i === 0 ? "sm:row-span-1" : i === featured_projects.length - 1 ? "sm:row-span-1" : "sm:row-span-2"} ${i === featured_projects.length - 1 && "row-span-1"}`}
-          id={project.title}
-        >
-          <Image
-            src={
-              `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
-              (project.imgs as string[])[0]
-            }
-            alt={project.title}
-            class="w-full h-full object-cover shrink-0"
-            quality="mid"
-            width="420"
-            height="236"
-          />
-          <h2 class="text-primary-foreground text-2xl lg:text-4xl font-semibold p-3 xmd:p-4 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
-            {project.title}
-          </h2>
-        </section>
-        // </a>
-      );
-    })
-  ) : (
-    <p class="text-muted-foreground text-center col-span-full mb-2 px-4">
-      No results for {query}
-      <span>
-        <Frown className="inline ml-1" />
-      </span>
-    </p>
-  )
+  featured_projects.length
+    ? featured_projects.map((project, i) => {
+        return (
+          <a
+            href={`/projects/${project.slug}`}
+            class={`w-full h-full mb-0 mt-auto ${i === 0 ? "sm:row-span-1" : i === featured_projects.length - 1 ? "sm:row-span-1" : "sm:row-span-2"}`}
+          >
+            <section
+              class={`bg-primary/10 rounded-xl flex flex-col h-full  overflow-hidden relative `}
+              id={project.title}
+            >
+              <Image
+                src={
+                  `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
+                  (project.imgs as string[])[0]
+                }
+                alt={project.title}
+                class="w-full h-full object-cover shrink-0"
+                quality="mid"
+                width="420"
+                height="236"
+              />
+              <h2 class="text-primary-foreground text-2xl lg:text-4xl font-semibold p-3 xmd:p-4 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent">
+                {project.title}
+              </h2>
+            </section>
+          </a>
+        );
+      })
+    : null
 }
+<!-- <p class="text-muted-foreground text-center col-span-full mb-2 px-4">
+     No results for {query}
+     <span>
+       <Frown className="inline ml-1" />
+     </span>
+   </p> -->

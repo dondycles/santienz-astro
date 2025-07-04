@@ -9,17 +9,9 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import Grid3DBg from "@/components/Grid3DBg.astro";
 import SearchBar from "@/components/SearchBar.astro";
 import ProjectsMapper from "@/components/ProjectsMapper.astro";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
-import { type PROJECT_INFO } from "@/lib/projects-info";
 import { supabase } from "@/db/supabase";
+import CTAButton from "@/components/CTAButton";
+import { TableIcon } from "lucide-react";
 export const prerender = false;
 const query = Astro.url.searchParams.get("query");
 const projects = await supabase
@@ -30,8 +22,8 @@ const projects = await supabase
 ---
 
 <MainLayout
-  title="Projects of Santienz Phils. Inc."
-  desc="Explore the projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+  title="Featured Projects of Santienz Phils. Inc."
+  desc="Explore the featured projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
 >
   <Header className="text-primary-foreground">
     <DesktopNavigation hideProjects client:load />
@@ -39,73 +31,39 @@ const projects = await supabase
   </Header>
   <SectionMainHero>
     <H1AndP
-      h="Projects"
-      p="Explore the projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+      h="Featured Projects"
+      p="Explore the featured projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
       pClassName="text-justify indent-8"
     />
+    <div class="max-w-6xl mx-auto w-fit">
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full backdrop-blur"
+        variant="outline"
+        effect="shineHover"
+        link="/projects/table"
+      >
+        See All Projects in Table View <TableIcon />
+      </CTAButton>
+    </div>
     <SectionMainHeroOverlay>
       <Grid3DBg />
     </SectionMainHeroOverlay>
   </SectionMainHero>
-  <SearchBar />
   {
     projects.data ? (
-      <section class="-mt-10 space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
-        <H2AndP h="Featured Projects" />
+      <div class="-mt-10 space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
+        <SearchBar />
         <div
           class={`grid grid-cols-1 xxs:grid-cols-2 auto-rows-fr gap-1 xmd:gap-4 w-full`}
         >
           <ProjectsMapper projects={projects.data} />
         </div>
-      </section>
+      </div>
     ) : null
   }
-  <section class="space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
-    <H2AndP h="Complete List of Finished Projects" />
-    <div class="border rounded-xl px-3 xmd:px-1">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Client</TableHead>
-            <TableHead>Location</TableHead>
-            <TableHead>Products Used</TableHead>
-            <TableHead>Area</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {
-            projects.data?.map((project) => (
-              <TableRow>
-                <TableCell className="font-medium text-primary hover:underline">
-                  <a href={`/projects/${project.slug}`}>{project.title}</a>
-                </TableCell>
-                <TableCell>{project.address}</TableCell>
-                <TableCell>
-                  {(
-                    project.products as (typeof PROJECT_INFO)[number]["products"]
-                  )?.map((product, i) => (
-                    <span>
-                      <a
-                        href={`/products#${product.id}`}
-                        class="text-primary hover:underline"
-                      >
-                        {(
-                          project.products as (typeof PROJECT_INFO)[number]["products"]
-                        )?.length -
-                          1 !==
-                        i
-                          ? `${product.title}, `
-                          : product.title}
-                      </a>
-                    </span>
-                  ))}
-                </TableCell>
-                <TableCell>{project.sqm}sqm</TableCell>
-              </TableRow>
-            ))
-          }
-        </TableBody>
-      </Table>
-    </div>
-  </section>
+  <div class="max-w-6xl mx-auto w-fit">
+    <CTAButton variant="tertiary" effect="shineHover" link="/projects/table">
+      See All Projects in Table View <TableIcon />
+    </CTAButton>
+  </div>
 </MainLayout>

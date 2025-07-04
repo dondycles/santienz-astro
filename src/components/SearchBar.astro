@@ -1,30 +1,39 @@
 ---
 import InputWithStartIcon from "@/components/InputWithStartIcon";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
 ---
 
-<div class="max-w-6xl mx-auto w-full px-4 z-20 -mt-10">
-  <form id="search-form">
+<div class={cn("max-w-6xl mx-auto w-full xz-20", className)}>
+  <form id="search-form-1">
     <InputWithStartIcon
       className="rounded-xl border-primary bg-primary/10 focus-visible:ring-primary"
-      id="search-input"
+      id="search-input-1"
       name="query"
     />
   </form>
 </div>
 <script>
   import { navigate } from "astro:transitions/client";
-  const form = document.getElementById("search-form") as HTMLFormElement;
-  const input = document.getElementById("search-input") as HTMLInputElement;
-  const searchParams = new URLSearchParams(window.location.search);
-  const query = searchParams.get("query");
-  if (form && input) {
-    input.placeholder = !query ? "Search a project" : (query as string);
-    query ? input.focus() : input.blur();
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const formData = new FormData(form);
-      const query = formData.get("query");
-      navigate("/projects/?query=" + query);
-    });
-  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("search-form-1") as HTMLFormElement;
+    const input = document.getElementById("search-input-1") as HTMLInputElement;
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = searchParams.get("query");
+    if (form && input) {
+      input.placeholder = !query ? "Search a project" : query;
+      query ? input.focus() : input.blur();
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const query = formData.get("query");
+        navigate(window.location.pathname + "?query=" + query);
+      });
+    }
+  });
 </script>

@@ -1,0 +1,115 @@
+---
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Header from "@/components/syntax/Header.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import MainLayout from "@/layouts/MainLayout.astro";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+import {
+  Table as TableComponent,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
+import { type PROJECT_INFO } from "@/lib/projects-info";
+import { supabase } from "@/db/supabase";
+import CTAButton from "@/components/CTAButton";
+import { ChevronLeft } from "lucide-react";
+import SearchBar from "@/components/SearchBar.astro";
+
+export const prerender = false;
+const query = Astro.url.searchParams.get("query");
+const projects = await supabase
+  .from("projects")
+  .select()
+  .order("title", { ascending: true })
+  .ilike("title", `%${query ?? ""}%`);
+---
+
+<MainLayout
+  title="Complete List of Finished Projects of Santienz Phils. Inc."
+  desc="Explore the complete list of finished projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+>
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideProjects client:load />
+    <MobileNavigation hideProjects client:load />
+  </Header>
+  <SectionMainHero>
+    <H1AndP
+      h="Complete List of Finished Projects"
+      p="Explore the complete list of finished projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+      pClassName="text-justify indent-8"
+    />
+    <div class="max-w-6xl mx-auto w-fit">
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full backdrop-blur"
+        variant="outline"
+        effect="shineHover"
+        link="/projects"
+      >
+        <ChevronLeft /> Back to Featured Projects
+      </CTAButton>
+    </div>
+    <SectionMainHeroOverlay>
+      <Grid3DBg />
+    </SectionMainHeroOverlay>
+  </SectionMainHero>
+  <section class="space-y-4 mx-auto max-w-6xl px-1 xmd:px-4 -mt-10">
+    <SearchBar />
+    <div class="border rounded-xl px-3 xmd:px-1">
+      <TableComponent>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Client</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead>Products Used</TableHead>
+            <TableHead>Area</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {
+            projects.data?.map((project) => (
+              <TableRow>
+                <TableCell className="font-medium text-primary hover:underline">
+                  <a href={`/projects/${project.slug}`}>{project.title}</a>
+                </TableCell>
+                <TableCell>{project.address}</TableCell>
+                <TableCell>
+                  {(
+                    project.products as (typeof PROJECT_INFO)[number]["products"]
+                  )?.map((product, i) => (
+                    <span>
+                      <a
+                        href={`/products#${product.id}`}
+                        class="text-primary hover:underline"
+                      >
+                        {(
+                          project.products as (typeof PROJECT_INFO)[number]["products"]
+                        )?.length -
+                          1 !==
+                        i
+                          ? `${product.title}, `
+                          : product.title}
+                      </a>
+                    </span>
+                  ))}
+                </TableCell>
+                <TableCell>{project.sqm}sqm</TableCell>
+              </TableRow>
+            ))
+          }
+        </TableBody>
+      </TableComponent>
+    </div>
+  </section>
+  <div class="max-w-6xl mx-auto w-fit">
+    <CTAButton variant="tertiary" effect="shineHover" link="/projects">
+      <ChevronLeft /> Back to Featured Projects
+    </CTAButton>
+  </div>
+</MainLayout>

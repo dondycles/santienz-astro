@@ -1,5 +1,6 @@
 ---
-const { cookies, redirect } = Astro;
+export const prerender = false;
+const { cookies } = Astro;
 
 const accessToken = cookies.get("sb-access-token");
 const refreshToken = cookies.get("sb-refresh-token");

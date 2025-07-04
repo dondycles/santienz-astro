@@ -43,6 +43,7 @@ export type Database = {
           slug: string;
           sqm: number | null;
           title: string;
+          uploader: string | null;
         };
         Insert: {
           address?: string | null;
@@ -52,6 +53,7 @@ export type Database = {
           slug: string;
           sqm?: number | null;
           title: string;
+          uploader?: string | null;
         };
         Update: {
           address?: string | null;
@@ -61,6 +63,7 @@ export type Database = {
           slug?: string;
           sqm?: number | null;
           title?: string;
+          uploader?: string | null;
         };
         Relationships: [];
       };

@@ -42,13 +42,15 @@ const url = Astro.url;
     <meta property="" /> -->
     <SEO
       title={title}
+      titleTemplate="%s | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+      titleDefault="Santienz Phils. Inc."
       description={desc}
       canonical=`${url.origin}${url.pathname}`
       openGraph={{
         basic: {
           title,
           type: "website",
-          image: `${url.pathname}/summary-new.png`,
+          image: `${url.origin}/summary-new.png`,
           url: `${url.origin}${url.pathname}`,
         },
         optional: {
@@ -60,7 +62,7 @@ const url = Astro.url;
         title,
         description: desc,
         card: "summary_large_image",
-        image: `${url.pathname}/summary-new.png`,
+        image: `${url.origin}/summary-new.png`,
         creator: "@dondycles",
       }}
       extend={{

@@ -6,7 +6,6 @@ import LinkButton from "@/components/LinkButton";
 import Header from "@/components/syntax/Header.astro";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
-import { PROJECT_INFO } from "@/lib/projects-info";
 import { Image } from "astro:assets";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
@@ -14,6 +13,7 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 import aboutUsBg from "@/images/about-us-bg.jpg";
 import CertficatesSlider from "@/components/CertficatesSlider.astro";
+import { supabase } from "@/db/supabase";
 const features: {
   count: number;
   title: string;
@@ -27,28 +27,16 @@ const features: {
   { count: 50, title: "Team Members 👥" },
 ];
 
-const featured_projects: typeof PROJECT_INFO = [
-  {
-    ...PROJECT_INFO[0],
-    imgs: PROJECT_INFO[0].imgs ? [PROJECT_INFO[0].imgs[2]] : null,
-  },
-  {
-    ...PROJECT_INFO[3],
-    imgs: PROJECT_INFO[3].imgs ? [PROJECT_INFO[3].imgs[3]] : null,
-  },
-  {
-    ...PROJECT_INFO[5],
-    imgs: PROJECT_INFO[5].imgs ? [PROJECT_INFO[5].imgs[2]] : null,
-  },
-  {
-    ...PROJECT_INFO[14],
-    imgs: PROJECT_INFO[14].imgs ? [PROJECT_INFO[14].imgs[3]] : null,
-  },
-];
+const featured_projects = await supabase
+  .from("projects")
+  .select()
+  .or(
+    `title.eq.Antartica Cold Storage,title.eq.Delimondo,title.eq.Five S Vehicle Inspection Center,title.eq.Royal Cargo Inc`,
+  );
 ---
 
 <MainLayout
-  title="Satienz Philippines Inc. | No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  title="Satienz Philippines. Inc."
   desc="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
 >
   <Header className="text-primary-foreground">
@@ -136,7 +124,7 @@ const featured_projects: typeof PROJECT_INFO = [
       class="grid gap-1 xmd:gap-4 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl px-1 xmd:px-4"
     >
       {
-        featured_projects.map((project, i) => {
+        featured_projects.data?.map((project, i) => {
           if (project.imgs)
             return (
               <a
@@ -146,10 +134,14 @@ const featured_projects: typeof PROJECT_INFO = [
               `}
               >
                 <Image
-                  src={project.imgs[0]}
+                  src={
+                    `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
+                    (project.imgs as string[])[0]
+                  }
                   class="aspect-[2/1] h-full bg-primary object-cover"
                   alt={project.title}
-                  loading="eager"
+                  inferSize
+                  quality="low"
                 />
                 <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 backdrop-blur-xs text-2xl font-bold text-primary-foreground truncate">
                   {project.title}
@@ -180,7 +172,7 @@ const featured_projects: typeof PROJECT_INFO = [
       />
     </div>
     <div
-      class="flex flex-wrap justify-evenly gap-4 max-w-6xl w-fit px-4 mx-auto mt-8"
+      class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-6xl w-fit px-4 mx-auto mt-8"
     >
       <div>
         <Medal className="inline size-6 text-primary" />
@@ -188,7 +180,7 @@ const featured_projects: typeof PROJECT_INFO = [
       </div>
       <div>
         <Users className="inline size-6 text-primary" />
-        <h3 class="text-base text-muted-foreground inline">Expert Team</h3>
+        <h3 class="text-base text-muted-foreground inline">Expert</h3>
       </div>
       <div>
         <CheckCircle className="inline size-6 text-primary" />

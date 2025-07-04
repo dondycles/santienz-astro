@@ -9,8 +9,9 @@ import "../styles/global.css";
 import Footer from "@/components/syntax/Footer.astro";
 import Main from "@/components/syntax/Main.astro";
 import { Toaster } from "@/components/ui/sonner";
-
+import { SEO } from "astro-seo";
 const { desc, title, hideCTACard = false } = Astro.props;
+const url = Astro.url;
 ---
 
 <html lang="en">
@@ -18,8 +19,10 @@ const { desc, title, hideCTACard = false } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href=`${url.origin}${url.pathname}` />
+    <link rel="sitemap" href=`${url.origin}/sitemap-index.xml` />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <!-- <title>{title}</title>
     <meta name="description" content={desc} />
     <meta
       property="twitter:image"
@@ -35,7 +38,45 @@ const { desc, title, hideCTACard = false } = Astro.props;
     <meta property="og:site_name" content={title} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
-    <meta property="og:url" content="https://www.santienz-astro.vercel.app" />
+    <meta property="og:url" content=`${url.origin}${url.pathname}` />
+    <meta property="" /> -->
+    <SEO
+      title={title}
+      description={desc}
+      canonical=`${url.origin}${url.pathname}`
+      openGraph={{
+        basic: {
+          title,
+          type: "website",
+          image: `${url.pathname}/summary-new.png`,
+          url: `${url.origin}${url.pathname}`,
+        },
+        optional: {
+          description: desc,
+          siteName: "Santienz Phils. Inc.",
+        },
+      }}
+      twitter={{
+        title,
+        description: desc,
+        card: "summary_large_image",
+        image: `${url.pathname}/summary-new.png`,
+        creator: "@dondycles",
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: "https://santienz-astro.vercel.app/summary-new.png",
+          },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: desc },
+        ],
+      }}
+    />
   </head>
   <body
     class="poppins text-base min-h-dvh flex flex-col w-full antialiased text-foreground bg-background"

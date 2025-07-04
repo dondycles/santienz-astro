@@ -6,13 +6,17 @@ import react from "@astrojs/react";
 
 import vercel from "@astrojs/vercel";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
-  integrations: [react()],
+  site: import.meta.env.DEV
+    ? "http://localhost"
+    : "https://santienz-astro.vercel.app",
+  integrations: [react(), sitemap()],
   adapter: vercel(),
   devToolbar: {
     enabled: true,
@@ -24,7 +28,6 @@ export default defineConfig({
   server: {
     port: 1117,
   },
-  output: "server",
   image: {
     remotePatterns: [
       {

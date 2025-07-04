@@ -6,11 +6,12 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
-import grid3dBackground from "@/images/grid_3d.png";
 import { ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import { supabase } from "@/db/supabase";
 import { Image } from "astro:assets";
+
+export const prerender = false;
 
 const { slug } = Astro.params;
 const { data } = await supabase

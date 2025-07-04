@@ -9,18 +9,24 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
 import Grid3DBg from "@/components/Grid3DBg.astro";
 import SearchBar from "@/components/SearchBar.astro";
 import ProjectsMapper from "@/components/ProjectsMapper.astro";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
+import { type PROJECT_INFO } from "@/lib/projects-info";
+import { supabase } from "@/db/supabase";
 export const prerender = false;
-// import {
-//   Table,
-//   TableBody,
-//   TableCaption,
-//   TableCell,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-// } from "@/components/ui/table";
-// import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
-// import { type PROJECT_INFO } from "@/lib/projects-info";
+const query = Astro.url.searchParams.get("query");
+const projects = await supabase
+  .from("projects")
+  .select()
+  .order("title", { ascending: true })
+  .ilike("title", `%${query}%`);
 ---
 
 <MainLayout
@@ -43,11 +49,11 @@ export const prerender = false;
   </SectionMainHero>
   <SearchBar />
   <div
-    class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto px-1 xmd:px-4 w-full -mt-10 not-xmd:mb-1"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-1 xmd:gap-4 max-w-6xl mx-auto px-1 xmd:px-4 w-full -mt-10"
   >
-    <ProjectsMapper />
+    <ProjectsMapper projects={projects.data ?? []} />
   </div>
-  <!-- <section class="space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
+  <section class="space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
     <H2AndP h="Other Finished Projects" />
     <Table>
       <TableHeader>
@@ -92,5 +98,5 @@ export const prerender = false;
         }
       </TableBody>
     </Table>
-  </section> -->
+  </section>
 </MainLayout>

@@ -1,18 +1,21 @@
 ---
+export const prerender = false;
 import { supabase } from "@/db/supabase";
+import type { Database } from "@/db/types";
 import { Image } from "astro:assets";
 import { Frown } from "lucide-react";
-const query = Astro.url.searchParams.get("query");
-const projects = await supabase
-  .from("projects")
-  .select()
-  .order("title", { ascending: true })
-  .ilike("title", `%${query}%`);
+
+interface Props {
+  projects: Database["public"]["Tables"]["projects"]["Row"][];
+  query?: string;
+}
+
+const { projects, query } = Astro.props;
 ---
 
 {
-  projects.data?.length ? (
-    projects.data.map((project) => {
+  projects.length ? (
+    projects.map((project) => {
       if (project.imgs)
         return (
           <a href={`/projects/${project.slug}`} class="w-full mb-0 mt-auto ">

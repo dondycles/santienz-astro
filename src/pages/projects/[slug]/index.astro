@@ -10,6 +10,7 @@ import { ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import { supabase } from "@/db/supabase";
 import { Image } from "astro:assets";
+import Grid3DBg from "@/components/Grid3DBg.astro";
 
 export const prerender = false;
 
@@ -21,11 +22,13 @@ const { data } = await supabase
   .single();
 if (!data) return Astro.redirect("/projects");
 
-const images = Array.from({ length: data.imgs?.length ?? 0 }).map(
-  (_, index) =>
-    `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
-    (data.imgs as string[])[index],
-);
+const images = data.imgs?.length
+  ? Array.from({ length: data.imgs.length }).map(
+      (_, index) =>
+        `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
+        (data.imgs as string[])[index],
+    )
+  : null;
 ---
 
 <MainLayout
@@ -55,14 +58,20 @@ const images = Array.from({ length: data.imgs?.length ?? 0 }).map(
       </CTAButton>
     </div>
     <SectionMainHeroOverlay>
-      <Image
-        src={images[0]}
-        alt={data.title ? data.title : "Grid 3D Background"}
-        class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
-        quality="low"
-        width={1080}
-        height={720}
-      />
+      {
+        images ? (
+          <Image
+            src={images[0]}
+            alt={data.title ? data.title : "Grid 3D Background"}
+            class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
+            quality="low"
+            width={1080}
+            height={720}
+          />
+        ) : (
+          <Grid3DBg />
+        )
+      }
     </SectionMainHeroOverlay>
   </SectionMainHero>
   <section
@@ -106,18 +115,20 @@ const images = Array.from({ length: data.imgs?.length ?? 0 }).map(
       Other info: {data.sqm ? `${data.sqm}sqm` : null}
     </p>
   </section>
-  <section class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1">
-    {
-      images?.map((img, i) => (
-        <Image
-          class="rounded-xl not-xmd:last:-mb-15"
-          src={img}
-          alt={`image-${i}-of-${data.slug}`}
-          quality="mid"
-          width={1080}
-          height={720}
-        />
-      ))
-    }
-  </section>
+  {
+    images ? (
+      <section class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1">
+        {images?.map((img, i) => (
+          <Image
+            class="rounded-xl not-xmd:last:-mb-15"
+            src={img}
+            alt={`image-${i}-of-${data.slug}`}
+            quality="mid"
+            width={1080}
+            height={720}
+          />
+        ))}
+      </section>
+    ) : null
+  }
 </MainLayout>

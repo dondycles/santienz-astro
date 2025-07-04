@@ -121,7 +121,7 @@ const featured_projects = await supabase
       p="Take a look at some of our completed projects"
     />
     <div
-      class="grid gap-1 xmd:gap-4 xmd:grid-cols-2 xmd:grid-rows-3 mx-auto max-w-6xl px-1 xmd:px-4"
+      class="grid gap-1 xmd:gap-4 xxs:grid-cols-2 auto-rows-fr mx-auto max-w-6xl px-1 xmd:px-4"
     >
       {
         featured_projects.data?.map((project, i) => {
@@ -130,7 +130,7 @@ const featured_projects = await supabase
               <a
                 href={`/projects/${project.slug}`}
                 class={`overflow-hidden w-full relative rounded-xl
-                ${(i === 1 || i === 2) && "row-span-2"}
+                ${(i === 1 || i === 2) && "xxs:row-span-2"}
               `}
               >
                 <Image
@@ -143,7 +143,7 @@ const featured_projects = await supabase
                   inferSize
                   quality="low"
                 />
-                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 text-2xl font-bold text-primary-foreground truncate">
+                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-bold text-primary-foreground">
                   {project.title}
                 </h3>
               </a>

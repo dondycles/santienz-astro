@@ -19,7 +19,7 @@ const featured_projects = projects.filter((project) => project.imgs !== null);
         return (
           <a
             href={`/projects/${project.slug}`}
-            class={`w-full h-full mb-0 mt-auto ${i === 0 ? "xxs:row-span-4" : i === featured_projects.length - 1 ? "xxs:row-span-4" : "xxs:row-span-5"}`}
+            class={`w-full h-full mb-0 mt-auto ${i === 0 ? "xxs:row-span-1" : i === featured_projects.length - 1 ? "xxs:row-span-1" : "xxs:row-span-2"}`}
           >
             <section
               class={`bg-primary/10 rounded-xl flex flex-col h-full  overflow-hidden relative `}

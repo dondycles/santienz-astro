@@ -26,7 +26,7 @@ const projects = await supabase
   .from("projects")
   .select()
   .order("title", { ascending: true })
-  .ilike("title", `%${query}%`);
+  .ilike("title", `%${query ?? ""}%`);
 ---
 
 <MainLayout

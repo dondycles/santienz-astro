@@ -130,7 +130,7 @@ const featured_projects = await supabase
               <a
                 href={`/projects/${project.slug}`}
                 class={`overflow-hidden w-full relative rounded-xl
-                ${(i === 1 || i === 2) && "xxs:row-span-2"}
+                ${i === 1 || i === 2 ? "xxs:row-span-4" : "xxs:row-span-3"}
               `}
               >
                 <Image
@@ -143,7 +143,7 @@ const featured_projects = await supabase
                   inferSize
                   quality="low"
                 />
-                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-bold text-primary-foreground">
+                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-medium text-primary-foreground leading-snug">
                   {project.title}
                 </h3>
               </a>

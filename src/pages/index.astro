@@ -14,6 +14,7 @@ import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 import aboutUsBg from "@/images/about-us-bg.jpg";
 import CertficatesSlider from "@/components/CertficatesSlider.astro";
 import { supabase } from "@/db/supabase";
+import { CERTS_INFO } from "@/lib/creds-info";
 const features: {
   count: number;
   title: string;
@@ -63,7 +64,7 @@ const featured_projects = await supabase
         effect="shineHover"
         link="/about-us"
       >
-        Learn More
+        Learn More About Us
       </CTAButton>
     </div>
     <div
@@ -138,12 +139,13 @@ const featured_projects = await supabase
                     `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
                     (project.imgs as string[])[0]
                   }
-                  class="aspect-[2/1] h-full bg-primary object-cover"
+                  class="aspect-[2/1] w-full h-full bg-primary object-cover"
                   alt={project.title}
-                  inferSize
                   quality="low"
+                  width={1}
+                  height={1}
                 />
-                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-medium text-primary-foreground leading-snug">
+                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-medium text-primary-foreground leading-tight">
                   {project.title}
                 </h3>
               </a>
@@ -196,6 +198,37 @@ const featured_projects = await supabase
     </div>
   </section>
   <CertficatesSlider />
+  <!-- <section class="space-y-4">
+    <H2AndP
+      h="Credentials"
+      p="Our credentials reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
+      pClassName="indent-8 text-justify"
+    />
+    <div class="max-w-6xl mx-auto px-1 xmd:px-4">
+      <div
+        class="grid gap-1 xmd:gap-4 xxs:grid-cols-2 auto-rows-fr mx-auto max-w-6xl px-1 xmd:px-4"
+      >
+        {
+          CERTS_INFO.map((cert, i) => (
+            <div
+              class={`overflow-hidden w-full relative bg-primary/10 p-4 rounded-xl
+                ${i === 1 || i === 2 ? "xxs:row-span-2" : "xxs:row-span-1"}
+              `}
+            >
+              <Image
+                class={`w-full h-full object-cover border rounded-lg`}
+                src={cert.img}
+                alt={cert.title}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="flex px-4">
+      <LinkButton href="/credentials" title="See Credential Details" />
+    </div>
+  </section> -->
   <!-- Testimonials -->
   <!-- <section class="space-y-4">
     <H2AndP h="What Our Clients Say" p="Hear from our satisfied customers" />

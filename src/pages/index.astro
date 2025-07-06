@@ -139,13 +139,12 @@ const featured_projects = await supabase
                     `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
                     (project.imgs as string[])[0]
                   }
-                  class="aspect-[2/1] w-full h-full bg-primary object-cover"
+                  class="aspect-[2/1] h-full bg-primary object-cover"
                   alt={project.title}
+                  inferSize
                   quality="low"
-                  width={1}
-                  height={1}
                 />
-                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-medium text-primary-foreground leading-tight">
+                <h3 class="absolute bottom-0 left-0 w-full drop-shadow  bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0  text-base sm:text-2xl font-medium text-primary-foreground leading-snug">
                   {project.title}
                 </h3>
               </a>

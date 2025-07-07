@@ -5,12 +5,14 @@ interface Props {
   hideCTACard?: boolean;
   image?: string | null;
 }
+
 import CTACard from "@/components/CTACard.astro";
 import "../styles/global.css";
+import { SEO } from "astro-seo";
 import Footer from "@/components/syntax/Footer.astro";
 import Main from "@/components/syntax/Main.astro";
 import { Toaster } from "@/components/ui/sonner";
-import { SEO } from "astro-seo";
+
 const { desc, title, hideCTACard = false, image } = Astro.props;
 const url = Astro.url;
 ---

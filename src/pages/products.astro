@@ -1,42 +1,42 @@
 ---
+import { CheckCircle, ChevronRight } from "lucide-react";
 import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/syntax/Header.astro";
 import LinkButton from "@/components/LinkButton";
 import MobileNavigation from "@/components/MobileNavigation";
+import Header from "@/components/syntax/Header.astro";
+import CTAButton from "@/components/CTAButton";
 import MainLayout from "@/layouts/MainLayout.astro";
-import { CheckCircle } from "lucide-react";
-import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
-import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
-import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
-import Grid3DBg from "@/components/Grid3DBg.astro";
-import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
+import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
+import LinearGradientMask from "@/components/LinearGradientMask.astro";
 ---
 
 <MainLayout
   title="Products of Santienz Phils. Inc."
   desc="Discover our range of high-quality industrial flooring and waterproofing solutions designed for durability and performance."
 >
-  <Header className="text-primary-foreground">
+  <Header className="text-primary backdrop-blur-lg">
     <DesktopNavigation hideProducts client:load />
     <MobileNavigation hideProducts client:load />
   </Header>
-  <SectionMainHero>
-    <H1AndP
-      h="Products offered by Santienz Phils. Inc."
-      p="Discover our range of high-quality industrial flooring and waterproofing solutions designed for durability and performance."
+  <section class="relative">
+    <Heading1AndP
+      h1andpParentClass="mx-auto px-4 pt-24 sm:pt-32 max-w-6xl"
+      h1="Products"
+      p="Explore the featured projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
+      alignment="center-only"
+      withCta={false}
     />
-    <SectionMainHeroOverlay>
-      <Grid3DBg />
-    </SectionMainHeroOverlay>
-  </SectionMainHero>
-
-  <section id="polyurethane-flooring" class="space-y-4 scroll-m-16">
-    <H2AndP
+    <LinearGradientMask />
+  </section>
+  <section id="polyurethane-flooring" class="space-y-6 scroll-m-18 mt-12">
+    <Heading2AndP
       h="Polyurethane Flooring"
       p="Our polyurethane mortar flooring systems are designed for heavy-duty industrial environments, offering exceptional resistance to chemicals, abrasion, and thermal shock. Ideal for food processing, pharmaceutical, and manufacturing facilities."
-      pClassName="text-justify indent-8"
+      alignment="left-only"
+      hClass="text-tertiary"
     >
-      <div class="flex justify-center gap-4 flex-wrap">
+      <div class="flex gap-4 flex-wrap mt-6">
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
           <span class="text-muted-foreground">Durable</span>
@@ -50,23 +50,24 @@ import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
           <span class="text-muted-foreground">Easy Maintenance</span>
         </div>
       </div>
-    </H2AndP>
+    </Heading2AndP>
     <div
       class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
     >
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
     </div>
   </section>
-  <section id="water-proofing" class="space-y-4 scroll-m-18">
-    <H2AndP
+  <section id="water-proofing" class="space-y-6 scroll-m-18 mt-12">
+    <Heading2AndP
       h="Water Proofing"
       p="We provide advanced waterproofing solutions to protect structures from water ingress and damage. Our systems are suitable for roofs, basements, and wet areas, ensuring long-lasting protection and peace of mind for both commercial and residential projects."
-      pClassName="text-justify indent-8"
+      alignment="left-only"
+      hClass="text-tertiary"
     >
-      <div class="flex justify-center gap-4 flex-wrap">
+      <div class="flex gap-4 flex-wrap mt-6">
         <div>
           <CheckCircle className="inline mr-1 text-tertiary" />
           <span class="text-muted-foreground">Water Resistant</span>
@@ -82,58 +83,57 @@ import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
           >
         </div>
       </div>
-    </H2AndP>
-
+    </Heading2AndP>
     <div
       class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
     >
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
     </div>
   </section>
-  <section id="nafufill-km-250" class="space-y-4 scroll-m-18">
-    <H2AndP
-      h="Nafufill KM 250"
-      p="Nafufill KM 250 is a high-performance repair mortar for concrete structures. It offers excellent adhesion, high compressive strength, and resistance to environmental factors, making it ideal for structural repairs and surface restoration in demanding conditions."
-      pClassName="text-justify indent-8"
-    >
-      <div class="flex justify-center gap-4 flex-wrap">
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Water Resistant</span>
+  <div class="relative">
+    <section id="nafufill-km-250" class="space-y-6 scroll-m-18 mt-12">
+      <Heading2AndP
+        h="Nafufill KM 250"
+        p="Nafufill KM 250 is a high-performance repair mortar for concrete structures. It offers excellent adhesion, high compressive strength, and resistance to environmental factors, making it ideal for structural repairs and surface restoration in demanding conditions."
+        alignment="left-only"
+        hClass="text-tertiary"
+      >
+        <div class="flex gap-4 flex-wrap mt-6">
+          <div>
+            <CheckCircle className="inline mr-1 text-tertiary" />
+            <span class="text-muted-foreground">Water Resistant</span>
+          </div>
+          <div>
+            <CheckCircle className="inline mr-1 text-tertiary" />
+            <span class="text-muted-foreground">Long-lasting Protection</span>
+          </div>
+          <div>
+            <CheckCircle className="inline mr-1 text-tertiary" />
+            <span class="text-muted-foreground"
+              >Suitable for Roofs & Basements</span
+            >
+          </div>
         </div>
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Long-lasting Protection</span>
-        </div>
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground"
-            >Suitable for Roofs & Basements</span
-          >
-        </div>
+      </Heading2AndP>
+      <div
+        class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
+      >
+        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
+        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-xl"></div>
       </div>
-    </H2AndP>
-    <div
-      class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
-    >
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
-      <div class="bg-primary/10 w-full h-full aspect-[2/1] rounded-xl"></div>
+    </section>
+    <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
+      <CTAButton variant="tertiary" effect="shineHover" link="/projects/table">
+        View Our Projects <ChevronRight />
+      </CTAButton>
     </div>
-  </section>
-
-  <!-- View Our Projects -->
-  <section class="mx-auto max-w-6xl flex flex-col gap-4 px-4 text-center">
-    <h3 class="font-bold text-4xl text-primary">View Our Projects</h3>
-    <p class="text-muted-foreground">
-      Explore our projects of completed projects to see how our polyurethane
-      flooring, waterproofing, and repair solutions have delivered outstanding
-      results for clients across various industries.
-    </p>
-    <LinkButton title="View Projects" href="/projects" className="mx-auto" />
-  </section>
+    <LinearGradientMask
+      className="[mask-image:linear-gradient(transparent,white)]"
+    />
+  </div>
 </MainLayout>

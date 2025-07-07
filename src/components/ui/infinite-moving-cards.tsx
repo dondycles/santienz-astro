@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export const InfiniteMovingCards = ({
   items,
@@ -85,7 +85,7 @@ export const InfiniteMovingCards = ({
         {items.map((item, idx) => (
           <a href={item.img} key={idx} target="_blank" className="my-auto">
             <li
-              className="relative h-fit w-[244px] xmd:w-[312px] max-w-full shrink-0 rounded-xl bg-primary/10  dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]"
+              className="relative h-fit w-[244px] xmd:w-[312px] max-w-full shrink-0 rounded-xl bg-primary/5  dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)] border"
               key={item.title}
             >
               <div className="xmd:p-4 p-1">

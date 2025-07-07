@@ -1,6 +1,6 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { BicepsFlexed, CheckCircle, Medal, Play, Users } from "lucide-react";
+import { BicepsFlexed, CheckCircle, Medal, Users } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import LinkButton from "@/components/LinkButton";
 import Header from "@/components/syntax/Header.astro";
@@ -8,13 +8,11 @@ import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
 import { Image } from "astro:assets";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
-import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
-import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
-import H2AndP from "@/components/syntax/hAndP/H2AndP.astro";
 import aboutUsBg from "@/images/about-us-bg.jpg";
 import CertficatesSlider from "@/components/CertficatesSlider.astro";
 import { supabase } from "@/db/supabase";
-import { CERTS_INFO } from "@/lib/creds-info";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
+import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
 const features: {
   count: number;
   title: string;
@@ -44,29 +42,38 @@ const featured_projects = await supabase
     <DesktopNavigation client:load />
     <MobileNavigation hideHome client:load />
   </Header>
-  <SectionMainHero>
-    <H1AndP
-      h="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  <section
+    id="main-hero"
+    class="relative w-full overflow-hidden bg-primary pt-20 xmd:pt-30 pb-6"
+  >
+    <Heading1AndP
+      h1="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
       p="Santienz Phils. Inc. is preferred by over 60 clients in manufacturing, food, and pharma sectors."
-    />
-    <div class="mx-auto z-20 flex gap-1 xmd:gap-4 flex-col sm:flex-row w-fit">
-      <CTAButton
-        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex-1"
-        variant="tertiary"
-        effect="shineHover"
-        link="/contact-us"
-      >
-        Request Quote
-      </CTAButton>
-      <CTAButton
-        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground backdrop-blur w-full flex-1"
-        variant="outline"
-        effect="shineHover"
-        link="/about-us"
-      >
-        Learn More About Us
-      </CTAButton>
-    </div>
+      withCta
+      h1Class="text-tertiary"
+      pClass="text-center text-primary-foreground"
+      parentClass="max-w-6xl mx-auto px-4"
+      alignment="center-only"
+    >
+      <div class="mx-auto z-20 flex gap-1 xmd:gap-4 flex-col sm:flex-row w-fit">
+        <CTAButton
+          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex-1"
+          variant="tertiary"
+          effect="shineHover"
+          link="/contact-us"
+        >
+          Request Quote
+        </CTAButton>
+        <CTAButton
+          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground backdrop-blur w-full flex-1"
+          variant="outline"
+          effect="shineHover"
+          link="/about-us"
+        >
+          Learn More About Us
+        </CTAButton>
+      </div>
+    </Heading1AndP>
     <div
       class="max-w-6xl px-1 xmd:px-4 mx-auto grid gap-1 xmd:gap-4 grid-cols-2 md:grid-cols-4 mt-6"
     >
@@ -91,35 +98,13 @@ const featured_projects = await supabase
       >
       </video>
     </SectionMainHeroOverlay>
-  </SectionMainHero>
-
-  <!-- Achievements (Mobile View Only) -->
-  <!-- <section
-    class="max-w-6xl px-4 mx-auto grid md:hidden gap-1 grid-cols-2 md:grid-cols-4 -mt-20"
-  >
-    {
-      features.map((feature, i) => (
-        <div
-          class={`flex flex-col gap-2 z-20 bg-primary/10 p-4
-              ${i === 0 && "rounded-tl-xl"}
-              ${i === 1 && "rounded-tr-xl"}
-              ${i === 2 && "rounded-bl-xl"}
-              ${i === 3 && "rounded-br-xl"}`}
-        >
-          <div class="text-3xl md:text-6xl font-bold text-primary">
-            {feature.count}+
-          </div>
-          <div class="text-foreground">{feature.title}</div>
-        </div>
-      ))
-    }
-  </section> -->
-
+  </section>
   <!-- Featured Projects -->
-  <section class="space-y-4 not-xmd:-mt-10">
-    <H2AndP
+  <section class="space-y-6 mt-6">
+    <Heading2AndP
       h="Featured Projects"
       p="Take a look at some of our completed projects"
+      alignment="left-only"
     />
     <div
       class="grid gap-1 xmd:gap-4 xxs:grid-cols-2 auto-rows-fr mx-auto max-w-6xl px-1 xmd:px-4"
@@ -156,13 +141,12 @@ const featured_projects = await supabase
       <LinkButton href="/projects" title="View More Projects" />
     </div>
   </section>
-
   <!-- About -->
-  <section class="space-y-4">
-    <H2AndP
+  <section class="space-y-6 mt-12">
+    <Heading2AndP
       h="About Santienz"
       p="Over the years, we have successfully completed more than 1 million square meters of installations across the Philippines, demonstrating our commitment to quality, innovation, and nationwide service."
-      pClassName="text-justify indent-8"
+      alignment="left-only"
     />
 
     <div class="max-w-6xl px-1 xmd:px-4 mx-auto">
@@ -177,102 +161,24 @@ const featured_projects = await supabase
     >
       <div>
         <Medal className="inline size-6 text-primary" />
-        <h3 class="text-base text-muted-foreground inline">Certified</h3>
+        <h3 class="text-muted-foreground inline">Certified</h3>
       </div>
       <div>
         <Users className="inline size-6 text-primary" />
-        <h3 class="text-base text-muted-foreground inline">Expert</h3>
+        <h3 class="text-muted-foreground inline">Expert</h3>
       </div>
       <div>
         <CheckCircle className="inline size-6 text-primary" />
-        <h3 class="text-base text-muted-foreground inline">Proven</h3>
+        <h3 class="text-muted-foreground inline">Proven</h3>
       </div>
       <div>
         <BicepsFlexed className="inline size-6 text-primary" />
-        <h3 class="text-base text-muted-foreground inline">Reliable</h3>
+        <h3 class="text-muted-foreground inline">Reliable</h3>
       </div>
     </div>
     <div class="flex px-4">
       <LinkButton href="/about-us" title="Read More About Us" />
     </div>
   </section>
-  <CertficatesSlider />
-  <!-- <section class="space-y-4">
-    <H2AndP
-      h="Credentials"
-      p="Our credentials reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
-      pClassName="indent-8 text-justify"
-    />
-    <div class="max-w-6xl mx-auto px-1 xmd:px-4">
-      <div
-        class="grid gap-1 xmd:gap-4 xxs:grid-cols-2 auto-rows-fr mx-auto max-w-6xl px-1 xmd:px-4"
-      >
-        {
-          CERTS_INFO.map((cert, i) => (
-            <div
-              class={`overflow-hidden w-full relative bg-primary/10 p-4 rounded-xl
-                ${i === 1 || i === 2 ? "xxs:row-span-2" : "xxs:row-span-1"}
-              `}
-            >
-              <Image
-                class={`w-full h-full object-cover border rounded-lg`}
-                src={cert.img}
-                alt={cert.title}
-              />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-    <div class="flex px-4">
-      <LinkButton href="/credentials" title="See Credential Details" />
-    </div>
-  </section> -->
-  <!-- Testimonials -->
-  <!-- <section class="space-y-4">
-    <H2AndP h="What Our Clients Say" p="Hear from our satisfied customers" />
-    <div class="max-w-6xl xmd:px-4 mx-auto">
-      <InfiniteMovingCards
-        client:load
-        className="mx-auto max-w-6xl w-full"
-        items={[
-          {
-            name: "April Pearl Fedalgo",
-            quote:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-            title: "Ma'am Inasal",
-          },
-          {
-            name: "Elijah Redondo",
-            quote:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-            title: "Angel's Burger",
-          },
-          {
-            name: "John Rod Dondoyano",
-            quote:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-            title: "Company",
-          },
-          {
-            name: "Client Name",
-            quote:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-            title: "Client's Company",
-          },
-          {
-            name: "Client Name",
-            quote:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam enim modi dolorem expedita?",
-            title: "Client's Company",
-          },
-        ]}
-        direction="right"
-        speed="slow"
-      />
-    </div>
-    <div class="flex px-4">
-      <LinkButton href="/testimonials" title="View More Testimonials" />
-    </div>
-  </section> -->
+  <CertficatesSlider className="mt-12" />
 </MainLayout>

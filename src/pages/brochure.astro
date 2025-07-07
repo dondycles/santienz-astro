@@ -1,57 +1,64 @@
 ---
-import Header from "@/components/syntax/Header.astro";
-import MainLayout from "@/layouts/MainLayout.astro";
 import { Image } from "astro:assets";
+import DesktopNavigation from "@/components/DesktopNavigation";
+import { EnhancedButton } from "@/components/EnhancedButton";
+import MobileNavigation from "@/components/MobileNavigation";
+import Header from "@/components/syntax/Header.astro";
+import CTAButton from "@/components/CTAButton";
 import brochurePage1 from "@/images/brochure/1.jpg";
 import brochurePage2 from "@/images/brochure/2.jpg";
-import { EnhancedButton } from "@/components/EnhancedButton";
-import DesktopNavigation from "@/components/DesktopNavigation";
-import MobileNavigation from "@/components/MobileNavigation";
-import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
-import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
-import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
-import Grid3DBg from "@/components/Grid3DBg.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import LinearGradientMask from "@/components/LinearGradientMask.astro";
+import { Download } from "lucide-react";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 ---
 
 <MainLayout
   title="Brochure of Santienz Phils. Inc."
   desc="Learn more about Santienz's polyurethane mortar flooring solutions. Download our brochure for details."
 >
-  <Header className="text-primary-foreground">
+  <Header className="text-primary backdrop-blur-lg">
     <DesktopNavigation hideBrochure client:load />
     <MobileNavigation hideBrochure client:load />
   </Header>
-  <SectionMainHero>
-    <H1AndP
-      h="Brochure"
+  <section class="relative">
+    <Heading1AndP
+      h1andpParentClass="mx-auto px-4 pt-24 sm:pt-32 max-w-6xl"
+      pClass="text-center"
+      alignment="center-only"
+      h1="Brochure"
       p="Learn more about Santienz's polyurethane mortar flooring solutions. Download our brochure for details."
     />
-    <SectionMainHeroOverlay>
-      <Grid3DBg />
-    </SectionMainHeroOverlay>
-  </SectionMainHero>
-
-  <section
-    class="flex flex-col items-center justify-center gap-8 -mt-15 md:-mt-10"
-  >
-    <div class="max-w-6xl grid md:grid-cols-2 gap-1 xmd:gap-4 px-1 xmd:px-4">
-      <Image
-        src={brochurePage1}
-        alt="Santienz Brochure Page 1"
-        class="rounded-xl"
-        loading="eager"
-      />
-      <Image
-        src={brochurePage2}
-        alt="Santienz Brochure Page 2"
-        class="rounded-xl"
-        loading="eager"
+    <LinearGradientMask />
+  </section>
+  <section class="relative mt-6">
+    <div class="flex flex-col items-center justify-center">
+      <div class="max-w-6xl grid md:grid-cols-2 gap-1 xmd:gap-4 px-1 xmd:px-4">
+        <Image
+          src={brochurePage1}
+          alt="Santienz Brochure Page 1"
+          class="rounded-xl"
+          loading="eager"
+        />
+        <Image
+          src={brochurePage2}
+          alt="Santienz Brochure Page 2"
+          class="rounded-xl"
+          loading="eager"
+        />
+      </div>
+      <div class="my-6">
+        <CTAButton
+          effect="shineHover"
+          variant="tertiary"
+          link="santienz-brochure.pdf"
+        >
+          Download <Download />
+        </CTAButton>
+      </div>
+      <LinearGradientMask
+        className="[mask-image:linear-gradient(transparent,transparent,white)]"
       />
     </div>
-    <a href="santienz-brochure.pdf" target="_blank">
-      <EnhancedButton effect="shineHover" variant="tertiary"
-        >Download</EnhancedButton
-      >
-    </a>
   </section>
 </MainLayout>

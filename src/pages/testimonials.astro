@@ -1,17 +1,17 @@
 ---
-import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/syntax/Header.astro";
-import MobileNavigation from "@/components/MobileNavigation";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { EnhancedButton } from "@/components/EnhancedButton";
 import { Star, User2 } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import StarsRatingInput from "@/components/StarsRatingInput";
-import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
-import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
-import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import DesktopNavigation from "@/components/DesktopNavigation";
+import { EnhancedButton } from "@/components/EnhancedButton";
 import Grid3DBg from "@/components/Grid3DBg.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import StarsRatingInput from "@/components/StarsRatingInput";
+import Header from "@/components/syntax/Header.astro";
+import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
+import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 ---
 
 <MainLayout
@@ -23,10 +23,10 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
     <MobileNavigation hideTestimonials client:load />
   </Header>
   <SectionMainHero>
-    <H1AndP
-      h="Testimonials"
+    <Heading1AndP
+      h1="Testimonials"
       p="Hear from our satisfied clients about their experiences with Santienz Phils. Inc. and the quality of our polyurethane mortar flooring solutions."
-      pClassName="text-left indent-8"
+      pClass="text-left "
     />
     <SectionMainHeroOverlay>
       <Grid3DBg />
@@ -35,7 +35,7 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
   <section
     class="mx-auto xmd:px-4 max-w-6xl space-y-1 xmd:space-y-4 -mt-23 xmd:-mt-20"
   >
-    <div class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col gap-4">
+    <div class="bg-primary/5 xmd:rounded-xl p-4 flex flex-col gap-4">
       <div class="space-y-2">
         <div class="text-primary flex gap-2 items-center">
           <User2 className="size-6" />
@@ -59,7 +59,7 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
         minus veniam!
       </p>
     </div>
-    <div class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col gap-4">
+    <div class="bg-primary/5 xmd:rounded-xl p-4 flex flex-col gap-4">
       <div class="space-y-2">
         <div class="text-primary flex gap-2 items-center">
           <User2 className="size-6" />
@@ -83,7 +83,7 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
         minus veniam!
       </p>
     </div>
-    <div class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col gap-4">
+    <div class="bg-primary/5 xmd:rounded-xl p-4 flex flex-col gap-4">
       <div class="space-y-2">
         <div class="text-primary flex gap-2 items-center">
           <User2 className="size-6" />
@@ -107,7 +107,7 @@ import Grid3DBg from "@/components/Grid3DBg.astro";
         minus veniam!
       </p>
     </div>
-    <div class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col gap-4">
+    <div class="bg-primary/5 xmd:rounded-xl p-4 flex flex-col gap-4">
       <div class="space-y-2">
         <div class="text-primary flex gap-2 items-center">
           <User2 className="size-6" />

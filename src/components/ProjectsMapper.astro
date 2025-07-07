@@ -1,11 +1,12 @@
 ---
 export const prerender = false;
-import type { Database } from "@/db/types";
+
 import { Image } from "astro:assets";
+import type { Database } from "@/db/types";
 
 interface Props {
-  projects: Database["public"]["Tables"]["projects"]["Row"][];
-  query?: string;
+	projects: Database["public"]["Tables"]["projects"]["Row"][];
+	query?: string;
 }
 
 const { projects, query } = Astro.props;
@@ -22,7 +23,7 @@ const featured_projects = projects.filter((project) => project.imgs !== null);
             class={`w-full h-full mb-0 mt-auto ${i === 0 ? "xxs:row-span-1" : i === featured_projects.length - 1 ? "xxs:row-span-1" : "xxs:row-span-2"}`}
           >
             <section
-              class={`bg-primary/10 rounded-xl flex flex-col h-full  overflow-hidden relative `}
+              class={`bg-primary/5 rounded-xl flex flex-col h-full  overflow-hidden relative `}
               id={project.title}
             >
               <Image

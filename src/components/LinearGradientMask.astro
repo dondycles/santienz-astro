@@ -8,12 +8,10 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<section
-  id="main-hero"
+<div
   class={cn(
-    "relative w-full overflow-hidden bg-primary pt-20 xmd:pt-30 pb-6",
+    "absolute inset-0 w-full h-full bg-tertiary/10 -z-20 [mask-image:linear-gradient(white,transparent)] pointer-events-none",
     className,
   )}
 >
-  <slot />
-</section>
+</div>

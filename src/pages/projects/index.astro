@@ -1,17 +1,15 @@
 ---
-import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/syntax/Header.astro";
-import MobileNavigation from "@/components/MobileNavigation";
-import MainLayout from "@/layouts/MainLayout.astro";
-import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
-import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
-import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
-import Grid3DBg from "@/components/Grid3DBg.astro";
-import SearchBar from "@/components/SearchBar.astro";
-import ProjectsMapper from "@/components/ProjectsMapper.astro";
-import { supabase } from "@/db/supabase";
-import CTAButton from "@/components/CTAButton";
 import { TableIcon } from "lucide-react";
+import CTAButton from "@/components/CTAButton";
+import DesktopNavigation from "@/components/DesktopNavigation";
+import MobileNavigation from "@/components/MobileNavigation";
+import ProjectsMapper from "@/components/ProjectsMapper.astro";
+import SearchBar from "@/components/SearchBar.astro";
+import Header from "@/components/syntax/Header.astro";
+import { supabase } from "@/db/supabase";
+import MainLayout from "@/layouts/MainLayout.astro";
+import LinearGradientMask from "@/components/LinearGradientMask.astro";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 export const prerender = false;
 const query = Astro.url.searchParams.get("query");
 const projects = await supabase
@@ -25,45 +23,49 @@ const projects = await supabase
   title="Featured Projects of Santienz Phils. Inc."
   desc="Explore the featured projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
 >
-  <Header className="text-primary-foreground">
+  <Header className="text-primary backdrop-blur-lg">
     <DesktopNavigation hideProjects client:load />
     <MobileNavigation hideProjects client:load />
   </Header>
-  <SectionMainHero>
-    <H1AndP
-      h="Featured Projects"
+  <section class="relative">
+    <Heading1AndP
+      parentClass="mx-auto px-4 pt-24 sm:pt-32 max-w-6xl"
+      h1="Featured Projects"
       p="Explore the featured projects of Santienz Phils. Inc. showcasing high-quality polyurethane mortar flooring and other projects completed across the Philippines since 1998."
-      pClassName="text-justify indent-8"
-    />
-    <div class="max-w-6xl mx-auto w-fit">
+      withCta
+      alignment="center-only"
+    >
       <CTAButton
-        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground  w-full backdrop-blur"
-        variant="outline"
+        className="px-12 z-20"
+        variant="tertiary"
         effect="shineHover"
         link="/projects/table"
       >
         See All Projects in Table View <TableIcon />
       </CTAButton>
-    </div>
-    <SectionMainHeroOverlay>
-      <Grid3DBg />
-    </SectionMainHeroOverlay>
-  </SectionMainHero>
-  {
-    projects.data ? (
-      <div class="-mt-10 space-y-4 mx-auto max-w-6xl px-1 xmd:px-4">
-        <SearchBar />
-        <div
-          class={`grid grid-cols-1 xxs:grid-cols-2 auto-rows-fr gap-1 xmd:gap-4 w-full`}
-        >
-          <ProjectsMapper projects={projects.data} />
+    </Heading1AndP>
+    <LinearGradientMask />
+  </section>
+  <div class="relative mt-6">
+    {
+      projects.data ? (
+        <div class="space-y-6 mx-auto max-w-6xl px-1 xmd:px-4">
+          <SearchBar />
+          <div
+            class={`grid grid-cols-1 xxs:grid-cols-2 auto-rows-fr gap-1 xmd:gap-4 w-full`}
+          >
+            <ProjectsMapper projects={projects.data} />
+          </div>
         </div>
-      </div>
-    ) : null
-  }
-  <div class="max-w-6xl mx-auto w-fit">
-    <CTAButton variant="tertiary" effect="shineHover" link="/projects/table">
-      See All Projects in Table View <TableIcon />
-    </CTAButton>
+      ) : null
+    }
+    <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
+      <CTAButton variant="tertiary" effect="shineHover" link="/projects/table">
+        See All Projects in Table View <TableIcon />
+      </CTAButton>
+    </div>
+    <LinearGradientMask
+      className="[mask-image:linear-gradient(transparent,white)]"
+    />
   </div>
 </MainLayout>

@@ -1,16 +1,15 @@
 ---
-import DesktopNavigation from "@/components/DesktopNavigation";
-import Header from "@/components/syntax/Header.astro";
-import MobileNavigation from "@/components/MobileNavigation";
-import MainLayout from "@/layouts/MainLayout.astro";
 import { Image } from "astro:assets";
-import grid3dBackground from "@/images/grid_3d.png";
+import DesktopNavigation from "@/components/DesktopNavigation";
 import { EnhancedButton } from "@/components/EnhancedButton";
-import { Badge } from "@/components/ui/badge";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import Header from "@/components/syntax/Header.astro";
 import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
 import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
-import Grid3DBg from "@/components/Grid3DBg.astro";
-import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
+import { Badge } from "@/components/ui/badge";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 ---
 
 <MainLayout
@@ -22,10 +21,9 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
     <MobileNavigation hideCareers client:load />
   </Header>
   <SectionMainHero>
-    <H1AndP
-      h="Careers"
+    <Heading1AndP
+      h1="Careers"
       p="Join our team at Santienz Phils. Inc. and help us deliver top-quality polyurethane mortar flooring solutions. Explore exciting career opportunities and grow with the No.1 provider in the Philippines since 1998."
-      pClassName="text-left indent-8"
     />
     <SectionMainHeroOverlay>
       <Grid3DBg />
@@ -36,7 +34,7 @@ import H1AndP from "@/components/syntax/hAndP/H1AndP.astro";
   >
     {
       Array.from({ length: 4 }).map(() => (
-        <div class="bg-primary/10 xmd:rounded-xl p-4 flex flex-col gap-4">
+        <div class="bg-primary/5 xmd:rounded-xl p-4 flex flex-col gap-4">
           <div class="space-y-2">
             <h2 class="font-bold text-4xl text-primary">Job Name</h2>
             <p class="text-muted-foreground">Santienz Phils. Inc.</p>

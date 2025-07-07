@@ -1,15 +1,22 @@
 ---
 import { CERTS_INFO } from "@/lib/creds-info";
 import LinkButton from "./LinkButton";
-import H2AndP from "./syntax/hAndP/H2AndP.astro";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
+import LinearGradientMask from "./LinearGradientMask.astro";
+import { cn } from "@/lib/utils";
+import Heading2AndP from "./syntax/Heading2AndP.astro";
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
 ---
 
-<section class="space-y-4">
-  <H2AndP
+<section class={cn("space-y-6 relative -mb-0 pb-6", className)}>
+  <Heading2AndP
     h="Credentials"
     p="Our credentials reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
-    pClassName="indent-8 text-justify"
+    alignment="left-only"
   />
   <div class="max-w-6xl mx-auto px-1 xmd:px-4">
     <InfiniteMovingCards
@@ -20,4 +27,7 @@ import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
   <div class="flex px-4">
     <LinkButton href="/credentials" title="See Credential Details" />
   </div>
+  <LinearGradientMask
+    className="bg-tertiary/10 [mask-image:linear-gradient(transparent,white)] "
+  />
 </section>

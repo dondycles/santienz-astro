@@ -13,6 +13,7 @@ import { supabase } from "@/db/supabase";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
 import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
+import TrustedBy from "@/components/TrustedBy.astro";
 const features: {
   count: number;
   title: string;
@@ -141,8 +142,10 @@ const featured_projects = await supabase
       <LinkButton href="/projects" title="View More Projects" />
     </div>
   </section>
+  <!-- Finished Clients -->
+  <TrustedBy />
   <!-- About -->
-  <section class="space-y-6 mt-12">
+  <section class="space-y-6 mt-24">
     <Heading2AndP
       h="About Santienz"
       p="Over the years, we have successfully completed more than 1 million square meters of installations across the Philippines, demonstrating our commitment to quality, innovation, and nationwide service."
@@ -180,5 +183,7 @@ const featured_projects = await supabase
       <LinkButton href="/about-us" title="Read More About Us" />
     </div>
   </section>
+
+  <!-- Certificates -->
   <CertficatesSlider className="mt-12" />
 </MainLayout>

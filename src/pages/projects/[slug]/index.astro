@@ -6,12 +6,12 @@ import DesktopNavigation from "@/components/DesktopNavigation";
 import Grid3DBg from "@/components/Grid3DBg.astro";
 import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/syntax/Header.astro";
-import SectionMainHero from "@/components/syntax/sections/SectionMainHero.astro";
-import SectionMainHeroOverlay from "@/components/syntax/sections/SectionMainHeroOverlay.astro";
+
 import { supabase } from "@/db/supabase";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
+import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
 
 export const prerender = false;
 
@@ -66,7 +66,7 @@ const images = data.imgs?.length
         <span>Back to all projects</span>
       </CTAButton>
     </Heading1AndP>
-    <SectionMainHeroOverlay>
+    <MainHeroOverlay>
       {
         images ? (
           <Image
@@ -81,7 +81,7 @@ const images = data.imgs?.length
           <Grid3DBg />
         )
       }
-    </SectionMainHeroOverlay>
+    </MainHeroOverlay>
   </section>
 
   <section class="mx-auto max-w-6xl px-4 text-muted-foreground my-6 space-y-2">
@@ -129,7 +129,7 @@ const images = data.imgs?.length
         <div class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1 relative">
           {images?.map((img, i) => (
             <Image
-              class="rounded-xl "
+              class="rounded-md "
               src={img}
               alt={`image-${i}-of-${data.slug}`}
               quality="mid"

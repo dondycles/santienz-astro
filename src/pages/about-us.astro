@@ -30,7 +30,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
         withCta
       >
         <CTAButton
-          className="px-12 z-20 w-fit"
+          className="px-12 z-20 w-fit shadow-lg"
           variant="tertiary"
           effect="shineHover"
           link="/projects"
@@ -38,10 +38,12 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
           See All Projects
         </CTAButton>
       </Heading1AndP>
-      <iframe
-        src="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/preview"
-        allow="autoplay"
-        class="w-full aspect-video rounded-xl bg-foreground/10"></iframe>
+      <div class="shadow-xl">
+        <iframe
+          src="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/preview"
+          allow="autoplay"
+          class="w-full aspect-video rounded-md bg-foreground/10"></iframe>
+      </div>
     </div>
     <LinearGradientMask />
   </section>
@@ -50,7 +52,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
   <section class="space-y-6 max-w-6xl mx-auto mt-12">
     <Heading2AndP h="History" alignment="left-only" />
     <div class="px-4">
-      <div class="bg-primary/5 p-4 rounded-xl">
+      <div class="bg-primary/5 p-4 rounded-md">
         <History />
       </div>
     </div>
@@ -60,7 +62,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
   <section class="mx-auto max-w-6xl space-y-6 mt-12">
     <Heading2AndP h="Our Commitment" alignment="left-only" />
     <div class="px-4">
-      <div class="space-y-2 bg-primary/5 rounded-xl p-4 text-muted-foreground">
+      <div class="space-y-2 bg-primary/5 rounded-md p-4 text-muted-foreground">
         <p class="">
           To continually provide the local construction and manufacturing
           industry with the latest advances in engineering methods, specifically
@@ -105,7 +107,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
           class="grid grid-cols-2 xmd:grid-cols-3 not-xmd:grid-rows-2 gap-1 xmd:gap-4 h-fit"
         >
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-xmd:col-span-2 not-xmd:row-span-2"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-xmd:col-span-2 not-xmd:row-span-2"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -123,7 +125,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
             </p>
           </div>
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -141,7 +143,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
             </p>
           </div>
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square not-sm:col-span-2"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -168,7 +170,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 xmd:gap-4 h-fit"
         >
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -186,7 +188,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
             </p>
           </div>
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -204,7 +206,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
             </p>
           </div>
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />
@@ -222,7 +224,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
             </p>
           </div>
           <div
-            class="bg-primary/5 rounded-xl p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
+            class="bg-primary/5 rounded-md p-3 xmd:p-4 flex flex-col items-center gap-4 xmd:aspect-square"
           >
             <div class="bg-primary rounded-full p-4">
               <User className="text-primary-foreground size-24 " />

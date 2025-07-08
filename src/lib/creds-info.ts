@@ -7,19 +7,19 @@ import mp from "@/images/certs/mp-2025.jpg";
 import or from "@/images/certs/or-2025.jpg";
 
 export const CERTS_INFO: {
-	title: string;
-	img: ImageMetadata;
-	type: "certificate" | "permit" | "receipt";
+  title: string;
+  img: ImageMetadata;
+  type: "certificate" | "permit" | "receipt";
 }[] = [
-	{ title: "Barangay Business Clearance", img: bbc, type: "certificate" },
-	{ title: "Certificate of Conformance", img: coc, type: "certificate" },
-	{ title: "Environmental Permit to Operate", img: epo, type: "permit" },
-	{
-		title: "Fire Safety Inspection Certificate",
-		img: fsic,
-		type: "certificate",
-	},
-	{ title: "Mayor's Permit", img: mp, type: "permit" },
-	{ title: "Official Receipt", img: or, type: "receipt" },
-	{ title: "Business Permit", img: bp, type: "permit" },
+  { title: "Barangay Business Clearance", img: bbc, type: "certificate" },
+  { title: "Certificate of Conformance", img: coc, type: "certificate" },
+  {
+    title: "Fire Safety Inspection Certificate",
+    img: fsic,
+    type: "certificate",
+  },
+  { title: "Business Permit", img: bp, type: "permit" },
+  { title: "Environmental Permit to Operate", img: epo, type: "permit" },
+  { title: "Mayor's Permit", img: mp, type: "permit" },
+  { title: "Official Receipt", img: or, type: "receipt" },
 ];

@@ -36,7 +36,7 @@ const projects = await supabase
       alignment="center-only"
     >
       <CTAButton
-        className="px-12 z-20"
+        className="px-12 z-20 shadow-lg"
         variant="tertiary"
         effect="shineHover"
         link="/projects/table"
@@ -60,7 +60,12 @@ const projects = await supabase
       ) : null
     }
     <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
-      <CTAButton variant="tertiary" effect="shineHover" link="/projects/table">
+      <CTAButton
+        className="shadow-lg"
+        variant="tertiary"
+        effect="shineHover"
+        link="/projects/table"
+      >
         See All Projects in Table View <TableIcon />
       </CTAButton>
     </div>

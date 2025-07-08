@@ -1,13 +1,19 @@
 ---
 interface Props {
-	style: string;
-	loading?: "eager" | "lazy" | null | undefined;
+  style: string;
+  loading?: "eager" | "lazy" | null | undefined;
 }
 
 import { Image } from "astro:assets";
 import santienzPng from "../../public/santienz.png";
+import { cn } from "@/lib/utils";
 
 const { style, loading } = Astro.props;
 ---
 
-<Image src={santienzPng} alt="Santienz Logo" class={style} loading={loading} />
+<Image
+  src={santienzPng}
+  alt="Santienz Logo"
+  class={cn("drop-shadow-lg", style)}
+  loading={loading}
+/>

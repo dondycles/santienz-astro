@@ -71,7 +71,10 @@ export const InfiniteMovingCards = ({
   return (
     <div
       ref={containerRef}
-      className={cn("scroller relative z-20 w-full overflow-hidden", className)}
+      className={cn(
+        "scroller relative z-20 w-full overflow-hidden py-6",
+        className,
+      )}
     >
       <ul
         ref={scrollerRef}
@@ -83,16 +86,16 @@ export const InfiniteMovingCards = ({
         )}
       >
         {items.map((item, idx) => (
-          <a href={item.img} key={idx} target="_blank" className="my-auto">
+          <a href={item.img} key={idx} target="_blank" className="my-auto ">
             <li
-              className="relative h-fit w-[244px] xmd:w-[312px] max-w-full shrink-0 rounded-xl bg-primary/5  dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)] border"
+              className="relative h-fit w-[244px] xmd:w-[312px] max-w-full shrink-0 rounded-md bg-background/50  dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)] border shadow-lg"
               key={item.title}
             >
               <div className="xmd:p-4 p-1">
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full aspect-auto object-fill object-top rounded-lg max-h-82"
+                  className="w-full aspect-auto object-fill object-top rounded-md max-h-82 shadow border"
                 />
               </div>
               <h3 className="px-1 xmd:px-4 pb-1 pt-1 xmd:pt-0 xmd:pb-4 text-primary font-semibold text-center">

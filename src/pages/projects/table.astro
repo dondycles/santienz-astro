@@ -46,7 +46,7 @@ const projects = await supabase
       alignment="center-only"
     >
       <CTAButton
-        className="px-12 z-20"
+        className="px-12 z-20 shadow-lg"
         variant="tertiary"
         effect="shineHover"
         link="/projects"
@@ -59,7 +59,7 @@ const projects = await supabase
   <section class="relative">
     <div class="space-y-6 mx-auto max-w-6xl px-1 xmd:px-4 mt-6 relative">
       <SearchBar />
-      <div class="border border-tertiary rounded-xl px-3 xmd:px-1">
+      <div class="border border-tertiary rounded-md px-3 xmd:px-1 shadow-lg">
         <TableComponent>
           <TableHeader>
             <TableRow className="[&>th]:text-tertiary [&>th]:font-semibold">
@@ -100,7 +100,12 @@ const projects = await supabase
       </div>
     </div>
     <div class="max-w-6xl mx-auto w-fit py-6">
-      <CTAButton variant="tertiary" effect="shineHover" link="/projects">
+      <CTAButton
+        className="shadow-lg"
+        variant="tertiary"
+        effect="shineHover"
+        link="/projects"
+      >
         <ChevronLeft /> Back to Featured Projects
       </CTAButton>
     </div>

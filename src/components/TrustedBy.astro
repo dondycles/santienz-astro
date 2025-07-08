@@ -1,6 +1,72 @@
 ---
 import { Image } from "astro:assets";
 import Heading2AndP from "./syntax/Heading2AndP.astro";
+
+const clients: Array<{
+  src: string;
+  alt: string;
+}> = [
+  {
+    src: "https://static.wikia.nocookie.net/logopedia/images/e/e2/SMHypermarket2010.svg/revision/latest/scale-to-width-down/300?cb=20211202101121",
+    alt: "SM Hypermarket",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Nestl%C3%A9.svg/800px-Nestl%C3%A9.svg.png",
+    alt: "Nestle",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/0/08/Magnolia_dairy_logo.png",
+    alt: "Magnolia",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/640px-McDonald%27s_Golden_Arches.svg.png",
+    alt: "McDonalds",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/en/thumb/8/84/Jollibee_2011_logo.svg/800px-Jollibee_2011_logo.svg.png",
+    alt: "Jollibee",
+  },
+  {
+    src: "https://lirp.cdn-website.com/b3fbd289/dms3rep/multi/opt/san-miguel-foods_logo-640w.png",
+    alt: "San Miguel Foods",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Mang_Inasal.svg/395px-Mang_Inasal.svg.png?20200712183642",
+    alt: "Mang Inasal",
+  },
+  {
+    src: "https://royalecoldstorage.com.ph/wp-content/uploads/2024/07/royal-cold-storage-logo-2022.webp",
+    alt: "Royale Cold Storage",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/en/5/5e/KCC_Mall_logo.png",
+    alt: "KCC Malls",
+  },
+  {
+    src: "https://isocholdings.com/wp-content/uploads/2019/12/orca-blk-logo.png",
+    alt: "ORCA Cold Chain Solutions",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/8/86/Alfamart_logo.svg",
+    alt: "Alfamart",
+  },
+  {
+    src: "https://delimondo.ph/cdn/shop/files/Delimondo_Logo-Black_2048x2048.png",
+    alt: "Delimondo",
+  },
+  {
+    src: "https://static.wikia.nocookie.net/logopedia/images/e/e6/RedRibbon2009Logo.png/revision/latest?cb=20231224062231",
+    alt: "Red Ribbon",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Universal_Robina_logo_2016.svg",
+    alt: "Universal Robina",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Max_Group_logo.png",
+    alt: "Max's Group, Inc.",
+  },
+];
 ---
 
 <section class="space-y-6 mt-12">
@@ -10,102 +76,20 @@ import Heading2AndP from "./syntax/Heading2AndP.astro";
     alignment="left-only"
   />
   <div
-    class="flex flex-wrap justify-center-safe gap-16 px-4 max-w-6xl mx-auto w-full"
+    class="flex flex-wrap justify-center-safe gap-8 sm:gap-12 lg:gap-16 px-4 max-w-6xl mx-auto w-full"
   >
-    <Image
-      src="https://static.wikia.nocookie.net/logopedia/images/e/e2/SMHypermarket2010.svg/revision/latest/scale-to-width-down/300?cb=20211202101121"
-      alt="SM Hypermarket"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Nestl%C3%A9.svg/800px-Nestl%C3%A9.svg.png"
-      alt="Nestle"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/commons/0/08/Magnolia_dairy_logo.png"
-      alt="Magnolia"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/640px-McDonald%27s_Golden_Arches.svg.png"
-      alt="McDonalds"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/en/thumb/8/84/Jollibee_2011_logo.svg/800px-Jollibee_2011_logo.svg.png"
-      alt="Jollibee"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://lirp.cdn-website.com/b3fbd289/dms3rep/multi/opt/san-miguel-foods_logo-640w.png"
-      alt="San Miguel Foods"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Mang_Inasal.svg/395px-Mang_Inasal.svg.png?20200712183642"
-      alt="Mang Inasal"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-
-    <Image
-      src="https://royalecoldstorage.com.ph/wp-content/uploads/2024/07/royal-cold-storage-logo-2022.webp"
-      alt="Royale Cold Storage"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/en/5/5e/KCC_Mall_logo.png"
-      alt="KCC Malls"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-
-    <Image
-      src="https://isocholdings.com/wp-content/uploads/2019/12/orca-blk-logo.png"
-      alt="ORCA Cold Chain Solutions"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/commons/8/86/Alfamart_logo.svg"
-      alt="Alfamart"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://delimondo.ph/cdn/shop/files/Delimondo_Logo-Black_2048x2048.png"
-      alt="Delimondo"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://static.wikia.nocookie.net/logopedia/images/e/e6/RedRibbon2009Logo.png/revision/latest?cb=20231224062231"
-      alt="Red Ribbon"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Universal_Robina_logo_2016.svg"
-      alt="Universal Robina"
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
-    <Image
-      src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Max_Group_logo.png"
-      alt="Max's Group, Inc."
-      inferSize
-      class="max-h-16 aspect-auto w-fit"
-    />
+    {
+      clients.map((client) => (
+        <Image
+          src={client.src}
+          alt={client.alt}
+          inferSize
+          class="max-h-8 sm:max-h-12 lg:max-h-16 xl:max-h-24 aspect-auto w-fit"
+        />
+      ))
+    }
   </div>
   <!-- <div class="flex px-4">
-      <LinkButton href="/projects" title="View More Projects" />
-    </div> -->
+            <LinkButton href="/projects" title="View More Projects" />
+        </div> -->
 </section>

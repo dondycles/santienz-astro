@@ -1,27 +1,26 @@
-import { ActionError, defineAction } from "astro:actions";
+import { defineAction } from "astro:actions";
 import { z } from "astro:schema";
 import { Resend } from "resend";
-import { UTApi } from "uploadthing/server";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 export const formSchema = z.object({
-	email: z.string().email().nonempty(),
-	name: z.string().nonempty().max(100),
-	subject: z.string().nonempty().max(100),
-	body: z.string().nonempty(),
+  email: z.string().email().nonempty(),
+  name: z.string().nonempty().max(100),
+  subject: z.string().nonempty().max(100),
+  body: z.string().nonempty(),
 });
 export const server = {
-	submitEmail: defineAction({
-		accept: "json",
-		input: formSchema,
-		handler: async (input) => {
-			return await resend.emails.send({
-				from: "website-inquiry@johnroddondoyano.com",
-				to: "dondycles@gmail.com",
-				subject: input.subject,
-				replyTo: input.email,
-				text: input.body,
-				html: `<html>
+  submitEmail: defineAction({
+    accept: "json",
+    input: formSchema,
+    handler: async (input) => {
+      return await resend.emails.send({
+        from: "website-inquiry@johnroddondoyano.com",
+        to: "dondycles@gmail.com",
+        subject: input.subject,
+        replyTo: input.email,
+        text: input.body,
+        html: `<html>
   <head>
     <style>
       * {
@@ -61,7 +60,7 @@ export const server = {
     </div>
   </body>
 </html>`,
-			});
-		},
-	}),
+      });
+    },
+  }),
 };

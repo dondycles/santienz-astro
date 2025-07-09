@@ -1,5 +1,5 @@
 ---
-import { User } from "lucide-react";
+import { Check, ChevronRight, Dot, User } from "lucide-react";
 import CertficatesSlider from "@/components/CertficatesSlider.astro";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import History from "@/components/History";
@@ -53,9 +53,7 @@ import TrustedBy from "@/components/TrustedBy.astro";
   <section class="space-y-6 max-w-6xl mx-auto mt-12">
     <Heading2AndP h="History" alignment="left-only" />
     <div class="px-4">
-      <div class="bg-primary/5 p-4 rounded-md">
-        <History />
-      </div>
+      <History />
     </div>
   </section>
 
@@ -65,28 +63,49 @@ import TrustedBy from "@/components/TrustedBy.astro";
     <div class="px-4">
       <div class="space-y-2 bg-primary/5 rounded-md p-4 text-muted-foreground">
         <p class="">
-          To continually provide the local construction and manufacturing
-          industry with the latest advances in engineering methods, specifically
-          in concrete floor repair, renovation and floor, roof protection
-          systems.
+          <span class="inline-block -mb-1">
+            <ChevronRight className="text-tertiary size-5" />
+          </span>
+          <span>
+            To continually provide the local construction and manufacturing
+            industry with the latest advances in engineering methods,
+            specifically in concrete floor repair, renovation and floor, roof
+            protection systems.
+          </span>
         </p>
         <br />
         <p>
-          Truly, with our long line of advance technology products, which have
-          gained popular acceptance among maintenance and construction engineer,
-          Santienz Philippines, Inc. id destined to be a "household" name.
+          <span class="inline-block -mb-1">
+            <ChevronRight className="text-tertiary size-5" />
+          </span>
+          <span>
+            Truly, with our long line of advance technology products, which have
+            gained popular acceptance among maintenance and construction
+            engineer, Santienz Philippines, Inc. id destined to be a "household"
+            name.
+          </span>
         </p>
         <br />
 
         <p>
-          Our company would like to come to you as a solution to your flooring
-          and roofing problems.
+          <span class="inline-block -mb-1">
+            <ChevronRight className="text-tertiary size-5" />
+          </span>
+          <span>
+            Our company would like to come to you as a solution to your flooring
+            and roofing problems.
+          </span>
         </p>
         <br />
 
         <p>
-          On this premise will Santienz Philippines, Inc. serve its Philippine
-          partners towards progressive industrialization.
+          <span class="inline-block -mb-1">
+            <ChevronRight className="text-tertiary size-5" />
+          </span>
+          <span>
+            On this premise will Santienz Philippines, Inc. serve its Philippine
+            partners towards progressive industrialization.
+          </span>
         </p>
       </div>
     </div>

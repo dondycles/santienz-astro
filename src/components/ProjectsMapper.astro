@@ -5,7 +5,10 @@ import { Image } from "astro:assets";
 import type { Database } from "@/db/types";
 
 interface Props {
-  projects: Database["public"]["Tables"]["projects"]["Row"][];
+  projects: Pick<
+    Database["public"]["Tables"]["projects"]["Row"],
+    "id" | "imgs" | "slug" | "title"
+  >[];
   query?: string;
 }
 

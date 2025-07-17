@@ -1,7 +1,6 @@
 ---
 import { CheckCircle, ChevronRight } from "lucide-react";
 import DesktopNavigation from "@/components/DesktopNavigation";
-import LinkButton from "@/components/LinkButton";
 import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/syntax/Header.astro";
 import CTAButton from "@/components/CTAButton";
@@ -9,6 +8,8 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
+import { PRODUCTS_INFO } from "@/lib/products-info";
+import { Image } from "astro:assets";
 ---
 
 <MainLayout
@@ -29,116 +30,80 @@ import LinearGradientMask from "@/components/LinearGradientMask.astro";
     />
     <LinearGradientMask />
   </section>
-  <section id="polyurethane-flooring" class="space-y-6 scroll-m-18 mt-12">
-    <Heading2AndP
-      h="Polyurethane Flooring"
-      p="Our polyurethane mortar flooring systems are designed for heavy-duty industrial environments, offering exceptional resistance to chemicals, abrasion, and thermal shock. Ideal for food processing, pharmaceutical, and manufacturing facilities."
-      alignment="left-only"
-      hClass="text-tertiary"
-    >
-      <div class="flex gap-4 flex-wrap mt-6">
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Durable</span>
-        </div>
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Hygienic</span>
-        </div>
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Easy Maintenance</span>
-        </div>
-      </div>
-    </Heading2AndP>
-    <div
-      class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
-    >
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-    </div>
-  </section>
-  <section id="water-proofing" class="space-y-6 scroll-m-18 mt-12">
-    <Heading2AndP
-      h="Water Proofing"
-      p="We provide advanced waterproofing solutions to protect structures from water ingress and damage. Our systems are suitable for roofs, basements, and wet areas, ensuring long-lasting protection and peace of mind for both commercial and residential projects."
-      alignment="left-only"
-      hClass="text-tertiary"
-    >
-      <div class="flex gap-4 flex-wrap mt-6">
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Water Resistant</span>
-        </div>
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground">Long-lasting Protection</span>
-        </div>
-        <div>
-          <CheckCircle className="inline mr-1 text-tertiary" />
-          <span class="text-muted-foreground"
-            >Suitable for Roofs & Basements</span
+  {
+    PRODUCTS_INFO.map((product, i) => {
+      if (i === PRODUCTS_INFO.length - 1)
+        return (
+          <div class="relative">
+            <section id={product.id} class="space-y-6 scroll-m-18 mt-12">
+              <Heading2AndP
+                h={product.name}
+                p={product.desc}
+                alignment="left-only"
+                hClass="text-tertiary"
+              >
+                <div class="flex gap-4 flex-wrap mt-6">
+                  {product.highlights.map((highlight) => (
+                    <div>
+                      <CheckCircle className="inline mr-1 text-tertiary" />
+                      <span class="text-muted-foreground">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </Heading2AndP>
+              <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1">
+                {product.imgs.map((img, i) => (
+                  <Image
+                    src={img}
+                    alt={`${product.name},${i}`}
+                    inferSize
+                    class="rounded-md aspect-video object-cover"
+                  />
+                ))}
+              </div>
+            </section>
+            <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
+              <CTAButton
+                className="shadow-lg"
+                variant="tertiary"
+                effect="shineHover"
+                link="/projects/table"
+              >
+                View Our Projects <ChevronRight />
+              </CTAButton>
+            </div>
+            <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
+          </div>
+        );
+      return (
+        <section id={product.id} class="space-y-6 scroll-m-18 mt-12">
+          <Heading2AndP
+            h={product.name}
+            p={product.desc}
+            alignment="left-only"
+            hClass="text-tertiary"
           >
-        </div>
-      </div>
-    </Heading2AndP>
-    <div
-      class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
-    >
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-    </div>
-  </section>
-  <div class="relative">
-    <section id="nafufill-km-250" class="space-y-6 scroll-m-18 mt-12">
-      <Heading2AndP
-        h="Nafufill KM 250"
-        p="Nafufill KM 250 is a high-performance repair mortar for concrete structures. It offers excellent adhesion, high compressive strength, and resistance to environmental factors, making it ideal for structural repairs and surface restoration in demanding conditions."
-        alignment="left-only"
-        hClass="text-tertiary"
-      >
-        <div class="flex gap-4 flex-wrap mt-6">
-          <div>
-            <CheckCircle className="inline mr-1 text-tertiary" />
-            <span class="text-muted-foreground">Water Resistant</span>
+            <div class="flex gap-4 flex-wrap mt-6">
+              {product.highlights.map((highlight) => (
+                <div>
+                  <CheckCircle className="inline mr-1 text-tertiary" />
+                  <span class="text-muted-foreground">{highlight}</span>
+                </div>
+              ))}
+            </div>
+          </Heading2AndP>
+          <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1">
+            {product.imgs.map((img, i) => (
+              <Image
+                src={img}
+                alt={`${product.name},${i}`}
+                inferSize
+                class="rounded-md aspect-video object-cover"
+              />
+            ))}
           </div>
-          <div>
-            <CheckCircle className="inline mr-1 text-tertiary" />
-            <span class="text-muted-foreground">Long-lasting Protection</span>
-          </div>
-          <div>
-            <CheckCircle className="inline mr-1 text-tertiary" />
-            <span class="text-muted-foreground"
-              >Suitable for Roofs & Basements</span
-            >
-          </div>
-        </div>
-      </Heading2AndP>
-      <div
-        class="grid xmd:grid-cols-2 xmd:grid-rows-2 max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1"
-      >
-        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-        <div class="bg-primary/5 w-full h-full aspect-[2/1] rounded-md"></div>
-      </div>
-    </section>
-    <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
-      <CTAButton
-        className="shadow-lg"
-        variant="tertiary"
-        effect="shineHover"
-        link="/projects/table"
-      >
-        View Our Projects <ChevronRight />
-      </CTAButton>
-    </div>
-    <LinearGradientMask
-      className="[mask-image:linear-gradient(transparent,white)]"
-    />
-  </div>
+        </section>
+      );
+    })
+  }
 </MainLayout>

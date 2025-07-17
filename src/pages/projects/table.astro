@@ -25,7 +25,8 @@ const projects = await supabase
   .from("projects")
   .select()
   .order("title", { ascending: true })
-  .ilike("title", `%${query ?? ""}%`);
+  .ilike("title", `%${query ?? ""}%`)
+  .select("title, address, products, sqm, slug");
 ---
 
 <MainLayout
@@ -65,8 +66,8 @@ const projects = await supabase
             <TableRow className="[&>th]:text-tertiary [&>th]:font-semibold">
               <TableHead>Client</TableHead>
               <TableHead>Location</TableHead>
-              <TableHead>Products Used</TableHead>
-              <TableHead>Area</TableHead>
+              <TableHead>Product used</TableHead>
+              <TableHead>Area serviced</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -91,7 +92,11 @@ const projects = await supabase
                       </span>
                     ))}
                   </TableCell>
-                  <TableCell>{project.sqm}sqm</TableCell>
+                  <TableCell>
+                    {project.sqm
+                      ? `${Intl.NumberFormat().format(project.sqm)} sqm`
+                      : null}
+                  </TableCell>
                 </TableRow>
               ))
             }

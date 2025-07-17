@@ -82,7 +82,7 @@ const projects = await supabase
                     {(project.products as string[])?.map((product, i) => (
                       <span>
                         <a
-                          href={`/products#${product}`}
+                          href={`/products#${product.toLocaleLowerCase().replaceAll(" ", "-")}`}
                           class="text-primary hover:underline"
                         >
                           {(project.products as string[])?.length - 1 !== i

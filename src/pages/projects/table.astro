@@ -86,8 +86,8 @@ const projects = await supabase
                           class="text-primary hover:underline"
                         >
                           {(project.products as string[])?.length - 1 !== i
-                            ? `${product}, `
-                            : product}
+                            ? `${product.toUpperCase()}, `
+                            : product.toUpperCase()}
                         </a>
                       </span>
                     ))}

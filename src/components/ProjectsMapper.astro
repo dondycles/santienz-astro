@@ -3,6 +3,7 @@ export const prerender = false;
 
 import { Image } from "astro:assets";
 import type { Database } from "@/db/types";
+import { imgUrlFromSb } from "@/lib/utils";
 
 interface Props {
   projects: Pick<
@@ -30,10 +31,7 @@ const featured_projects = projects.filter((project) => project.imgs !== null);
               id={project.title}
             >
               <Image
-                src={
-                  `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
-                  (project.imgs as string[])[0]
-                }
+                src={imgUrlFromSb("projects", (project.imgs as string[])[0])}
                 alt={project.title}
                 class="w-full h-full object-cover shrink-0"
                 quality="mid"

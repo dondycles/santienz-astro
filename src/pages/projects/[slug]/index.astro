@@ -12,6 +12,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
 import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
+import { imgUrlFromSb } from "@/lib/utils";
 
 export const prerender = false;
 
@@ -24,10 +25,8 @@ const { data } = await supabase
 if (!data) return Astro.redirect("/projects");
 
 const images = data.imgs?.length
-  ? Array.from({ length: data.imgs.length }).map(
-      (_, index) =>
-        `${import.meta.env.SUPABASE_URL}/storage/v1/object/public/projects/` +
-        (data.imgs as string[])[index],
+  ? Array.from({ length: data.imgs.length }).map((_, index) =>
+      imgUrlFromSb("projects", (data.imgs as string[])[index]),
     )
   : null;
 ---
@@ -109,8 +108,8 @@ const images = data.imgs?.length
               class="text-primary hover:underline"
             >
               {(data.products as string[]).length - 1 !== i
-                ? `${prod}, `
-                : prod}
+                ? `${prod.toUpperCase()}, `
+                : prod.toUpperCase()}
             </a>
           </span>
         ))

@@ -41,7 +41,7 @@ const products = await supabase
         return (
           <div class="relative">
             <section
-              id={product.id.toString()}
+              id={product.name.toLocaleLowerCase().replaceAll(" ", "-")}
               class="space-y-6 scroll-m-18 mt-12"
             >
               <Heading2AndP
@@ -84,7 +84,10 @@ const products = await supabase
           </div>
         );
       return (
-        <section id={product.id.toString()} class="space-y-6 scroll-m-18 mt-12">
+        <section
+          id={product.name.toLocaleLowerCase().replaceAll(" ", "-")}
+          class="space-y-6 scroll-m-18 mt-12"
+        >
           <Heading2AndP
             h={product.name}
             p={product.description}

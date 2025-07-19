@@ -14,7 +14,8 @@ import { imgUrlFromSb } from "@/lib/utils";
 import { supabase } from "@/db/supabase";
 const products = await supabase
   .from("products")
-  .select("description, id, imgs, name, highlights");
+  .select("description, id, imgs, name, highlights")
+  .order("name");
 ---
 
 <MainLayout

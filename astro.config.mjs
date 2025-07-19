@@ -13,7 +13,7 @@ export default defineConfig({
   },
   site: import.meta.env.DEV
     ? "http://localhost"
-    : "https://santienz-astro.vercel.app",
+    : "https://santienzphilsinc.com",
   integrations: [react(), sitemap()],
   adapter: vercel(),
   devToolbar: {

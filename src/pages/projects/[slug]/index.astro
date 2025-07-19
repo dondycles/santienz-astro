@@ -2,7 +2,7 @@
 export const prerender = false;
 
 import { Image } from "astro:assets";
-import { ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
+import { Box, ChevronLeft, Info, MapPin, Ruler, Star, Tag } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import Grid3DBg from "@/components/Grid3DBg.astro";
@@ -117,9 +117,15 @@ const images = data.imgs?.length
     </p>
     <p hidden={!data.sqm}>
       <span>
+        <Ruler className="inline mr-1  size-5" />
+      </span>
+      Area: {data.sqm}
+    </p>
+    <p hidden={!data.description}>
+      <span>
         <Info className="inline mr-1  size-5" />
       </span>
-      Area: {data.sqm ? `${data.sqm}sqm` : null}
+      Other info: {data.description}
     </p>
   </section>
   <section class="relative">

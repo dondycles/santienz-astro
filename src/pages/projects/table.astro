@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import { ChevronLeft } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import DesktopNavigation from "@/components/DesktopNavigation";
@@ -19,7 +20,6 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 
-export const prerender = false;
 const query = Astro.url.searchParams.get("query");
 const projects = await supabase
   .from("projects")

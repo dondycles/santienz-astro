@@ -1,4 +1,6 @@
 ---
+export const prerender = false;
+
 import { Image } from "astro:assets";
 import { ChevronLeft, Info, MapPin, Star, Tag } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -13,8 +15,6 @@ import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
 import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
 import { imgUrlFromSb } from "@/lib/utils";
-
-export const prerender = false;
 
 const { slug } = Astro.params;
 const { data } = await supabase

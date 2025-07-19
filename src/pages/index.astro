@@ -1,5 +1,4 @@
 ---
-export const prerender = false;
 import MainLayout from "@/layouts/MainLayout.astro";
 import { BicepsFlexed, CheckCircle, Medal, Users } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
@@ -39,7 +38,7 @@ const featured_projects = await supabase
 
 <MainLayout
   title="Satienz Phils. Inc."
-  desc="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+  desc="The Ultimate Polyurethane Mortar Floor"
 >
   <Header className="text-primary-foreground">
     <DesktopNavigation client:load />
@@ -50,10 +49,11 @@ const featured_projects = await supabase
     class="relative w-full overflow-hidden bg-primary pt-20 xmd:pt-30 pb-6"
   >
     <Heading1AndP
-      h1="No.1 Polyurethane Mortar Flooring in the Philippines since 1998"
+      h1=`The Ultimate
+      Polyurethane Mortar Floor`
       p="Santienz Phils. Inc. is preferred by over 60 clients in manufacturing, food, and pharma sectors."
       withCta
-      h1Class="text-tertiary"
+      h1Class="text-tertiary whitespace-pre-line"
       pClass="text-center text-primary-foreground"
       parentClass="max-w-6xl mx-auto px-4"
       alignment="center-only"

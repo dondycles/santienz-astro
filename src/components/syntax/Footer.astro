@@ -1,8 +1,10 @@
 ---
 import { Image } from "astro:assets";
-import { Copyright, Mail, MapPin, Phone, Pin } from "lucide-react";
+import { Copyright, Mail, MapPin, Phone } from "lucide-react";
 import sunRays from "@/images/sun-rays.webp";
 import Logo from "../Logo.astro";
+import { supabase } from "@/db/supabase";
+const products = await supabase.from("products").select("name").order("name");
 ---
 
 <footer
@@ -46,15 +48,17 @@ import Logo from "../Logo.astro";
       <div class="space-y-4">
         <h4 class="font-semibold text-primary">Products</h4>
         <ul class="space-y-2 text-base text-muted-foreground">
-          <li>
-            <a href="/products/#polyurethane-flooring">Polyurethane Flooring</a>
-          </li>
-          <li>
-            <a href="/products/#water-proofing">Water Proofing</a>
-          </li>
-          <li>
-            <a href="/products/#nafufill-km-250">Nafufill KM 250</a>
-          </li>
+          {
+            products.data?.map((product) => (
+              <li>
+                <a
+                  href={`/products/#${product.name.toLocaleLowerCase().replaceAll(" ", "-")}`}
+                >
+                  {product.name}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>

@@ -119,7 +119,7 @@ const images = data.imgs?.length
       <span>
         <Ruler className="inline mr-1  size-5" />
       </span>
-      Area: {data.sqm}
+      Area: {data.sqm}sqm
     </p>
     <p hidden={!data.description}>
       <span>
@@ -131,26 +131,27 @@ const images = data.imgs?.length
   <section class="relative">
     {
       images ? (
-        <div class="max-w-6xl mx-auto px-1 xmd:px-4 grid gap-4 not-xmd:gap-1 relative">
+        <div class="max-w-6xl w-full mx-auto px-1 xmd:px-4 grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] gap-4 not-xmd:gap-1 relative">
           {images?.map((img, i) => (
-            <Image
-              class="rounded-md "
-              src={img}
-              alt={`image-${i}-of-${data.slug}`}
-              quality="mid"
-              width={1080}
-              height={720}
-            />
+            <div class="relative aspect-square rounded-md overflow-hidden w-full h-full max-w-128 m-auto">
+              <Image
+                class="object-cover h-full w-full"
+                src={img}
+                alt={`image-${i}-of-${data.slug}`}
+                quality="mid"
+                inferSize
+              />
+            </div>
           ))}
-          <div class="max-w-6xl mx-auto w-fit mt-2 mb-6">
-            <CTAButton variant="tertiary" effect="shineHover" link="/projects">
-              <ChevronLeft />
-              <span>Back to all projects</span>
-            </CTAButton>
-          </div>
         </div>
       ) : null
     }
+    <div class="max-w-6xl mx-auto w-fit mt-6">
+      <CTAButton variant="tertiary" effect="shineHover" link="/projects">
+        <ChevronLeft />
+        <span>Back to all projects</span>
+      </CTAButton>
+    </div>
     <LinearGradientMask
       className="[mask-image:linear-gradient(transparent,transparent,white)]"
     />

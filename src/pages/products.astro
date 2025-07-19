@@ -54,7 +54,9 @@ const products = await supabase
                   {(product.highlights as string[]).map((highlight) => (
                     <div>
                       <CheckCircle className="inline mr-1 text-tertiary" />
-                      <span class="text-muted-foreground">{highlight}</span>
+                      <span class="text-muted-foreground capitalize">
+                        {highlight}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -99,7 +101,9 @@ const products = await supabase
               {(product.highlights as string[]).map((highlight) => (
                 <div>
                   <CheckCircle className="inline mr-1 text-tertiary" />
-                  <span class="text-muted-foreground">{highlight}</span>
+                  <span class="text-muted-foreground capitalize">
+                    {highlight}
+                  </span>
                 </div>
               ))}
             </div>

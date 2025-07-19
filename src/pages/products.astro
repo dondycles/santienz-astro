@@ -67,7 +67,7 @@ const products = await supabase
                     src={imgUrlFromSb("products", img)}
                     alt={`${product.name},${i}`}
                     inferSize
-                    class="rounded-md aspect-video object-cover"
+                    class="rounded-md aspect-video object-cover w-full h-full"
                   />
                 ))}
               </div>
@@ -114,7 +114,7 @@ const products = await supabase
                 src={imgUrlFromSb("products", img)}
                 alt={`${product.name},${i}`}
                 inferSize
-                class="rounded-md aspect-video object-cover"
+                class="rounded-md aspect-video object-cover w-full h-full"
               />
             ))}
           </div>
@@ -122,80 +122,4 @@ const products = await supabase
       );
     })
   }
-  <!-- {
-    PRODUCTS_INFO.map((product, i) => {
-      if (i === PRODUCTS_INFO.length - 1)
-        return (
-          <div class="relative">
-            <section id={product.id} class="space-y-6 scroll-m-18 mt-12">
-              <Heading2AndP
-                h={product.name}
-                p={product.desc}
-                alignment="left-only"
-                hClass="text-tertiary"
-              >
-                <div class="flex gap-4 flex-wrap mt-6">
-                  {product.highlights.map((highlight) => (
-                    <div>
-                      <CheckCircle className="inline mr-1 text-tertiary" />
-                      <span class="text-muted-foreground">{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-              </Heading2AndP>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1">
-                {product.imgs.map((img, i) => (
-                  <Image
-                    src={img}
-                    alt={`${product.name},${i}`}
-                    inferSize
-                    class="rounded-md aspect-video object-cover"
-                  />
-                ))}
-              </div>
-            </section>
-            <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
-              <CTAButton
-                className="shadow-lg"
-                variant="tertiary"
-                effect="shineHover"
-                link="/projects/table"
-              >
-                View Our Projects <ChevronRight />
-              </CTAButton>
-            </div>
-            <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
-          </div>
-        );
-      return (
-        <section id={product.id} class="space-y-6 scroll-m-18 mt-12">
-          <Heading2AndP
-            h={product.name}
-            p={product.desc}
-            alignment="left-only"
-            hClass="text-tertiary"
-          >
-            <div class="flex gap-4 flex-wrap mt-6">
-              {product.highlights.map((highlight) => (
-                <div>
-                  <CheckCircle className="inline mr-1 text-tertiary" />
-                  <span class="text-muted-foreground">{highlight}</span>
-                </div>
-              ))}
-            </div>
-          </Heading2AndP>
-          <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1">
-            {product.imgs.map((img, i) => (
-              <Image
-                src={img}
-                alt={`${product.name},${i}`}
-                inferSize
-                class="rounded-md aspect-video object-cover"
-              />
-            ))}
-          </div>
-        </section>
-      );
-    })
-  } -->
 </MainLayout>

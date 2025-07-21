@@ -1,6 +1,6 @@
-import type { Pages } from "@/lib/pages.types";
-import CTAButton from "./CTAButton";
-import { Button } from "./ui/button";
+import type { Pages } from '@/lib/pages.types';
+import CTAButton from './CTAButton';
+import { Button } from './ui/button';
 export default function DesktopNavigation({
   hideCTA = false,
   hideBrochure = false,
@@ -17,7 +17,7 @@ export default function DesktopNavigation({
           hidden={hideAboutUs}
           variant="link"
           asChild
-          className="header-links text-inherit p-0"
+          className="header-links p-0 text-inherit"
         >
           <a href="/about-us">About Us</a>
         </Button>
@@ -25,7 +25,7 @@ export default function DesktopNavigation({
           hidden={hideProjects}
           variant="link"
           asChild
-          className="header-links text-inherit p-0"
+          className="header-links p-0 text-inherit"
         >
           <a href="/projects">Projects</a>
         </Button>
@@ -33,7 +33,7 @@ export default function DesktopNavigation({
           hidden={hideProducts}
           asChild
           variant="link"
-          className="header-links text-inherit p-0"
+          className="header-links p-0 text-inherit"
         >
           <a href="/products">Products</a>
         </Button>
@@ -41,7 +41,7 @@ export default function DesktopNavigation({
           hidden={hideBrochure}
           asChild
           variant="link"
-          className="header-links text-inherit p-0"
+          className="header-links p-0 text-inherit"
         >
           <a href="/brochure">Brochure</a>
         </Button>
@@ -49,7 +49,7 @@ export default function DesktopNavigation({
           hidden={hideTestimonials}
           asChild
           variant="link"
-          className="header-links text-inherit p-0"
+          className="header-links p-0 text-inherit"
         >
           <a href="/testimonials">Testimonials</a>
         </Button>
@@ -57,18 +57,13 @@ export default function DesktopNavigation({
           hidden={hideCareers}
           variant="link"
           asChild
-          className="header-links  text-inherit p-0"
+          className="header-links p-0 text-inherit"
         >
           <a href="/careers">Careers</a>
         </Button>
       </nav>
       {hideCTA ? null : (
-        <CTAButton
-          className="shadow-lg"
-          link="/contact-us"
-          effect="shineHover"
-          variant="tertiary"
-        >
+        <CTAButton className="shadow-lg" link="/contact-us" effect="shineHover" variant="tertiary">
           Contact Us
         </CTAButton>
       )}

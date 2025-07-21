@@ -1,0 +1,157 @@
+---
+export const prerender = false;
+
+import { Image } from "astro:assets";
+import { Box, ChevronLeft, Info, MapPin, Ruler, Star, Tag } from "lucide-react";
+import CTAButton from "@/components/CTAButton";
+import DesktopNavigation from "@/components/DesktopNavigation";
+import Grid3DBg from "@/components/Grid3DBg.astro";
+import MobileNavigation from "@/components/MobileNavigation";
+import Header from "@/components/syntax/Header.astro";
+
+import { supabase } from "@/db/supabase";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
+import LinearGradientMask from "@/components/LinearGradientMask.astro";
+import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
+import { imgUrlFromSb } from "@/lib/utils";
+
+const { slug } = Astro.params;
+const { data } = await supabase
+  .from("projects")
+  .select()
+  .eq("slug", slug ?? "")
+  .single();
+if (!data) return Astro.redirect("/projects");
+
+const images = data.imgs?.length
+  ? Array.from({ length: data.imgs.length }).map((_, index) =>
+      imgUrlFromSb("projects", (data.imgs as string[])[index]),
+    )
+  : null;
+---
+
+<MainLayout
+  title={`${data.title} and Santienz Phils. Inc.`}
+  desc=`${data.title} is one of the valued clients served by Santienz Phils. Inc. Explore our work on their project and how we helped bring their vision to life.`
+  image={images !== null ? images[0] : null}
+>
+  <Header className="text-primary-foreground">
+    <DesktopNavigation hideProjects client:load />
+    <MobileNavigation hideProjects client:load />
+  </Header>
+  <section
+    id="main-hero"
+    class="relative w-full overflow-hidden bg-primary pt-20 xmd:pt-30"
+  >
+    <Heading1AndP
+      h1={data.title as string}
+      p=`${data.title as string} is one of the valued clients served by Santienz Phils. Inc.
+        Explore our work on their project and how we helped bring their vision to
+        life.`
+      withCta
+      h1Class="text-tertiary"
+      pClass="text-center text-primary-foreground"
+      parentClass="max-w-6xl mx-auto px-4"
+      alignment="center-only"
+    >
+      <CTAButton
+        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground backdrop-blur w-full"
+        variant="outline"
+        effect="shineHover"
+        link="/projects"
+      >
+        <ChevronLeft />
+        <span>Back to all projects</span>
+      </CTAButton>
+    </Heading1AndP>
+    <MainHeroOverlay>
+      {
+        images ? (
+          <Image
+            src={images[0]}
+            alt={data.title ? data.title : "Grid 3D Background"}
+            class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
+            quality="low"
+            width={1080}
+            height={720}
+          />
+        ) : (
+          <Grid3DBg />
+        )
+      }
+    </MainHeroOverlay>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 text-muted-foreground my-6 space-y-2">
+    <p>
+      <span>
+        <Star className="inline mr-1 size-5" />
+      </span>
+      Client: {data.title}
+    </p>
+    <p hidden={!data.address}>
+      <span>
+        <MapPin className="inline mr-1 size-5" />
+      </span>
+      Location: {data.address}
+    </p>
+    <p>
+      <span>
+        <Tag className="inline mr-1  size-5" />
+      </span>
+      Products used: {
+        (data.products as string[]).map((prod, i) => (
+          <span>
+            <a
+              href={`/products#${prod.toLocaleLowerCase().replaceAll(" ", "-")}`}
+              class="text-primary hover:underline"
+            >
+              {(data.products as string[]).length - 1 !== i
+                ? `${prod.toUpperCase()}, `
+                : prod.toUpperCase()}
+            </a>
+          </span>
+        ))
+      }
+    </p>
+    <p hidden={!data.sqm}>
+      <span>
+        <Ruler className="inline mr-1  size-5" />
+      </span>
+      Area: {data.sqm}sqm
+    </p>
+    <p hidden={!data.description}>
+      <span>
+        <Info className="inline mr-1  size-5" />
+      </span>
+      Other info: {data.description}
+    </p>
+  </section>
+  <section class="relative">
+    {
+      images ? (
+        <div
+          class="max-w-6xl w-full mx-auto px-1 grid xmd:px-4 
+        xxs:grid-cols-[repeat(auto-fit,minmax(240px,1fr))]
+        xmd:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 not-xmd:gap-1 relative"
+        >
+          {images?.map((img, i) => (
+            <div class="relative rounded-md overflow-hidden w-full h-full m-auto">
+              <Image
+                class="object-cover h-full w-full"
+                src={img}
+                alt={`image-${i}-of-${data.slug}`}
+                quality="mid"
+                inferSize
+              />
+            </div>
+          ))}
+        </div>
+      ) : null
+    }
+    <LinearGradientMask
+      className="[mask-image:linear-gradient(transparent,transparent,white)]"
+    />
+  </section>
+</MainLayout>

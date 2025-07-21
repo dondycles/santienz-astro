@@ -1,17 +1,17 @@
 ---
 export const prerender = false;
-import { ChevronRight } from "lucide-react";
-import CertficatesSlider from "@/components/CertficatesSlider.astro";
-import DesktopNavigation from "@/components/DesktopNavigation";
-import History from "@/components/History";
-import MobileNavigation from "@/components/MobileNavigation";
-import Header from "@/components/syntax/Header.astro";
-import MainLayout from "@/layouts/MainLayout.astro";
-import CTAButton from "@/components/CTAButton";
-import LinearGradientMask from "@/components/LinearGradientMask.astro";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
-import TrustedBy from "@/components/TrustedBy.astro";
+import CertficatesSlider from '@/components/CertficatesSlider.astro';
+import CTAButton from '@/components/CTAButton';
+import DesktopNavigation from '@/components/DesktopNavigation';
+import History from '@/components/History';
+import LinearGradientMask from '@/components/LinearGradientMask.astro';
+import MobileNavigation from '@/components/MobileNavigation';
+import Header from '@/components/syntax/Header.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
+import Heading2AndP from '@/components/syntax/Heading2AndP.astro';
+import TrustedBy from '@/components/TrustedBy.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { ChevronRight } from 'lucide-react';
 ---
 
 <MainLayout
@@ -24,7 +24,7 @@ import TrustedBy from "@/components/TrustedBy.astro";
   </Header>
   <section class="relative">
     <div
-      class="mx-auto grid grid-cols-1 gap-y-4 gap-x-16 lg:grid-cols-2 px-4 pt-24 sm:pt-32 max-w-6xl"
+      class="mx-auto grid max-w-6xl grid-cols-1 gap-x-16 gap-y-4 px-4 pt-24 sm:pt-32 lg:grid-cols-2"
     >
       <Heading1AndP
         h1="About Us"
@@ -32,7 +32,7 @@ import TrustedBy from "@/components/TrustedBy.astro";
         withCta
       >
         <CTAButton
-          className="px-12 z-20 w-fit shadow-lg"
+          className="z-20 w-fit px-12 shadow-lg"
           variant="tertiary"
           effect="shineHover"
           link="/projects"
@@ -44,14 +44,14 @@ import TrustedBy from "@/components/TrustedBy.astro";
         <iframe
           src="https://drive.google.com/file/d/1P0UcS0fa_ExazAVLeCqpOiGBSPFV5M2_/preview"
           allow="autoplay"
-          class="w-full aspect-video rounded-md bg-foreground/10"></iframe>
+          class="bg-foreground/10 aspect-video w-full rounded-md"></iframe>
       </div>
     </div>
     <LinearGradientMask />
   </section>
 
   <!-- History -->
-  <section class="space-y-6 max-w-6xl mx-auto mt-12">
+  <section class="mx-auto mt-12 max-w-6xl space-y-6">
     <Heading2AndP h="History" alignment="left-only" />
     <div class="px-4">
       <History />
@@ -59,53 +59,51 @@ import TrustedBy from "@/components/TrustedBy.astro";
   </section>
 
   <!-- Our Commitment-->
-  <section class="mx-auto max-w-6xl space-y-6 mt-12">
+  <section class="mx-auto mt-12 max-w-6xl space-y-6">
     <Heading2AndP h="Our Commitment" alignment="left-only" />
     <div class="px-4">
-      <div class="space-y-2 bg-primary/5 rounded-md p-4 text-muted-foreground">
+      <div class="bg-primary/5 text-muted-foreground space-y-2 rounded-md p-4">
         <p class="">
-          <span class="inline-block -mb-1">
+          <span class="-mb-1 inline-block">
             <ChevronRight className="text-tertiary size-5" />
           </span>
           <span>
-            To continually provide the local construction and manufacturing
-            industry with the latest advances in engineering methods,
-            specifically in concrete floor repair, renovation and floor, roof
-            protection systems.
+            To continually provide the local construction and manufacturing industry with the latest
+            advances in engineering methods, specifically in concrete floor repair, renovation and
+            floor, roof protection systems.
           </span>
         </p>
         <br />
         <p>
-          <span class="inline-block -mb-1">
+          <span class="-mb-1 inline-block">
             <ChevronRight className="text-tertiary size-5" />
           </span>
           <span>
-            Truly, with our long line of advance technology products, which have
-            gained popular acceptance among maintenance and construction
-            engineer, Santienz Philippines, Inc. id destined to be a "household"
-            name.
-          </span>
-        </p>
-        <br />
-
-        <p>
-          <span class="inline-block -mb-1">
-            <ChevronRight className="text-tertiary size-5" />
-          </span>
-          <span>
-            Our company would like to come to you as a solution to your flooring
-            and roofing problems.
+            Truly, with our long line of advance technology products, which have gained popular
+            acceptance among maintenance and construction engineer, Santienz Philippines, Inc. id
+            destined to be a "household" name.
           </span>
         </p>
         <br />
 
         <p>
-          <span class="inline-block -mb-1">
+          <span class="-mb-1 inline-block">
             <ChevronRight className="text-tertiary size-5" />
           </span>
           <span>
-            On this premise will Santienz Philippines, Inc. serve its Philippine
-            partners towards progressive industrialization.
+            Our company would like to come to you as a solution to your flooring and roofing
+            problems.
+          </span>
+        </p>
+        <br />
+
+        <p>
+          <span class="-mb-1 inline-block">
+            <ChevronRight className="text-tertiary size-5" />
+          </span>
+          <span>
+            On this premise will Santienz Philippines, Inc. serve its Philippine partners towards
+            progressive industrialization.
           </span>
         </p>
       </div>

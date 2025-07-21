@@ -1,17 +1,18 @@
 ---
 export const prerender = false;
-import DesktopNavigation from "@/components/DesktopNavigation";
-import MobileNavigation from "@/components/MobileNavigation";
-import Header from "@/components/syntax/Header.astro";
-import MainLayout from "@/layouts/MainLayout.astro";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-import LinearGradientMask from "@/components/LinearGradientMask.astro";
-import { supabase } from "@/db/supabase";
-import Product from "@/components/Product.astro";
+import DesktopNavigation from '@/components/DesktopNavigation';
+import LinearGradientMask from '@/components/LinearGradientMask.astro';
+import MobileNavigation from '@/components/MobileNavigation';
+import Product from '@/components/Product.astro';
+import Header from '@/components/syntax/Header.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
+import { supabase } from '@/db/supabase';
+import MainLayout from '@/layouts/MainLayout.astro';
+
 const products = await supabase
-  .from("products")
-  .select("description, id, imgs, name, highlights")
-  .order("name");
+  .from('products')
+  .select('description, id, imgs, name, highlights')
+  .order('name');
 ---
 
 <MainLayout

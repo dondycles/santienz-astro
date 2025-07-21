@@ -19,10 +19,6 @@ export default defineConfig({
   devToolbar: {
     enabled: true,
   },
-  redirects: {
-    "/careers": "/",
-    "/testimonials": "/",
-  },
   server: {
     port: 1117,
   },

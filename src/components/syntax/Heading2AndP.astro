@@ -1,5 +1,5 @@
 ---
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 interface Props {
   hAndPParentClass?: string;
@@ -7,32 +7,25 @@ interface Props {
   hClass?: string;
   p?: string;
   h: string;
-  alignment?: "center-only" | "reverse" | "default" | "left-only";
+  alignment?: 'center-only' | 'reverse' | 'default' | 'left-only';
 }
 
-const {
-  hAndPParentClass,
-  hClass,
-  pClass,
-  p,
-  h,
-  alignment = "default",
-} = Astro.props;
+const { hAndPParentClass, hClass, pClass, p, h, alignment = 'default' } = Astro.props;
 ---
 
-<div class={cn("mx-auto max-w-6xl space-y-2 px-4", hAndPParentClass)}>
+<div class={cn('mx-auto max-w-6xl space-y-2 px-4', hAndPParentClass)}>
   <h1
     class={cn(
-      "font-bold text-2xl xmd:text-4xl text-tertiary",
-      alignment === "default" && "text-left xmd:text-center",
-      alignment === "center-only" && "text-center",
-      alignment === "reverse" && "xmd:text-left text-center",
-      alignment === "left-only" && "text-left",
-      hClass,
+      'font-bold text-2xl xmd:text-4xl text-tertiary',
+      alignment === 'default' && 'text-left xmd:text-center',
+      alignment === 'center-only' && 'text-center',
+      alignment === 'reverse' && 'xmd:text-left text-center',
+      alignment === 'left-only' && 'text-left',
+      hClass
     )}
   >
     {h}
   </h1>
-  {p ? <p class={cn("text-muted-foreground", pClass)}>{p}</p> : null}
+  {p ? <p class={cn('text-muted-foreground', pClass)}>{p}</p> : null}
   <slot />
 </div>

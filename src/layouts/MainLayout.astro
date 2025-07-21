@@ -5,31 +5,31 @@ interface Props {
   hideCTACard?: boolean;
   image?: string | null;
 }
-import "@fontsource/poppins/100.css";
-import "@fontsource/poppins/200.css";
-import "@fontsource/poppins/300.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import "@fontsource/poppins/800.css";
-import "@fontsource/poppins/900.css";
-import CTACard from "@/components/CTACard.astro";
-import "../styles/global.css";
-import { SEO } from "astro-seo";
-import Footer from "@/components/syntax/Footer.astro";
-import { Toaster } from "@/components/ui/sonner";
-import Analytics from "@vercel/analytics/astro";
-import SpeedInsights from "@vercel/speed-insights/astro";
+import CTACard from '@/components/CTACard.astro';
+import Footer from '@/components/syntax/Footer.astro';
+import { Toaster } from '@/components/ui/sonner';
+import '@fontsource/poppins/100.css';
+import '@fontsource/poppins/200.css';
+import '@fontsource/poppins/300.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
 const { desc, title, hideCTACard = false, image } = Astro.props;
 const url = Astro.url;
 const canonicalURL = new URL(url.pathname, url);
-const siteURL = new URL("/", url);
-const webSiteSchema = new URL("/#/schema/WebSite", Astro.url);
+const siteURL = new URL('/', url);
+const webSiteSchema = new URL('/#/schema/WebSite', Astro.url);
 const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": webSiteSchema,
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': webSiteSchema,
   name: title,
   url: siteURL,
   description: desc,
@@ -52,37 +52,31 @@ const structuredData = {
       openGraph={{
         basic: {
           title,
-          type: "website",
+          type: 'website',
           image: image ?? `${url.origin}/summary-new.png`,
           url: `${url.origin}${url.pathname}`,
         },
         optional: {
           description: desc,
-          siteName: "Santienz Phils. Inc.",
+          siteName: 'Santienz Phils. Inc.',
         },
       }}
       twitter={{
         title,
         description: desc,
-        card: "summary_large_image",
+        card: 'summary_large_image',
         image: image ?? `${url.origin}/summary-new.png`,
-        creator: "@dondycles",
+        creator: '@dondycles',
       }}
     />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href={`${url.origin}/sitemap-index.xml`} />
-    <script
-      is:inline
-      type="application/ld+json"
-      set:html={JSON.stringify(structuredData)}
-    />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <meta name="generator" content={Astro.generator} />
   </head>
-  <body
-    class="text-base min-h-dvh flex flex-col w-full antialiased text-foreground bg-background"
-  >
-    <main class="flex-1 z-0">
+  <body class="text-foreground bg-background flex min-h-dvh w-full flex-col text-base antialiased">
+    <main class="z-0 flex-1">
       <slot />
       {hideCTACard ? null : <CTACard />}
       <Footer />

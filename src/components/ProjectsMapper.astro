@@ -1,14 +1,14 @@
 ---
 export const prerender = false;
 
-import { Image } from "astro:assets";
-import type { Database } from "@/db/types";
-import { imgUrlFromSb } from "@/lib/utils";
+import type { Database } from '@/db/types';
+import { imgUrlFromSb } from '@/lib/utils';
+import { Image } from 'astro:assets';
 
 interface Props {
   projects: Pick<
-    Database["public"]["Tables"]["projects"]["Row"],
-    "id" | "imgs" | "slug" | "title"
+    Database['public']['Tables']['projects']['Row'],
+    'id' | 'imgs' | 'slug' | 'title'
   >[];
 }
 
@@ -21,23 +21,20 @@ const featured_projects = projects.filter((project) => project.imgs !== null);
   featured_projects.length
     ? featured_projects.map((project, i) => {
         return (
-          <a
-            href={`/projects/${project.slug}`}
-            class={`w-full mb-0 mt-auto h-full`}
-          >
+          <a href={`/projects/${project.slug}`} class={`mt-auto mb-0 h-full w-full`}>
             <section
-              class={`bg-primary/5 rounded-md flex flex-col h-full max-h-52 w-full overflow-hidden relative `}
+              class={`bg-primary/5 relative flex h-full max-h-52 w-full flex-col overflow-hidden rounded-md`}
               id={project.title}
             >
               <Image
-                src={imgUrlFromSb("projects", (project.imgs as string[])[0])}
+                src={imgUrlFromSb('projects', (project.imgs as string[])[0])}
                 alt={project.title}
-                class="w-full h-full object-cover object-center shrink-0 brightness-75"
+                class="h-full w-full shrink-0 object-cover object-center brightness-75"
                 quality="mid"
                 inferSize
               />
-              <div class="bg-gradient-to-t from-tertiary/25 to-transparent absolute bottom-0 left-0 right-0 p-3 xmd:p-4">
-                <h2 class="text-primary-foreground text-base sm:text-2xl font-medium  drop-shadow  leading-tight">
+              <div class="from-tertiary/25 xmd:p-4 absolute right-0 bottom-0 left-0 bg-gradient-to-t to-transparent p-3">
+                <h2 class="text-primary-foreground text-base leading-tight font-medium drop-shadow sm:text-2xl">
                   {project.title}
                 </h2>
               </div>

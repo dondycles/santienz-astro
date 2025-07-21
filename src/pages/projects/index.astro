@@ -1,23 +1,23 @@
 ---
 export const prerender = false;
-import { TableIcon } from "lucide-react";
-import CTAButton from "@/components/CTAButton";
-import DesktopNavigation from "@/components/DesktopNavigation";
-import MobileNavigation from "@/components/MobileNavigation";
-import ProjectsMapper from "@/components/ProjectsMapper.astro";
-import SearchBar from "@/components/SearchBar.astro";
-import Header from "@/components/syntax/Header.astro";
-import { supabase } from "@/db/supabase";
-import MainLayout from "@/layouts/MainLayout.astro";
-import LinearGradientMask from "@/components/LinearGradientMask.astro";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-const query = Astro.url.searchParams.get("query");
+import CTAButton from '@/components/CTAButton';
+import DesktopNavigation from '@/components/DesktopNavigation';
+import LinearGradientMask from '@/components/LinearGradientMask.astro';
+import MobileNavigation from '@/components/MobileNavigation';
+import ProjectsMapper from '@/components/ProjectsMapper.astro';
+import SearchBar from '@/components/SearchBar.astro';
+import Header from '@/components/syntax/Header.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
+import { supabase } from '@/db/supabase';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { TableIcon } from 'lucide-react';
+const query = Astro.url.searchParams.get('query');
 const projects = await supabase
-  .from("projects")
+  .from('projects')
   .select()
-  .order("title", { ascending: true })
-  .ilike("title", `%${query ?? ""}%`)
-  .select("id, title, slug, imgs");
+  .order('title', { ascending: true })
+  .ilike('title', `%${query ?? ''}%`)
+  .select('id, title, slug, imgs');
 ---
 
 <MainLayout
@@ -37,7 +37,7 @@ const projects = await supabase
       alignment="center-only"
     >
       <CTAButton
-        className="px-12 z-20 shadow-lg"
+        className="z-20 px-12 shadow-lg"
         variant="tertiary"
         effect="shineHover"
         link="/projects/table"
@@ -50,18 +50,14 @@ const projects = await supabase
   <div class="relative mt-6">
     {
       projects.data ? (
-        <div class="space-y-6 mx-auto max-w-6xl px-1 xmd:px-4">
+        <div class="xmd:px-4 mx-auto max-w-6xl space-y-6 px-1">
           <SearchBar />
-          <div
-            class={`grid grid-cols-1 xxs:grid-cols-2 auto-rows-fr gap-1 xmd:gap-4 w-full`}
-          >
+          <div class={`xxs:grid-cols-2 xmd:gap-4 grid w-full auto-rows-fr grid-cols-1 gap-1`}>
             <ProjectsMapper projects={projects.data} />
           </div>
         </div>
       ) : null
     }
-    <LinearGradientMask
-      className="[mask-image:linear-gradient(transparent,white)]"
-    />
+    <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
   </div>
 </MainLayout>

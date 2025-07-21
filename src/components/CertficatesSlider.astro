@@ -1,10 +1,10 @@
 ---
-import { CERTS_INFO } from "@/lib/creds-info";
-import LinkButton from "./LinkButton";
-import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
-import LinearGradientMask from "./LinearGradientMask.astro";
-import { cn } from "@/lib/utils";
-import Heading2AndP from "./syntax/Heading2AndP.astro";
+import { CERTS_INFO } from '@/lib/creds-info';
+import { cn } from '@/lib/utils';
+import LinearGradientMask from './LinearGradientMask.astro';
+import LinkButton from './LinkButton';
+import Heading2AndP from './syntax/Heading2AndP.astro';
+import { InfiniteMovingCards } from './ui/infinite-moving-cards';
 interface Props {
   className?: string;
 }
@@ -12,13 +12,13 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<section class={cn("flex flex-col gap-6 relative", className)}>
+<section class={cn('flex flex-col gap-6 relative', className)}>
   <Heading2AndP
     h="Credentials"
     p="Our credentials reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
     alignment="left-only"
   />
-  <div class="max-w-6xl mx-auto px-1 xmd:px-4">
+  <div class="xmd:px-4 mx-auto max-w-6xl px-1">
     <InfiniteMovingCards
       client:load
       items={CERTS_INFO.map((cert) => ({ ...cert, img: cert.img.src }))}
@@ -27,7 +27,5 @@ const { className } = Astro.props;
   <div class="flex px-4">
     <LinkButton href="/credentials" title="See Credential Details" />
   </div>
-  <LinearGradientMask
-    className="[mask-image:linear-gradient(transparent,white)]"
-  />
+  <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
 </section>

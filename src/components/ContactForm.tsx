@@ -1,16 +1,4 @@
-import { actions } from "astro:actions";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, Send } from "lucide-react";
-import { useRef, useState } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha,
-} from "react-google-recaptcha-v3";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -18,17 +6,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { cn } from "@/lib/utils";
-import { Textarea } from "./ui/textarea";
+} from '@/components/ui/select';
+import { cn } from '@/lib/utils';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { actions } from 'astro:actions';
+import { Loader2, Send } from 'lucide-react';
+import { useState } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod';
+import { Textarea } from './ui/textarea';
 export const formSchema = z.object({
   email: z.string().email().nonempty(),
   name: z.string().nonempty().max(100),
@@ -42,44 +38,41 @@ export default function ContactForm({ className }: { className?: string }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      body: "",
-      email: "",
-      name: "",
-      subject: "",
+      body: '',
+      email: '',
+      name: '',
+      subject: '',
     },
   });
   const handleVerify = async () => {
     if (!executeRecaptcha) return null;
-    const token = await executeRecaptcha("submit_form");
+    const token = await executeRecaptcha('submit_form');
     return token;
   };
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    toast.loading("Submitting...", { id: "form-submit" });
+    toast.loading('Submitting...', { id: 'form-submit' });
 
     const token = await handleVerify();
     if (!token) {
-      toast.dismiss("form-submit");
-      toast.error("reCAPTCHA failed. Please try again.");
+      toast.dismiss('form-submit');
+      toast.error('reCAPTCHA failed. Please try again.');
       return;
     }
 
     const res = await actions.submitEmail({ ...values, recaptchaToken: token });
-    toast.dismiss("form-submit");
+    toast.dismiss('form-submit');
 
     if (!res.error) {
       form.reset();
       setHideSubjectInput(true);
-      toast.success("Form submitted!");
+      toast.success('Form submitted!');
     } else {
       toast.error(res.error.message);
     }
   }
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className={cn("space-y-2", className)}
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className={cn('space-y-2', className)}>
         <FormField
           control={form.control}
           name="name"
@@ -111,12 +104,12 @@ export default function ContactForm({ className }: { className?: string }) {
             <FormLabel className="text-primary">Subject</FormLabel>
             <Select
               onValueChange={(value) => {
-                if (value === "none") {
-                  form.setValue("subject", "");
+                if (value === 'none') {
+                  form.setValue('subject', '');
                   setHideSubjectInput(false);
                   return;
                 }
-                form.setValue("subject", value);
+                form.setValue('subject', value);
                 setHideSubjectInput(true);
               }}
             >
@@ -127,9 +120,7 @@ export default function ContactForm({ className }: { className?: string }) {
               </FormControl>
               <SelectContent>
                 <SelectItem value="Site Visit">Site Visit</SelectItem>
-                <SelectItem value="Request For Quotation">
-                  Request For Quotation
-                </SelectItem>
+                <SelectItem value="Request For Quotation">Request For Quotation</SelectItem>
                 <SelectItem value="none">Other, please specify</SelectItem>
               </SelectContent>
             </Select>
@@ -154,27 +145,14 @@ export default function ContactForm({ className }: { className?: string }) {
             <FormItem>
               <FormLabel className="text-primary">Message</FormLabel>
               <FormControl>
-                <Textarea
-                  className="min-h-32"
-                  {...field}
-                  placeholder="Requests/concerns"
-                />
+                <Textarea className="min-h-32" {...field} placeholder="Requests/concerns" />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button
-          className="shadow-lg"
-          disabled={form.formState.isSubmitting}
-          type="submit"
-        >
-          Submit{" "}
-          {form.formState.isSubmitting ? (
-            <Loader2 className="animate-spin" />
-          ) : (
-            <Send />
-          )}
+        <Button className="shadow-lg" disabled={form.formState.isSubmitting} type="submit">
+          Submit {form.formState.isSubmitting ? <Loader2 className="animate-spin" /> : <Send />}
         </Button>
       </form>
     </Form>

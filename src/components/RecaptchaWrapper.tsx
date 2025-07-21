@@ -1,5 +1,5 @@
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import ContactForm from "./ContactForm";
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import ContactForm from './ContactForm';
 
 export default function RecaptchaWrapper() {
   return (
@@ -8,11 +8,11 @@ export default function RecaptchaWrapper() {
       scriptProps={{
         async: true,
         defer: true,
-        appendTo: "head",
+        appendTo: 'head',
         nonce: undefined,
       }}
     >
-      <ContactForm className="flex flex-col gap-2 flex-1 mt-4 lg:mt-0 row-start-2 lg:row-start-1 col-start-1 lg:col-start-2 row-span-2" />
+      <ContactForm className="col-start-1 row-span-2 row-start-2 mt-4 flex flex-1 flex-col gap-2 lg:col-start-2 lg:row-start-1 lg:mt-0" />
     </GoogleReCaptchaProvider>
   );
 }

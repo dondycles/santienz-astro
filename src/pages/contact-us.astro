@@ -1,13 +1,13 @@
 ---
-import { BiLogoGmail } from "react-icons/bi";
-import { FaFacebookF, FaViber } from "react-icons/fa";
+import { BiLogoGmail } from 'react-icons/bi';
+import { FaFacebookF, FaViber } from 'react-icons/fa';
 
-import DesktopNavigation from "@/components/DesktopNavigation";
-import MobileNavigation from "@/components/MobileNavigation";
-import Header from "@/components/syntax/Header.astro";
-import MainLayout from "@/layouts/MainLayout.astro";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-import RecaptchaWrapper from "@/components/RecaptchaWrapper";
+import DesktopNavigation from '@/components/DesktopNavigation';
+import MobileNavigation from '@/components/MobileNavigation';
+import RecaptchaWrapper from '@/components/RecaptchaWrapper';
+import Header from '@/components/syntax/Header.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
 ---
 
 <MainLayout
@@ -20,7 +20,7 @@ import RecaptchaWrapper from "@/components/RecaptchaWrapper";
     <MobileNavigation hideCTA client:load />
   </Header>
   <section
-    class="grid grid-cols-1 grid-rows-1 lg:grid-cols-2 lg:grid-rows-2 px-4 pt-24 sm:pt-32 max-w-6xl mx-auto gap-y-4 gap-x-16 pb-6"
+    class="mx-auto grid max-w-6xl grid-cols-1 grid-rows-1 gap-x-16 gap-y-4 px-4 pt-24 pb-6 sm:pt-32 lg:grid-cols-2 lg:grid-rows-2"
   >
     <Heading1AndP
       h1="Let’s Work Together"
@@ -33,16 +33,13 @@ import RecaptchaWrapper from "@/components/RecaptchaWrapper";
     <RecaptchaWrapper client:load />
 
     <div
-      class="text-primary flex justify-center lg:justify-start gap-4 text-2xl col-span-1 lg:col-span-2 mt-0 border-t pt-4"
+      class="text-primary col-span-1 mt-0 flex justify-center gap-4 border-t pt-4 text-2xl lg:col-span-2 lg:justify-start"
     >
       <a href="https://facebook.com/@santienz.hr" target="_blank">
         <FaFacebookF />
       </a>
       <FaViber />
-      <a
-        href="https://mail.google.com/mail/?view=cm&fs=1&to=santienz@gmail.com"
-        target="_blank"
-      >
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=santienz@gmail.com" target="_blank">
         <BiLogoGmail />
       </a>
     </div>

@@ -1,54 +1,48 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
-import { BicepsFlexed, CheckCircle, Medal, Users } from "lucide-react";
-import CTAButton from "@/components/CTAButton";
-import LinkButton from "@/components/LinkButton";
-import Header from "@/components/syntax/Header.astro";
-import DesktopNavigation from "@/components/DesktopNavigation";
-import MobileNavigation from "@/components/MobileNavigation";
-import { Image } from "astro:assets";
-import aboutUsBg from "@/images/about-us-bg.webp";
-import CertficatesSlider from "@/components/CertficatesSlider.astro";
-import { supabase } from "@/db/supabase";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
-import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
-import TrustedBy from "@/components/TrustedBy.astro";
-import ProjectsMapper from "@/components/ProjectsMapper.astro";
+import CertficatesSlider from '@/components/CertficatesSlider.astro';
+import CTAButton from '@/components/CTAButton';
+import DesktopNavigation from '@/components/DesktopNavigation';
+import LinkButton from '@/components/LinkButton';
+import MobileNavigation from '@/components/MobileNavigation';
+import ProjectsMapper from '@/components/ProjectsMapper.astro';
+import Header from '@/components/syntax/Header.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
+import Heading2AndP from '@/components/syntax/Heading2AndP.astro';
+import MainHeroOverlay from '@/components/syntax/MainHeroOverlay.astro';
+import TrustedBy from '@/components/TrustedBy.astro';
+import { supabase } from '@/db/supabase';
+import aboutUsBg from '@/images/about-us-bg.webp';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
+import { BicepsFlexed, CheckCircle, Medal, Users } from 'lucide-react';
 const features: {
   count: number;
   title: string;
 }[] = [
   {
     count: 100,
-    title: "Projects Completed 🏆",
+    title: 'Projects Completed 🏆',
   },
-  { count: 60, title: "Satisfied Clients 😊" },
-  { count: 20, title: "Years of Experience ⏳" },
-  { count: 100, title: "Team Members 👥" },
+  { count: 60, title: 'Satisfied Clients 😊' },
+  { count: 20, title: 'Years of Experience ⏳' },
+  { count: 100, title: 'Team Members 👥' },
 ];
 
 const featured_projects = await supabase
-  .from("projects")
-  .select("id, imgs, slug, title")
+  .from('projects')
+  .select('id, imgs, slug, title')
   .or(
-    `title.eq.Jose B. Lingad Memorial General Hospital,title.eq.Delimondo,title.eq.Supervalue Inc.,title.eq.San Miguel Foods Inc.`,
+    `title.eq.Jose B. Lingad Memorial General Hospital,title.eq.Delimondo,title.eq.Supervalue Inc.,title.eq.San Miguel Foods Inc.`
   )
-  .order("title");
+  .order('title');
 ---
 
-<MainLayout
-  title="Satienz Phils. Inc."
-  desc="The Ultimate Polyurethane Mortar Floor"
->
+<MainLayout title="Satienz Phils. Inc." desc="The Ultimate Polyurethane Mortar Floor">
   <Header className="text-primary-foreground">
     <DesktopNavigation client:load />
     <MobileNavigation hideHome client:load />
   </Header>
-  <section
-    id="main-hero"
-    class="relative w-full overflow-hidden bg-primary pt-20 xmd:pt-30 pb-6"
-  >
+  <section id="main-hero" class="bg-primary xmd:pt-30 relative w-full overflow-hidden pt-20 pb-6">
     <Heading1AndP
       h1="Santienz Phils. Inc."
       p=`The Ultimate
@@ -59,9 +53,9 @@ const featured_projects = await supabase
       parentClass="max-w-6xl mx-auto px-4"
       alignment="center-only"
     >
-      <div class="mx-auto z-20 flex gap-1 xmd:gap-4 flex-col sm:flex-row w-fit">
+      <div class="xmd:gap-4 z-20 mx-auto flex w-fit flex-col gap-1 sm:flex-row">
         <CTAButton
-          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 w-full flex-1"
+          className="z-20 w-full flex-1 px-12 drop-shadow-[0_4px_8px_var(--tertiary)]"
           variant="tertiary"
           effect="shineHover"
           link="/contact-us"
@@ -69,7 +63,7 @@ const featured_projects = await supabase
           Request Quote
         </CTAButton>
         <CTAButton
-          className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground backdrop-blur w-full flex-1"
+          className="border-tertiary text-primary-foreground bg-tertiary/10 hover:bg-tertiary/20 hover:text-primary-foreground z-20 w-full flex-1 px-12 drop-shadow-[0_4px_8px_var(--tertiary)] backdrop-blur"
           variant="outline"
           effect="shineHover"
           link="/about-us"
@@ -79,14 +73,12 @@ const featured_projects = await supabase
       </div>
     </Heading1AndP>
     <div
-      class="max-w-6xl px-1 xmd:px-4 mx-auto grid gap-1 xmd:gap-4 grid-cols-2 md:grid-cols-4 mt-6"
+      class="xmd:px-4 xmd:gap-4 mx-auto mt-6 grid max-w-6xl grid-cols-2 gap-1 px-1 md:grid-cols-4"
     >
       {
         features.map((feature) => (
-          <div class="flex flex-col rounded-md z-20 bg-background/5 backdrop-blur-xs p-3 xmd:p-4 drop-shadow-lg">
-            <div class="text-2xl md:text-4xl font-bold text-tertiary">
-              {feature.count}+
-            </div>
+          <div class="bg-background/5 xmd:p-4 z-20 flex flex-col rounded-md p-3 drop-shadow-lg backdrop-blur-xs">
+            <div class="text-tertiary text-2xl font-bold md:text-4xl">{feature.count}+</div>
             <div class="text-primary-foreground">{feature.title}</div>
           </div>
         ))
@@ -97,22 +89,20 @@ const featured_projects = await supabase
         src="AVP_2023.mp4"
         autoplay
         loop
-        class="xmd:rounded-md object-cover h-full w-full brightness-50"
+        class="xmd:rounded-md h-full w-full object-cover brightness-50"
         muted
       >
       </video>
     </MainHeroOverlay>
   </section>
   <!-- Featured Projects -->
-  <section class="space-y-6 mt-6">
+  <section class="mt-6 space-y-6">
     <Heading2AndP
       h="Featured Projects"
       p="Take a look at some of our completed projects"
       alignment="left-only"
     />
-    <div
-      class="grid gap-1 xmd:gap-4 xxs:grid-cols-2 auto-rows-fr mx-auto max-w-6xl px-1 xmd:px-4"
-    >
+    <div class="xmd:gap-4 xxs:grid-cols-2 xmd:px-4 mx-auto grid max-w-6xl auto-rows-fr gap-1 px-1">
       <ProjectsMapper projects={featured_projects.data ?? []} />
     </div>
     <div class="flex px-4">
@@ -122,37 +112,31 @@ const featured_projects = await supabase
   <!-- Finished Clients -->
   <TrustedBy />
   <!-- About -->
-  <section class="space-y-6 mt-24">
+  <section class="mt-24 space-y-6">
     <Heading2AndP
       h="About Santienz"
       p="Over the years, we have successfully completed more than 1 million square meters of installations across the Philippines, demonstrating our commitment to quality, innovation, and nationwide service."
       alignment="left-only"
     />
 
-    <div class="max-w-6xl px-1 xmd:px-4 mx-auto drop-shadow-lg">
-      <Image
-        src={aboutUsBg}
-        class="aspect-[2/1] w-full object-cover rounded-md"
-        alt="About Us"
-      />
+    <div class="xmd:px-4 mx-auto max-w-6xl px-1 drop-shadow-lg">
+      <Image src={aboutUsBg} class="aspect-[2/1] w-full rounded-md object-cover" alt="About Us" />
     </div>
-    <div
-      class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-6xl w-fit px-4 mx-auto mt-8"
-    >
+    <div class="mx-auto mt-8 grid w-fit max-w-6xl grid-cols-2 gap-4 px-4 sm:grid-cols-4">
       <div>
-        <Medal className="inline size-6 text-tertiary" />
+        <Medal className="text-tertiary inline size-6" />
         <h3 class="text-muted-foreground inline">Certified</h3>
       </div>
       <div>
-        <Users className="inline size-6 text-tertiary" />
+        <Users className="text-tertiary inline size-6" />
         <h3 class="text-muted-foreground inline">Expert</h3>
       </div>
       <div>
-        <CheckCircle className="inline size-6 text-tertiary" />
+        <CheckCircle className="text-tertiary inline size-6" />
         <h3 class="text-muted-foreground inline">Proven</h3>
       </div>
       <div>
-        <BicepsFlexed className="inline size-6 text-tertiary" />
+        <BicepsFlexed className="text-tertiary inline size-6" />
         <h3 class="text-muted-foreground inline">Reliable</h3>
       </div>
     </div>

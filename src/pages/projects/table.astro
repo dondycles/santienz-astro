@@ -1,12 +1,14 @@
 ---
 export const prerender = false;
-import { ChevronLeft } from "lucide-react";
-import CTAButton from "@/components/CTAButton";
-import DesktopNavigation from "@/components/DesktopNavigation";
-import MobileNavigation from "@/components/MobileNavigation";
-import SearchBar from "@/components/SearchBar.astro";
-import Header from "@/components/syntax/Header.astro";
+import CTAButton from '@/components/CTAButton';
+import DesktopNavigation from '@/components/DesktopNavigation';
+import MobileNavigation from '@/components/MobileNavigation';
+import SearchBar from '@/components/SearchBar.astro';
+import Header from '@/components/syntax/Header.astro';
+import { ChevronLeft } from 'lucide-react';
 
+import LinearGradientMask from '@/components/LinearGradientMask.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
 import {
   TableBody,
   TableCell,
@@ -14,19 +16,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { supabase } from "@/db/supabase";
-import MainLayout from "@/layouts/MainLayout.astro";
-import LinearGradientMask from "@/components/LinearGradientMask.astro";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
+} from '@/components/ui/table';
+import { supabase } from '@/db/supabase';
+import MainLayout from '@/layouts/MainLayout.astro';
 
-const query = Astro.url.searchParams.get("query");
+const query = Astro.url.searchParams.get('query');
 const projects = await supabase
-  .from("projects")
+  .from('projects')
   .select()
-  .order("title", { ascending: true })
-  .ilike("title", `%${query ?? ""}%`)
-  .select("title, address, products, sqm, slug");
+  .order('title', { ascending: true })
+  .ilike('title', `%${query ?? ''}%`)
+  .select('title, address, products, sqm, slug');
 ---
 
 <MainLayout
@@ -47,7 +47,7 @@ const projects = await supabase
       alignment="center-only"
     >
       <CTAButton
-        className="px-12 z-20 shadow-lg"
+        className="z-20 px-12 shadow-lg"
         variant="tertiary"
         effect="shineHover"
         link="/projects"
@@ -58,9 +58,9 @@ const projects = await supabase
     <LinearGradientMask />
   </section>
   <section class="relative">
-    <div class="space-y-6 mx-auto max-w-6xl px-1 xmd:px-4 mt-6 relative">
+    <div class="xmd:px-4 relative mx-auto mt-6 max-w-6xl space-y-6 px-1">
       <SearchBar />
-      <div class="border border-tertiary rounded-md px-3 xmd:px-1 shadow-lg">
+      <div class="border-tertiary xmd:px-1 rounded-md border px-3 shadow-lg">
         <TableComponent>
           <TableHeader>
             <TableRow className="[&>th]:text-tertiary [&>th]:font-semibold">
@@ -82,7 +82,7 @@ const projects = await supabase
                     {(project.products as string[])?.map((product, i) => (
                       <span>
                         <a
-                          href={`/products#${product.toLocaleLowerCase().replaceAll(" ", "-")}`}
+                          href={`/products#${product.toLocaleLowerCase().replaceAll(' ', '-')}`}
                           class="text-primary hover:underline"
                         >
                           {(project.products as string[])?.length - 1 !== i
@@ -93,9 +93,7 @@ const projects = await supabase
                     ))}
                   </TableCell>
                   <TableCell>
-                    {project.sqm
-                      ? `${Intl.NumberFormat().format(project.sqm)} sqm`
-                      : null}
+                    {project.sqm ? `${Intl.NumberFormat().format(project.sqm)} sqm` : null}
                   </TableCell>
                 </TableRow>
               ))
@@ -104,18 +102,11 @@ const projects = await supabase
         </TableComponent>
       </div>
     </div>
-    <div class="max-w-6xl mx-auto w-fit py-6">
-      <CTAButton
-        className="shadow-lg"
-        variant="tertiary"
-        effect="shineHover"
-        link="/projects"
-      >
+    <div class="mx-auto w-fit max-w-6xl py-6">
+      <CTAButton className="shadow-lg" variant="tertiary" effect="shineHover" link="/projects">
         <ChevronLeft /> Back to Featured Projects
       </CTAButton>
     </div>
-    <LinearGradientMask
-      className="[mask-image:linear-gradient(transparent,transparent,white)]"
-    />
+    <LinearGradientMask className="[mask-image:linear-gradient(transparent,transparent,white)]" />
   </section>
 </MainLayout>

@@ -1,9 +1,6 @@
-import { AtSignIcon, Search } from "lucide-react";
-import { useId } from "react";
-
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
+import { Input } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
+import { Search } from 'lucide-react';
 
 export default function InputWithStartIcon({
   id,
@@ -18,10 +15,7 @@ export default function InputWithStartIcon({
     <div className="relative">
       <Input
         id={id}
-        className={cn(
-          "peer ps-9 text-foreground placeholder:text-muted-foreground",
-          className,
-        )}
+        className={cn('peer text-foreground placeholder:text-muted-foreground ps-9', className)}
         name={name}
       />
       <div className="text-muted-foreground/80 pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 peer-disabled:opacity-50">

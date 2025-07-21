@@ -1,32 +1,31 @@
 ---
 export const prerender = false;
 
-import { Image } from "astro:assets";
-import { Box, ChevronLeft, Info, MapPin, Ruler, Star, Tag } from "lucide-react";
-import CTAButton from "@/components/CTAButton";
-import DesktopNavigation from "@/components/DesktopNavigation";
-import Grid3DBg from "@/components/Grid3DBg.astro";
-import MobileNavigation from "@/components/MobileNavigation";
-import Header from "@/components/syntax/Header.astro";
-
-import { supabase } from "@/db/supabase";
-import MainLayout from "@/layouts/MainLayout.astro";
-import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-import LinearGradientMask from "@/components/LinearGradientMask.astro";
-import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
-import { imgUrlFromSb } from "@/lib/utils";
+import CTAButton from '@/components/CTAButton';
+import DesktopNavigation from '@/components/DesktopNavigation';
+import Grid3DBg from '@/components/Grid3DBg.astro';
+import LinearGradientMask from '@/components/LinearGradientMask.astro';
+import MobileNavigation from '@/components/MobileNavigation';
+import Header from '@/components/syntax/Header.astro';
+import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
+import MainHeroOverlay from '@/components/syntax/MainHeroOverlay.astro';
+import { supabase } from '@/db/supabase';
+import MainLayout from '@/layouts/MainLayout.astro';
+import { imgUrlFromSb } from '@/lib/utils';
+import { Image } from 'astro:assets';
+import { ChevronLeft, Info, MapPin, Ruler, Star, Tag } from 'lucide-react';
 
 const { slug } = Astro.params;
 const { data } = await supabase
-  .from("projects")
+  .from('projects')
   .select()
-  .eq("slug", slug ?? "")
+  .eq('slug', slug ?? '')
   .single();
-if (!data) return Astro.redirect("/projects");
+if (!data) return Astro.redirect('/projects');
 
 const images = data.imgs?.length
   ? Array.from({ length: data.imgs.length }).map((_, index) =>
-      imgUrlFromSb("projects", (data.imgs as string[])[index]),
+      imgUrlFromSb('projects', (data.imgs as string[])[index])
     )
   : null;
 ---
@@ -40,10 +39,7 @@ const images = data.imgs?.length
     <DesktopNavigation hideProjects client:load />
     <MobileNavigation hideProjects client:load />
   </Header>
-  <section
-    id="main-hero"
-    class="relative w-full overflow-hidden bg-primary pt-20 xmd:pt-30"
-  >
+  <section id="main-hero" class="bg-primary xmd:pt-30 relative w-full overflow-hidden pt-20">
     <Heading1AndP
       h1={data.title as string}
       p=`${data.title as string} is one of the valued clients served by Santienz Phils. Inc.
@@ -56,7 +52,7 @@ const images = data.imgs?.length
       alignment="center-only"
     >
       <CTAButton
-        className="drop-shadow-[0_4px_8px_var(--tertiary)] px-12 z-20 border-tertiary text-primary-foreground bg-tertiary/10  hover:bg-tertiary/20 hover:text-primary-foreground backdrop-blur w-full"
+        className="border-tertiary text-primary-foreground bg-tertiary/10 hover:bg-tertiary/20 hover:text-primary-foreground z-20 w-full px-12 drop-shadow-[0_4px_8px_var(--tertiary)] backdrop-blur"
         variant="outline"
         effect="shineHover"
         link="/projects"
@@ -70,8 +66,8 @@ const images = data.imgs?.length
         images ? (
           <Image
             src={images[0]}
-            alt={data.title ? data.title : "Grid 3D Background"}
-            class="absolute inset-0 w-full h-full object-cover blur-xs brightness-75"
+            alt={data.title ? data.title : 'Grid 3D Background'}
+            class="absolute inset-0 h-full w-full object-cover blur-xs brightness-75"
             quality="low"
             width={1080}
             height={720}
@@ -83,28 +79,28 @@ const images = data.imgs?.length
     </MainHeroOverlay>
   </section>
 
-  <section class="mx-auto max-w-6xl px-4 text-muted-foreground my-6 space-y-2">
+  <section class="text-muted-foreground mx-auto my-6 max-w-6xl space-y-2 px-4">
     <p>
       <span>
-        <Star className="inline mr-1 size-5" />
+        <Star className="mr-1 inline size-5" />
       </span>
       Client: {data.title}
     </p>
     <p hidden={!data.address}>
       <span>
-        <MapPin className="inline mr-1 size-5" />
+        <MapPin className="mr-1 inline size-5" />
       </span>
       Location: {data.address}
     </p>
     <p>
       <span>
-        <Tag className="inline mr-1  size-5" />
+        <Tag className="mr-1 inline size-5" />
       </span>
       Products used: {
         (data.products as string[]).map((prod, i) => (
           <span>
             <a
-              href={`/products#${prod.toLocaleLowerCase().replaceAll(" ", "-")}`}
+              href={`/products#${prod.toLocaleLowerCase().replaceAll(' ', '-')}`}
               class="text-primary hover:underline"
             >
               {(data.products as string[]).length - 1 !== i
@@ -117,13 +113,13 @@ const images = data.imgs?.length
     </p>
     <p hidden={!data.sqm}>
       <span>
-        <Ruler className="inline mr-1  size-5" />
+        <Ruler className="mr-1 inline size-5" />
       </span>
       Area: {data.sqm}sqm
     </p>
     <p hidden={!data.description}>
       <span>
-        <Info className="inline mr-1  size-5" />
+        <Info className="mr-1 inline size-5" />
       </span>
       Other info: {data.description}
     </p>
@@ -131,15 +127,11 @@ const images = data.imgs?.length
   <section class="relative">
     {
       images ? (
-        <div
-          class="max-w-6xl w-full mx-auto px-1 grid xmd:px-4 
-        xxs:grid-cols-[repeat(auto-fit,minmax(240px,1fr))]
-        xmd:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] gap-4 not-xmd:gap-1 relative"
-        >
+        <div class="xmd:px-4 xxs:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] xmd:grid-cols-[repeat(auto-fit,minmax(400px,1fr))] not-xmd:gap-1 relative mx-auto grid w-full max-w-6xl gap-4 px-1">
           {images?.map((img, i) => (
-            <div class="relative rounded-md overflow-hidden w-full h-full m-auto">
+            <div class="relative m-auto h-full w-full overflow-hidden rounded-md">
               <Image
-                class="object-cover h-full w-full"
+                class="h-full w-full object-cover"
                 src={img}
                 alt={`image-${i}-of-${data.slug}`}
                 quality="mid"
@@ -150,8 +142,6 @@ const images = data.imgs?.length
         </div>
       ) : null
     }
-    <LinearGradientMask
-      className="[mask-image:linear-gradient(transparent,transparent,white)]"
-    />
+    <LinearGradientMask className="[mask-image:linear-gradient(transparent,transparent,white)]" />
   </section>
 </MainLayout>

@@ -1,8 +1,8 @@
-import { Facebook, Mail, Menu, Phone } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import type { Pages } from "@/lib/pages.types";
-import CTAGetQuote from "./CTAButton";
-import { Button } from "./ui/button";
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import type { Pages } from '@/lib/pages.types';
+import { Facebook, Mail, Menu, Phone } from 'lucide-react';
+import CTAGetQuote from './CTAButton';
+import { Button } from './ui/button';
 export default function MobileNavigation({
   hideCTA = false,
   hideBrochure = false,
@@ -19,14 +19,14 @@ export default function MobileNavigation({
       <SheetTrigger className="xmd:hidden">
         <Menu id="header-burger-icon" className="cursor-pointer" />
       </SheetTrigger>
-      <SheetContent className="gap-0 border-0 w-2/3 bg-background/80 backdrop-blur-sm">
-        <div className="flex flex-col gap-4 p-4 mt-12 text-lg border-t-muted border-t-1">
+      <SheetContent className="bg-background/80 w-2/3 gap-0 border-0 backdrop-blur-sm">
+        <div className="border-t-muted mt-12 flex flex-col gap-4 border-t-1 p-4 text-lg">
           {/* <p className="text-muted-foreground text-sm">Navigation</p> */}
           <Button
             hidden={hideHome}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/">Home</a>
           </Button>
@@ -34,23 +34,23 @@ export default function MobileNavigation({
             hidden={hideAboutUs}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/about-us">About Us</a>
-          </Button>{" "}
+          </Button>{' '}
           <Button
             hidden={hideProjects}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/projects">Projects</a>
-          </Button>{" "}
+          </Button>{' '}
           <Button
             hidden={hideProducts}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/products">Products</a>
           </Button>
@@ -58,7 +58,7 @@ export default function MobileNavigation({
             hidden={hideCredentials}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/credentials">Credentials</a>
           </Button>
@@ -66,7 +66,7 @@ export default function MobileNavigation({
             hidden={hideBrochure}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/brochure">Brochure</a>
           </Button>
@@ -74,7 +74,7 @@ export default function MobileNavigation({
             hidden={hideCareers}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/careers">Careers</a>
           </Button>
@@ -82,12 +82,12 @@ export default function MobileNavigation({
             hidden={hideTestimonials}
             asChild
             variant="link"
-            className="text-muted-foreground w-fit text-lg p-0"
+            className="text-muted-foreground w-fit p-0 text-lg"
           >
             <a href="/testimonials">Testimonials</a>
           </Button>
         </div>
-        <div className="mt-auto mb-0 flex flex-col justify-center gap-4 border-t-muted border-t-1 p-4 text-sm text-muted-foreground">
+        <div className="border-t-muted text-muted-foreground mt-auto mb-0 flex flex-col justify-center gap-4 border-t-1 p-4 text-sm">
           {hideCTA ? null : (
             <CTAGetQuote
               link="/contact-us"
@@ -105,23 +105,17 @@ export default function MobileNavigation({
             rel="noopener"
           >
             <div className="space-x-2">
-              <Mail className="inline size-5 text-tertiary" />
-              <span className="inline break-all">
-                santienztechnical@gmail.com
-              </span>
+              <Mail className="text-tertiary inline size-5" />
+              <span className="inline break-all">santienztechnical@gmail.com</span>
             </div>
           </a>
           <div className="space-x-2">
-            <Phone className="inline size-5  text-tertiary" />
+            <Phone className="text-tertiary inline size-5" />
             <span className="inline">(02) 7001-0273</span>
           </div>
-          <a
-            href="https://facebook.com/@santienz.hr"
-            target="_blank"
-            rel="noopener"
-          >
+          <a href="https://facebook.com/@santienz.hr" target="_blank" rel="noopener">
             <div className="space-x-2">
-              <Facebook className="inline size-5  text-tertiary" />
+              <Facebook className="text-tertiary inline size-5" />
               <span className="inline">@santienz.hr</span>
             </div>
           </a>

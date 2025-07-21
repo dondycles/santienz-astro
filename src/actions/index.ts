@@ -15,8 +15,8 @@ export const server = {
     input: formSchema,
     handler: async (input) => {
       return await resend.emails.send({
-        from: "website-inquiry@johnroddondoyano.com",
-        to: "dondycles@gmail.com",
+        from: "website-inquiry@santienzphilsinc.com",
+        to: "adwebsantienz@gmail.com",
         subject: input.subject,
         replyTo: input.email,
         text: input.body,

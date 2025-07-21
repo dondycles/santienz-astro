@@ -35,7 +35,6 @@ export const formSchema = z.object({
   subject: z.string().nonempty().max(100),
   body: z.string().nonempty(),
 });
-
 export default function ContactForm({ className }: { className?: string }) {
   const [hideSubjectInput, setHideSubjectInput] = useState(true);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,7 +47,6 @@ export default function ContactForm({ className }: { className?: string }) {
     },
   });
   const [token, setToken] = useState("");
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const res = await actions.submitEmail(values);
     if (!token) return toast.error("Fill Recaptcha");

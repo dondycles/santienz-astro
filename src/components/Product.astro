@@ -47,7 +47,7 @@ const haveImages = (product.imgs as string[]).length > 0;
             src={imgUrlFromSb("products", img)}
             alt={`${product.name},${i}`}
             inferSize
-            class="rounded-md object-contain w-full drop-shadow-xl "
+            class="rounded-md object-contain w-full drop-shadow-xl max-w-md m-auto"
           />
         ))}
       </div>

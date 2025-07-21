@@ -23,22 +23,24 @@ const featured_projects = projects.filter((project) => project.imgs !== null);
         return (
           <a
             href={`/projects/${project.slug}`}
-            class={`w-full h-full mb-0 mt-auto ${i === 0 ? "xxs:row-span-1" : i === featured_projects.length - 1 ? "xxs:row-span-1" : "xxs:row-span-2"}`}
+            class={`w-full mb-0 mt-auto h-full`}
           >
             <section
-              class={`bg-primary/5 rounded-md flex flex-col h-full w-full overflow-hidden relative `}
+              class={`bg-primary/5 rounded-md flex flex-col h-full max-h-52 w-full overflow-hidden relative `}
               id={project.title}
             >
               <Image
                 src={imgUrlFromSb("projects", (project.imgs as string[])[0])}
                 alt={project.title}
-                class="w-full h-full object-cover shrink-0"
+                class="w-full h-full object-cover object-center shrink-0 brightness-75"
                 quality="mid"
                 inferSize
               />
-              <h2 class="text-primary-foreground text-base sm:text-2xl font-medium p-3 xmd:p-4 absolute bottom-0 left-0 right-0 drop-shadow-sm bg-gradient-to-t from-foreground to-transparent leading-tight">
-                {project.title}
-              </h2>
+              <div class="bg-gradient-to-t from-tertiary/25 to-transparent absolute bottom-0 left-0 right-0 p-3 xmd:p-4">
+                <h2 class="text-primary-foreground text-base sm:text-2xl font-medium  drop-shadow  leading-tight">
+                  {project.title}
+                </h2>
+              </div>
             </section>
           </a>
         );

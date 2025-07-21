@@ -15,6 +15,7 @@ import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
 import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
 import TrustedBy from "@/components/TrustedBy.astro";
 import { imgUrlFromSb } from "@/lib/utils";
+import ProjectsMapper from "@/components/ProjectsMapper.astro";
 const features: {
   count: number;
   title: string;
@@ -30,7 +31,7 @@ const features: {
 
 const featured_projects = await supabase
   .from("projects")
-  .select()
+  .select("id, imgs, slug, title")
   .or(
     `title.eq.Antartica Cold Storage,title.eq.Delimondo,title.eq.Five S Vehicle Inspection Center,title.eq.Royal Cargo Inc`,
   );
@@ -112,30 +113,7 @@ const featured_projects = await supabase
     <div
       class="grid gap-1 xmd:gap-4 xxs:grid-cols-2 auto-rows-fr mx-auto max-w-6xl px-1 xmd:px-4"
     >
-      {
-        featured_projects.data?.map((project, i) => {
-          if (project.imgs)
-            return (
-              <a
-                href={`/projects/${project.slug}`}
-                class={`overflow-hidden w-full relative rounded-md drop-shadow-lg
-                ${i === 1 || i === 2 ? "xxs:row-span-2" : "xxs:row-span-1"}
-              `}
-              >
-                <Image
-                  src={imgUrlFromSb("projects", (project.imgs as string[])[0])}
-                  class="aspect-[2/1] h-full bg-primary object-cover"
-                  alt={project.title}
-                  inferSize
-                  quality="low"
-                />
-                <h3 class="absolute bottom-0 left-0 w-full drop-shadow bg-gradient-to-t to-100% p-3 xmd:p-4 from-foreground/75 to-foreground/0 text-base sm:text-2xl font-medium text-primary-foreground leading-snug">
-                  {project.title}
-                </h3>
-              </a>
-            );
-        })
-      }
+      <ProjectsMapper projects={featured_projects.data ?? []} />
     </div>
     <div class="flex px-4">
       <LinkButton href="/projects" title="View More Projects" />

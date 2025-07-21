@@ -1,12 +1,13 @@
 ---
 import { BiLogoGmail } from "react-icons/bi";
 import { FaFacebookF, FaViber } from "react-icons/fa";
-import ContactForm from "@/components/ContactForm";
+
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/syntax/Header.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
+import RecaptchaWrapper from "@/components/RecaptchaWrapper";
 ---
 
 <MainLayout
@@ -29,10 +30,8 @@ import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
       alignment="left-only"
     />
 
-    <ContactForm
-      client:load
-      className="flex flex-col gap-2 flex-1 mt-4 lg:mt-0 row-start-2 lg:row-start-1 col-start-1 lg:col-start-2 row-span-2"
-    />
+    <RecaptchaWrapper client:load />
+
     <div
       class="text-primary flex justify-center lg:justify-start gap-4 text-2xl col-span-1 lg:col-span-2 mt-0 border-t pt-4"
     >

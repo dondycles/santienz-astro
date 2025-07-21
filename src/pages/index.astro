@@ -14,7 +14,6 @@ import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
 import MainHeroOverlay from "@/components/syntax/MainHeroOverlay.astro";
 import TrustedBy from "@/components/TrustedBy.astro";
-import { imgUrlFromSb } from "@/lib/utils";
 import ProjectsMapper from "@/components/ProjectsMapper.astro";
 const features: {
   count: number;
@@ -33,8 +32,9 @@ const featured_projects = await supabase
   .from("projects")
   .select("id, imgs, slug, title")
   .or(
-    `title.eq.Antartica Cold Storage,title.eq.Delimondo,title.eq.Five S Vehicle Inspection Center,title.eq.Royal Cargo Inc`,
-  );
+    `title.eq.Jose B. Lingad Memorial General Hospital,title.eq.Delimondo,title.eq.Supervalue Inc.,title.eq.San Miguel Foods Inc.`,
+  )
+  .order("title");
 ---
 
 <MainLayout

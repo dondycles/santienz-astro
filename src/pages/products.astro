@@ -1,17 +1,15 @@
 ---
 export const prerender = false;
-import { CheckCircle, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/syntax/Header.astro";
 import CTAButton from "@/components/CTAButton";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
-import Heading2AndP from "@/components/syntax/Heading2AndP.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
-import { Image } from "astro:assets";
-import { imgUrlFromSb } from "@/lib/utils";
 import { supabase } from "@/db/supabase";
+import Product from "@/components/Product.astro";
 const products = await supabase
   .from("products")
   .select("description, id, imgs, name, highlights")
@@ -36,91 +34,28 @@ const products = await supabase
     />
     <LinearGradientMask />
   </section>
-  {
-    products.data?.map((product, i) => {
-      if (i === products.data?.length - 1)
-        return (
-          <div class="relative">
-            <section
-              id={product.name.toLocaleLowerCase().replaceAll(" ", "-")}
-              class="space-y-6 scroll-m-18 mt-12"
-            >
-              <Heading2AndP
-                h={product.name}
-                p={product.description}
-                alignment="left-only"
-                hClass="text-tertiary"
-              >
-                <div class="flex gap-4 flex-wrap mt-6">
-                  {(product.highlights as string[]).map((highlight) => (
-                    <div>
-                      <CheckCircle className="inline mr-1 text-tertiary" />
-                      <span class="text-muted-foreground capitalize">
-                        {highlight}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </Heading2AndP>
-              <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1">
-                {(product.imgs as string[]).map((img, i) => (
-                  <Image
-                    src={imgUrlFromSb("products", img)}
-                    alt={`${product.name},${i}`}
-                    inferSize
-                    class="rounded-md object-contain w-full max-w-128 h-fit drop-shadow-xl m-auto"
-                  />
-                ))}
+  <div class="space-y-32">
+    {
+      products.data?.map((product, i) => {
+        if (i === products.data?.length - 1)
+          return (
+            <div class="relative">
+              <Product product={product} />
+              <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
+                <CTAButton
+                  className="shadow-lg"
+                  variant="tertiary"
+                  effect="shineHover"
+                  link="/projects/table"
+                >
+                  View Our Projects <ChevronRight />
+                </CTAButton>
               </div>
-            </section>
-            <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
-              <CTAButton
-                className="shadow-lg"
-                variant="tertiary"
-                effect="shineHover"
-                link="/projects/table"
-              >
-                View Our Projects <ChevronRight />
-              </CTAButton>
+              <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
             </div>
-            <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
-          </div>
-        );
-      return (
-        <section
-          id={product.name.toLocaleLowerCase().replaceAll(" ", "-")}
-          class="space-y-6 scroll-m-18 mt-12"
-        >
-          <Heading2AndP
-            h={product.name}
-            p={product.description}
-            alignment="left-only"
-            hClass="text-tertiary"
-            pClass=" whitespace-pre-wrap"
-          >
-            <div class="flex gap-4 flex-wrap mt-6">
-              {(product.highlights as string[]).map((highlight) => (
-                <div>
-                  <CheckCircle className="inline mr-1 text-tertiary" />
-                  <span class="text-muted-foreground capitalize">
-                    {highlight}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </Heading2AndP>
-          <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] max-w-6xl w-full mx-auto px-1 xmd:px-4 gap-1">
-            {(product.imgs as string[]).map((img, i) => (
-              <Image
-                src={imgUrlFromSb("products", img)}
-                alt={`${product.name},${i}`}
-                inferSize
-                class="rounded-md object-contain w-full max-w-128 h-fit drop-shadow-xl m-auto"
-              />
-            ))}
-          </div>
-        </section>
-      );
-    })
-  }
+          );
+        return <Product product={product} />;
+      })
+    }
+  </div>
 </MainLayout>

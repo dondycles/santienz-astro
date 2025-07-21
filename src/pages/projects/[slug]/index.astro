@@ -131,9 +131,9 @@ const images = data.imgs?.length
   <section class="relative">
     {
       images ? (
-        <div class="max-w-6xl w-full mx-auto px-1 xmd:px-4 grid grid-cols-[repeat(auto-fit,minmax(420px,1fr))] gap-4 not-xmd:gap-1 relative">
+        <div class="max-w-6xl w-full mx-auto px-1 xmd:px-4 flex flex-wrap gap-4 not-xmd:gap-1 relative">
           {images?.map((img, i) => (
-            <div class="relative aspect-square rounded-md overflow-hidden w-full h-full max-w-128 m-auto">
+            <div class="relative aspect-square rounded-md overflow-hidden w-full max-w-[552px] h-full m-auto">
               <Image
                 class="object-cover h-full w-full"
                 src={img}

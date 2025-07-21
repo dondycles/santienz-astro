@@ -1,0 +1,56 @@
+---
+import type { Database } from "@/db/types";
+import Heading2AndP from "./syntax/Heading2AndP.astro";
+import { Image } from "astro:assets";
+import { imgUrlFromSb } from "@/lib/utils";
+import { CheckCircle } from "lucide-react";
+
+interface Props {
+  product: Pick<
+    Database["public"]["Tables"]["products"]["Row"],
+    "description" | "id" | "imgs" | "name" | "highlights"
+  >;
+}
+
+const { product } = Astro.props;
+const haveImages = (product.imgs as string[]).length > 0;
+---
+
+<section
+  id={product.name.toLocaleLowerCase().replaceAll(" ", "-")}
+  class={`${haveImages ? "grid" : ""} grid-cols-1 lg:grid-cols-5 gap-6 scroll-m-18 mt-12 max-w-6xl mx-auto`}
+>
+  <Heading2AndP
+    h={product.name}
+    p={product.description}
+    alignment="left-only"
+    hClass="text-tertiary"
+    pClass=" whitespace-pre-wrap"
+    hAndPParentClass={`${haveImages ? "" : ""} w-full lg:col-span-3`}
+  >
+    <div class="flex gap-4 flex-wrap mt-6">
+      {
+        (product.highlights as string[]).map((highlight) => (
+          <div>
+            <CheckCircle className="inline mr-1 text-tertiary" />
+            <span class="text-muted-foreground capitalize">{highlight}</span>
+          </div>
+        ))
+      }
+    </div>
+  </Heading2AndP>
+  {
+    haveImages ? (
+      <div class="grid sm:grid-cols-[repeat(auto-fit,minmax(256px,1fr))] lg:grid-cols-[repeat(auto-fit,minmax(156px,1fr))] mx-auto gap-1 mt-0 mb-auto w-full lg:col-span-2 px-1 max-w-4xl">
+        {(product.imgs as string[]).map((img, i) => (
+          <Image
+            src={imgUrlFromSb("products", img)}
+            alt={`${product.name},${i}`}
+            inferSize
+            class="rounded-md object-contain w-full drop-shadow-xl "
+          />
+        ))}
+      </div>
+    ) : null
+  }
+</section>

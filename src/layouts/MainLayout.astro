@@ -41,7 +41,6 @@ const structuredData = {
       titleTemplate="%s | The Ultimate Polyurethane Mortar Floor"
       titleDefault="Santienz Phils. Inc."
       description={desc}
-      canonical={`${url.origin}${url.pathname}`}
       openGraph={{
         basic: {
           title,
@@ -60,17 +59,6 @@ const structuredData = {
         card: "summary_large_image",
         image: image ?? `${url.origin}/summary-new.png`,
         creator: "@dondycles",
-      }}
-      extend={{
-        link: [{ rel: "icon", href: "/favicon.ico" }],
-        meta: [
-          {
-            name: "twitter:image",
-            content: image ?? `${url.origin}/summary-new.png`,
-          },
-          { name: "twitter:title", content: title },
-          { name: "twitter:description", content: desc },
-        ],
       }}
     />
     <link rel="manifest" href="/site.webmanifest" />

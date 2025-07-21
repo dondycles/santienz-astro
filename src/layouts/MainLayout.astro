@@ -10,7 +10,6 @@ import CTACard from "@/components/CTACard.astro";
 import "../styles/global.css";
 import { SEO } from "astro-seo";
 import Footer from "@/components/syntax/Footer.astro";
-import Main from "@/components/syntax/Main.astro";
 import { Toaster } from "@/components/ui/sonner";
 
 const { desc, title, hideCTACard = false, image } = Astro.props;
@@ -88,11 +87,11 @@ const structuredData = {
   <body
     class="poppins text-base min-h-dvh flex flex-col w-full antialiased text-foreground bg-background"
   >
-    <Main>
+    <main class="flex-1 z-0">
       <slot />
       {hideCTACard ? null : <CTACard />}
       <Footer />
-    </Main>
+    </main>
     <Toaster client:load richColors={true} />
   </body>
 </html>

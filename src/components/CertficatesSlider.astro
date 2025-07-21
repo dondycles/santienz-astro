@@ -12,7 +12,7 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<section class={cn("space-y-6 relative -mb-0 pb-6", className)}>
+<section class={cn("flex flex-col gap-6 relative", className)}>
   <Heading2AndP
     h="Credentials"
     p="Our credentials reflect our dedication to delivering reliable flooring solutions and maintaining the highest standards in every project we undertake."
@@ -28,6 +28,6 @@ const { className } = Astro.props;
     <LinkButton href="/credentials" title="See Credential Details" />
   </div>
   <LinearGradientMask
-    className="[mask-image:linear-gradient(transparent,white)] "
+    className="[mask-image:linear-gradient(transparent,white)]"
   />
 </section>

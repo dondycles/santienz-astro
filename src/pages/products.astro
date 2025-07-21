@@ -1,10 +1,8 @@
 ---
 export const prerender = false;
-import { ChevronRight } from "lucide-react";
 import DesktopNavigation from "@/components/DesktopNavigation";
 import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/syntax/Header.astro";
-import CTAButton from "@/components/CTAButton";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Heading1AndP from "@/components/syntax/Heading1AndP.astro";
 import LinearGradientMask from "@/components/LinearGradientMask.astro";
@@ -41,16 +39,7 @@ const products = await supabase
           return (
             <div class="relative">
               <Product product={product} />
-              <div class="max-w-6xl mx-auto w-fit scroll-pt-64 py-6">
-                <CTAButton
-                  className="shadow-lg"
-                  variant="tertiary"
-                  effect="shineHover"
-                  link="/projects/table"
-                >
-                  View Our Projects <ChevronRight />
-                </CTAButton>
-              </div>
+
               <LinearGradientMask className="[mask-image:linear-gradient(transparent,white)]" />
             </div>
           );

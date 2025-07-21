@@ -20,6 +20,9 @@ importers:
       '@astrojs/vercel':
         specifier: ^8.2.2
         version: 8.2.2(astro@5.12.0(@types/node@24.0.3)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.43.0)(typescript@5.8.3)(uploadthing@7.7.3(h3@1.15.3)(tailwindcss@4.1.10))(yaml@2.8.0))(react@19.1.0)(rollup@4.43.0)
+      '@fontsource/poppins':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@hcaptcha/react-hcaptcha':
         specifier: ^1.12.0
         version: 1.12.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -500,6 +503,9 @@ packages:
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
+
+  '@fontsource/poppins@5.2.6':
+    resolution: {integrity: sha512-NFr0121+vWCfzLDVvSZOzwAjRUaNj6QHA9gtUh/KHHoWf1Qn23EkwVFs63XZ6UtF5K1b3UNmCx77YEMGgV7BOQ==}
 
   '@hcaptcha/loader@2.0.0':
     resolution: {integrity: sha512-fFQH6ApU/zCCl6Y1bnbsxsp1Er/lKX+qlgljrpWDeFcenpEtoP68hExlKSXECospzKLeSWcr06cbTjlR/x3IJA==}
@@ -4432,6 +4438,8 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
 
   '@floating-ui/utils@0.2.9': {}
+
+  '@fontsource/poppins@5.2.6': {}
 
   '@hcaptcha/loader@2.0.0': {}
 

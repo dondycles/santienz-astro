@@ -36,7 +36,7 @@ export const server = {
         if (!isHuman) throw new Error('reCAPTCHA verification failed. Please try again.');
 
         const email = await resend.emails.send({
-          from: 'website-inquiry@santienzphilsinc.com',
+          from: 'Inquiry from Website <website-inquiry@santienzphilsinc.com>',
           to: 'adwebsantienz@gmail.com',
           subject: input.subject,
           replyTo: input.email,

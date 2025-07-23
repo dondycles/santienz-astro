@@ -33,7 +33,6 @@ export const formSchema = z.object({
 });
 export default function ContactForm({ className }: { className?: string }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const [token, setToken] = useState<null | string>(null);
   const [hideSubjectInput, setHideSubjectInput] = useState(true);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

@@ -1,6 +1,17 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import type { Pages } from '@/lib/pages.types';
-import { BiLogoFacebook, BiLogoGmail, BiMenu, BiPhone } from 'react-icons/bi';
+import {
+  BiCart,
+  BiCheckCircle,
+  BiFolder,
+  BiHome,
+  BiInfoCircle,
+  BiLogoFacebook,
+  BiLogoGmail,
+  BiMenu,
+  BiNote,
+  BiPhone,
+} from 'react-icons/bi';
 import CTAGetQuote from './CTAButton';
 import { Button } from './ui/button';
 export default function MobileNavigation({
@@ -21,14 +32,16 @@ export default function MobileNavigation({
       </SheetTrigger>
       <SheetContent className="bg-background/80 w-2/3 gap-0 border-0 backdrop-blur-sm">
         <div className="border-t-muted mt-12 flex flex-col gap-4 border-t-1 p-4 text-lg">
-          {/* <p className="text-muted-foreground text-sm">Navigation</p> */}
           <Button
             hidden={hideHome}
             asChild
             variant="link"
             className="text-muted-foreground w-fit p-0 text-lg"
           >
-            <a href="/">Home</a>
+            <a href="/">
+              <BiHome className="size-5" />
+              Home
+            </a>
           </Button>
           <Button
             hidden={hideAboutUs}
@@ -36,7 +49,10 @@ export default function MobileNavigation({
             variant="link"
             className="text-muted-foreground w-fit p-0 text-lg"
           >
-            <a href="/about-us">About Us</a>
+            <a href="/about-us">
+              <BiInfoCircle className="size-5" />
+              About Us
+            </a>
           </Button>{' '}
           <Button
             hidden={hideProjects}
@@ -44,7 +60,10 @@ export default function MobileNavigation({
             variant="link"
             className="text-muted-foreground w-fit p-0 text-lg"
           >
-            <a href="/projects">Projects</a>
+            <a href="/projects">
+              <BiFolder className="size-5" />
+              Projects
+            </a>
           </Button>{' '}
           <Button
             hidden={hideProducts}
@@ -52,7 +71,10 @@ export default function MobileNavigation({
             variant="link"
             className="text-muted-foreground w-fit p-0 text-lg"
           >
-            <a href="/products">Products</a>
+            <a href="/products">
+              <BiCart className="size-5" />
+              Products
+            </a>
           </Button>
           <Button
             hidden={hideCredentials}
@@ -60,7 +82,10 @@ export default function MobileNavigation({
             variant="link"
             className="text-muted-foreground w-fit p-0 text-lg"
           >
-            <a href="/credentials">Credentials</a>
+            <a href="/credentials">
+              <BiCheckCircle className="size-5" />
+              Credentials
+            </a>
           </Button>
           <Button
             hidden={hideBrochure}
@@ -68,7 +93,10 @@ export default function MobileNavigation({
             variant="link"
             className="text-muted-foreground w-fit p-0 text-lg"
           >
-            <a href="/brochure">Brochure</a>
+            <a href="/brochure">
+              <BiNote className="size-5" />
+              Brochure
+            </a>
           </Button>
           <Button
             hidden={hideCareers}
@@ -104,19 +132,19 @@ export default function MobileNavigation({
             target="_blank"
             rel="noopener"
           >
-            <div className="space-x-2">
-              <BiLogoGmail className="text-tertiary inline size-6" />
-              <span className="inline break-all">santienztechnical@gmail.com</span>
+            <div className="inline-flex space-x-2">
+              <BiLogoGmail className="text-tertiary size-6 shrink-0" />
+              <span className="break-all">santienztechnical@gmail.com</span>
             </div>
           </a>
-          <div className="space-x-2">
-            <BiPhone className="text-tertiary inline size-6" />
-            <span className="inline">(02) 7001-0273</span>
+          <div className="inline-flex space-x-2">
+            <BiPhone className="text-tertiary size-6 shrink-0" />
+            <span className="break-all">(02) 7001-0273</span>
           </div>
           <a href="https://facebook.com/@santienz.hr" target="_blank" rel="noopener">
-            <div className="space-x-2">
-              <BiLogoFacebook className="text-tertiary inline size-6" />
-              <span className="inline">@santienz.hr</span>
+            <div className="inline-flex space-x-2">
+              <BiLogoFacebook className="text-tertiary size-6 shrink-0" />
+              <span className="break-all">@santienz.hr</span>
             </div>
           </a>
         </div>

@@ -2,7 +2,7 @@
 
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
@@ -13,7 +13,7 @@ export default defineConfig({
   },
   site: import.meta.env.DEV ? 'http://localhost' : 'https://santienzphilsinc.com',
   integrations: [react(), sitemap({ changefreq: 'monthly' })],
-  adapter: vercel(),
+  adapter: vercel({ imageService: true, devImageService: 'sharp' }),
   devToolbar: {
     enabled: true,
   },

@@ -29,9 +29,11 @@ const { projects } = Astro.props;
                 <Image
                   src={imgUrlFromSb('projects', (project.imgs as string[])[0])}
                   alt={project.title}
-                  class="h-full w-full shrink-0 object-cover object-center brightness-75"
-                  quality="mid"
-                  inferSize
+                  class="h-full w-full shrink-0 object-cover brightness-75"
+                  quality="low"
+                  width={390}
+                  height={210}
+                  layout="constrained"
                 />
                 <div class="from-tertiary/25 xmd:p-4 absolute right-0 bottom-0 left-0 bg-gradient-to-t to-transparent p-3">
                   <h2 class="text-primary-foreground text-base leading-tight font-medium drop-shadow sm:text-2xl">

@@ -13,12 +13,11 @@ interface Props {
 }
 
 const { projects } = Astro.props;
-const featured_projects = projects.filter((project) => project.imgs !== null);
 ---
 
 {
-  featured_projects.length
-    ? featured_projects.map((project) => {
+  projects.length
+    ? projects.map((project) => {
         return (
           <a href={`/projects/${project.slug}`} class={`mt-auto mb-0 h-full w-full`}>
             <section

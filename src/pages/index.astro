@@ -32,7 +32,7 @@ const featured_projects = await supabase
   .from('projects')
   .select('id, imgs, slug, title')
   .or(
-    `title.eq.Jose B. Lingad Memorial General Hospital,title.eq.Delimondo,title.eq.Supervalue Inc.,title.eq.San Miguel Foods Inc.`
+    `title.eq.Jose B. Lingad Memorial General Hospital,title.eq.Delimondo,title.eq.SM Supermarket,title.eq.San Miguel Foods Inc.`
   )
   .order('title');
 ---

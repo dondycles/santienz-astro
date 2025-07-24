@@ -30,8 +30,9 @@ const features: {
 
 const featured_projects = await supabase
   .from('projects')
-  .select('id, imgs, slug, title')
+  .select('id, imgs, slug, title, is_featured')
   .eq('is_featured', true)
+  .not('imgs', 'is', null)
   .order('title');
 ---
 

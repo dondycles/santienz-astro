@@ -17,29 +17,31 @@ const { projects } = Astro.props;
 
 {
   projects.length
-    ? projects.map((project) => {
-        return (
-          <a href={`/projects/${project.slug}`} class={`mt-auto mb-0 h-full w-full`}>
-            <section
-              class={`bg-primary/5 relative flex h-full max-h-52 w-full flex-col overflow-hidden rounded-md`}
-              id={project.title}
-            >
-              <Image
-                src={imgUrlFromSb('projects', (project.imgs as string[])[0])}
-                alt={project.title}
-                class="h-full w-full shrink-0 object-cover object-center brightness-75"
-                quality="mid"
-                inferSize
-              />
-              <div class="from-tertiary/25 xmd:p-4 absolute right-0 bottom-0 left-0 bg-gradient-to-t to-transparent p-3">
-                <h2 class="text-primary-foreground text-base leading-tight font-medium drop-shadow sm:text-2xl">
-                  {project.title}
-                </h2>
-              </div>
-            </section>
-          </a>
-        );
-      })
+    ? projects
+        .filter((project) => project.imgs)
+        .map((project) => {
+          return (
+            <a href={`/projects/${project.slug}`} class={`mt-auto mb-0 h-full w-full`}>
+              <section
+                class={`bg-primary/5 relative flex h-full max-h-52 w-full flex-col overflow-hidden rounded-md`}
+                id={project.title}
+              >
+                <Image
+                  src={imgUrlFromSb('projects', (project.imgs as string[])[0])}
+                  alt={project.title}
+                  class="h-full w-full shrink-0 object-cover object-center brightness-75"
+                  quality="mid"
+                  inferSize
+                />
+                <div class="from-tertiary/25 xmd:p-4 absolute right-0 bottom-0 left-0 bg-gradient-to-t to-transparent p-3">
+                  <h2 class="text-primary-foreground text-base leading-tight font-medium drop-shadow sm:text-2xl">
+                    {project.title}
+                  </h2>
+                </div>
+              </section>
+            </a>
+          );
+        })
     : null
 }
 <!-- <p class="text-muted-foreground text-center col-span-full mb-2 px-4">

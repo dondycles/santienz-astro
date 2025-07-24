@@ -15,18 +15,16 @@ import { supabase } from '@/db/supabase';
 import aboutUsBg from '@/images/about-us-bg.webp';
 import MainLayout from '@/layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
-import { BicepsFlexed, CheckCircle, Medal, Users } from 'lucide-react';
-const features: {
-  count: number;
-  title: string;
-}[] = [
+import { BicepsFlexed, Calendar, CheckCircle, Medal, Smile, Users } from 'lucide-react';
+const features = [
   {
     count: 100,
-    title: 'Projects Completed 🏆',
+    title: 'Projects Completed',
+    icon: Medal,
   },
-  { count: 60, title: 'Satisfied Clients 😊' },
-  { count: 20, title: 'Years of Experience ⏳' },
-  { count: 100, title: 'Team Members 👥' },
+  { count: 60, title: 'Satisfied Clients', icon: Smile },
+  { count: 20, title: 'Years of Experience', icon: Calendar },
+  { count: 100, title: 'Team Members', icon: Users },
 ];
 
 const featured_projects = await supabase
@@ -77,9 +75,14 @@ const featured_projects = await supabase
     >
       {
         features.map((feature) => (
-          <div class="bg-background/5 xmd:p-4 z-20 flex flex-col rounded-md p-3 drop-shadow-lg backdrop-blur-xs">
-            <div class="text-tertiary text-2xl font-bold md:text-4xl">{feature.count}+</div>
-            <div class="text-primary-foreground">{feature.title}</div>
+          <div class="bg-background/5 xmd:p-4 z-20 flex flex-col gap-2 rounded-md p-3 drop-shadow-lg backdrop-blur-xs">
+            <div class="text-tertiary inline-flex items-center gap-1 text-2xl font-bold md:text-4xl">
+              <span class="shrink-0">
+                <feature.icon />
+              </span>
+              {feature.count}+
+            </div>
+            <span class="text-primary-foreground">{feature.title}</span>
           </div>
         ))
       }

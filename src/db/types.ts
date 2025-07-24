@@ -40,6 +40,7 @@ export type Database = {
           id: string;
           imgs: Json;
           title: string;
+          type: string;
           uploader: string | null;
         };
         Insert: {
@@ -48,6 +49,7 @@ export type Database = {
           id?: string;
           imgs: Json;
           title: string;
+          type: string;
           uploader?: string | null;
         };
         Update: {
@@ -56,6 +58,7 @@ export type Database = {
           id?: string;
           imgs?: Json;
           title?: string;
+          type?: string;
           uploader?: string | null;
         };
         Relationships: [];
@@ -100,6 +103,7 @@ export type Database = {
           description: string | null;
           id: string;
           imgs: string[] | null;
+          is_featured: boolean | null;
           products: Json;
           slug: string;
           sqm: number | null;
@@ -113,6 +117,7 @@ export type Database = {
           description?: string | null;
           id?: string;
           imgs?: string[] | null;
+          is_featured?: boolean | null;
           products: Json;
           slug: string;
           sqm?: number | null;
@@ -126,6 +131,7 @@ export type Database = {
           description?: string | null;
           id?: string;
           imgs?: string[] | null;
+          is_featured?: boolean | null;
           products?: Json;
           slug?: string;
           sqm?: number | null;

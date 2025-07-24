@@ -13,7 +13,7 @@ export default defineConfig({
   },
   site: import.meta.env.DEV ? 'http://localhost' : 'https://santienzphilsinc.com',
   integrations: [react(), sitemap({ changefreq: 'monthly' })],
-  adapter: vercel({ imageService: true, devImageService: 'sharp' }),
+  adapter: vercel(),
   devToolbar: {
     enabled: true,
   },

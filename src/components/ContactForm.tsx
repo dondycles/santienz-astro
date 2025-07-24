@@ -60,14 +60,9 @@ export default function ContactForm({ className }: { className?: string }) {
 
     const res = await actions.submitEmail({ ...values, recaptchaToken: token });
     toast.dismiss('form-submit');
-
-    if (!res.error) {
-      form.reset();
-      setHideSubjectInput(true);
-      toast.success('Form submitted!');
-    } else {
-      toast.error(res.error.message);
-    }
+    if (res.error) return toast.error(res.error.message);
+    form.reset();
+    toast.success('Submitted!');
   }
   return (
     <Form {...form}>

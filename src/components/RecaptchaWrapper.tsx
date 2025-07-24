@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 export default function RecaptchaWrapper() {
   return (
     <GoogleReCaptchaProvider
-      reCaptchaKey="6LfXDYorAAAAAJYQ9xyz1hXFS-Ijvl39oqI-GScP"
+      reCaptchaKey={import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY}
       scriptProps={{
         async: true,
         defer: true,

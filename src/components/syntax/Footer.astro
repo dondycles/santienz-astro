@@ -2,7 +2,7 @@
 import { supabase } from '@/db/supabase';
 import sunRays from '@/images/sun-rays.webp';
 import { Image } from 'astro:assets';
-import { Copyright, Mail, MapPin, Phone } from 'lucide-react';
+import { BiCopyright, BiLogoGmail, BiMapPin, BiPhoneCall } from 'react-icons/bi';
 import Logo from '../Logo.astro';
 const products = await supabase.from('products').select('name').order('name');
 ---
@@ -33,13 +33,7 @@ const products = await supabase.from('products').select('name').order('name');
             <a href="/credentials">Credentials</a>
           </li>
           <li>
-            <a href="/careers">Careers</a>
-          </li>
-          <li>
             <a href="/brochure">Brochure</a>
-          </li>
-          <li>
-            <a href="/testimonials">Testimonials</a>
           </li>
         </ul>
       </div>
@@ -63,48 +57,48 @@ const products = await supabase.from('products').select('name').order('name');
       <h4 class="text-primary font-semibold">Contact</h4>
       <ul class="text-muted-foreground space-y-4 text-base">
         <li class="space-y-2">
-          <p class="text-muted-foreground">Head Office</p>
+          <h5 class="text-muted-foreground font-semibold">Head Office</h5>
           <div class="flex flex-col gap-2">
             <div class="flex gap-2">
-              <MapPin className="size-5" />
+              <BiMapPin className="size-5" />
               <span>352 San Agustin Ave., Palatiw, Pasig City</span>
             </div>
             <div class="flex gap-2">
-              <Mail className="size-5 shrink-0" />
+              <BiLogoGmail className="size-5 shrink-0" />
               <span class="break-all">santienztechnical@gmail.com</span>
             </div>
             <div class="flex gap-2">
-              <Phone className="size-5 shrink-0" />
+              <BiPhoneCall className="size-5 shrink-0" />
               <span>Technical Dept. : (02) 7001-0273</span>
             </div>
             <div class="flex gap-2">
-              <Phone className="size-5 shrink-0" />
+              <BiPhoneCall className="size-5 shrink-0" />
               <span>Admin Dept. : (02) 7728-3381</span>
             </div>
           </div>
         </li>
         <li class="space-y-2">
-          <p class="text-muted-foreground">Cebu Office</p>
+          <h5 class="text-muted-foreground font-semibold">Cebu Office</h5>
           <div class="flex flex-col gap-2">
             <div class="flex gap-2">
-              <MapPin className="size-5 shrink-0" />
+              <BiMapPin className="size-5 shrink-0" />
               <span>Lot 4863 D2, Lower Linao, Talisay City, Cebu</span>
             </div>
             <div class="flex gap-2">
-              <Mail className="size-5 shrink-0" />
+              <BiLogoGmail className="size-5 shrink-0" />
               <span class="break-all">santienzacctg.visayas@gmail.com </span>
             </div>
           </div>
         </li>
         <li class="space-y-2">
-          <p class="text-muted-foreground">Davao Office</p>
+          <h5 class="text-muted-foreground font-semibold">Davao Office</h5>
           <div class="flex flex-col gap-2">
             <div class="flex gap-2">
-              <MapPin className="size-5 shrink-0" />
+              <BiMapPin className="size-5 shrink-0" />
               <span>Purok 7, Composano Compound, Brgy. Tugbok, Davao City </span>
             </div>
             <div class="flex gap-2">
-              <Mail className="size-5 shrink-0" />
+              <BiLogoGmail className="size-5 shrink-0" />
               <span class="break-all">santienzDavao@gmail.com</span>
             </div>
           </div>
@@ -131,7 +125,7 @@ const products = await supabase.from('products').select('name').order('name');
     />
   </div>
   <div class="bg-primary text-muted-foreground z-10 py-8 text-center text-sm">
-    <Copyright className="inline size-6" />
+    <BiCopyright className="inline size-6" />
     <span> 2025 Santienz Phils. Inc.</span>
   </div>
 </footer>

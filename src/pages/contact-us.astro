@@ -5,8 +5,7 @@ import RecaptchaWrapper from '@/components/RecaptchaWrapper';
 import Header from '@/components/syntax/Header.astro';
 import Heading1AndP from '@/components/syntax/Heading1AndP.astro';
 import MainLayout from '@/layouts/MainLayout.astro';
-import { BiLogoGmail } from 'react-icons/bi';
-import { FaFacebookF, FaViber } from 'react-icons/fa';
+import { BiLogoFacebook, BiLogoGmail } from 'react-icons/bi';
 ---
 
 <MainLayout
@@ -30,14 +29,12 @@ import { FaFacebookF, FaViber } from 'react-icons/fa';
     />
 
     <RecaptchaWrapper client:load />
-
     <div
       class="text-primary col-span-1 mt-0 flex justify-center gap-4 border-t pt-4 text-2xl lg:col-span-2 lg:justify-start"
     >
       <a href="https://facebook.com/@santienz.hr" target="_blank">
-        <FaFacebookF />
+        <BiLogoFacebook />
       </a>
-      <FaViber />
       <a
         href="https://mail.google.com/mail/?view=cm&fs=1&to=santienzmanila@gmail.com"
         target="_blank"

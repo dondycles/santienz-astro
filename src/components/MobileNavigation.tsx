@@ -1,6 +1,6 @@
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import type { Pages } from '@/lib/pages.types';
-import { Facebook, Mail, Menu, Phone } from 'lucide-react';
+import { BiLogoFacebook, BiLogoGmail, BiMenu, BiPhone } from 'react-icons/bi';
 import CTAGetQuote from './CTAButton';
 import { Button } from './ui/button';
 export default function MobileNavigation({
@@ -17,7 +17,7 @@ export default function MobileNavigation({
   return (
     <Sheet>
       <SheetTrigger className="xmd:hidden">
-        <Menu id="header-burger-icon" className="cursor-pointer" />
+        <BiMenu id="header-burger-icon" className="size-5 cursor-pointer" />
       </SheetTrigger>
       <SheetContent className="bg-background/80 w-2/3 gap-0 border-0 backdrop-blur-sm">
         <div className="border-t-muted mt-12 flex flex-col gap-4 border-t-1 p-4 text-lg">
@@ -105,17 +105,17 @@ export default function MobileNavigation({
             rel="noopener"
           >
             <div className="space-x-2">
-              <Mail className="text-tertiary inline size-5" />
+              <BiLogoGmail className="text-tertiary inline size-6" />
               <span className="inline break-all">santienztechnical@gmail.com</span>
             </div>
           </a>
           <div className="space-x-2">
-            <Phone className="text-tertiary inline size-5" />
+            <BiPhone className="text-tertiary inline size-6" />
             <span className="inline">(02) 7001-0273</span>
           </div>
           <a href="https://facebook.com/@santienz.hr" target="_blank" rel="noopener">
             <div className="space-x-2">
-              <Facebook className="text-tertiary inline size-5" />
+              <BiLogoFacebook className="text-tertiary inline size-6" />
               <span className="inline">@santienz.hr</span>
             </div>
           </a>

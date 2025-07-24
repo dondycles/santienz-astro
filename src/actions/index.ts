@@ -1,4 +1,4 @@
-import { defineAction } from 'astro:actions';
+import { ActionError, defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
 import { Resend } from 'resend';
 
@@ -31,17 +31,20 @@ export const server = {
     accept: 'json',
     input: formSchema,
     handler: async (input) => {
-      try {
-        const isHuman = await verifyRecaptcha(input.recaptchaToken);
-        if (!isHuman) throw new Error('reCAPTCHA verification failed. Please try again.');
+      const isHuman = await verifyRecaptcha(input.recaptchaToken);
+      if (!isHuman)
+        throw new ActionError({
+          code: 'BAD_REQUEST',
+          message: 'reCAPTCHA verification failed. Please try again.',
+        });
 
-        const email = await resend.emails.send({
-          from: 'Inquiry from Website <website-inquiry@santienzphilsinc.com>',
-          to: 'adwebsantienz@gmail.com',
-          subject: input.subject,
-          replyTo: input.email,
-          text: input.body,
-          html: `<html>
+      const { data, error } = await resend.emails.send({
+        from: 'Inquiry from Website <website-inquiry@santienzphilsinc.com>',
+        to: 'adwebsantienz@gmail.com',
+        subject: input.subject,
+        replyTo: input.email,
+        text: input.body,
+        html: `<html>
   <head>
     <style>
       * {
@@ -81,20 +84,15 @@ export const server = {
     </div>
   </body>
 </html>`, // your HTML stays the same
+      });
+
+      if (error) {
+        throw new ActionError({
+          code: 'BAD_REQUEST',
+          message: error.message,
         });
-
-        if (email.error) {
-          throw new Error(email.error.message);
-        }
-
-        return { success: true }; // ✅ required return value
-      } catch (error) {
-        return {
-          error: {
-            message: error instanceof Error ? error.message : 'Something went wrong',
-          },
-        };
       }
+      return data;
     },
   }),
 };
